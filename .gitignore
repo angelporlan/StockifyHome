@@ -1,0 +1,35 @@
+# Node modules (frontend)
+frontend/node_modules/
+frontend/dist/
+
+# Symfony directories
+/backend/var/
+/backend/vendor/
+
+# Logs and temp files (Symfony)
+/backend/var/logs/
+/backend/var/cache/
+
+# Symfony secrets
+/backend/.env.local
+/backend/.env.*.local
+
+# Composer
+/backend/composer.lock
+/backend/vendor/
+
+# IDE or editor specific files
+.idea/
+.vscode/
+
+# Operating system specific files
+.DS_Store
+Thumbs.db
+
+# npm and yarn
+/frontend/package-lock.json
+/frontend/yarn.lock
+
+# Ignore environment files
+/.env.local
+/.env.*.local
