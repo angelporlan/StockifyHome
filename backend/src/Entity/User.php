@@ -105,4 +105,14 @@ class User
 
         return $this;
     }
+
+    public function toArray(): array
+    {
+        return [
+            'id' => $this->getId(),
+            'username' => $this->getUsername(),
+            'email' => $this->getEmail(),
+            'password' => $this->getPassword(),
+        ];
+    }
 }
