@@ -30,10 +30,22 @@ class UserController extends AbstractController
     public function create(Request $request, EntityManagerInterface $em): JsonResponse
     {
         $data = json_decode($request->getContent(), true);
+
+        $existingUserByEmail = $em->getRepository(User::class)->findOneBy(['email' => $data['email']]);
+        $existingUserByUsername = $em->getRepository(User::class)->findOneBy(['username' => $data['username']]);
+
+        if ($existingUserByEmail) {
+            return $this->json(['error' => 'Email is already in use'], 400);
+        }
+
+        if ($existingUserByUsername) {
+            return $this->json(['error' => 'Username is already in use'], 400);
+        }
+
         $user = new User();
-        $user->setEmail($data['email'] ?? '');
-        $user->setPassword($data['password'] ?? ''); 
-        $user->setUsername($data['username'] ?? '');
+        $user->setEmail($data['email']);
+        $user->setPassword($data['password']);  
+        $user->setUsername($data['username']);
         $em->persist($user);
         $em->flush();
 
@@ -44,6 +56,18 @@ class UserController extends AbstractController
     public function update(Request $request, User $user, EntityManagerInterface $em): JsonResponse
     {
         $data = json_decode($request->getContent(), true);
+
+        $existingUserByEmail = $em->getRepository(User::class)->findOneBy(['email' => $data['email']]);
+        $existingUserByUsername = $em->getRepository(User::class)->findOneBy(['username' => $data['username']]);
+
+        if ($existingUserByEmail && $existingUserByEmail !== $user) {
+            return $this->json(['error' => 'Email is already in use'], 400);
+        }
+
+        if ($existingUserByUsername && $existingUserByUsername !== $user) {
+            return $this->json(['error' => 'Username is already in use'], 400);
+        }
+
         $user->setEmail($data['email'] ?? $user->getEmail());
         $user->setPassword($data['password'] ?? $user->getPassword());
         $user->setUsername($data['username'] ?? $user->getUsername());
