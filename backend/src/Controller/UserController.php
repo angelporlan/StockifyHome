@@ -8,10 +8,18 @@ use Symfony\Component\Routing\Attribute\Route;
 use Doctrine\ORM\EntityManagerInterface;
 use App\Entity\User;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 #[Route('/api/user', name: 'api_user_')]
 class UserController extends AbstractController
 {
+    private UserPasswordHasherInterface $passwordHasher;
+
+    public function __construct(UserPasswordHasherInterface $passwordHasher)
+    {
+        $this->passwordHasher = $passwordHasher;
+    }
+
     #[Route('/', name: 'index', methods: ['GET'])]
     public function index(EntityManagerInterface $em): JsonResponse
     {
@@ -44,8 +52,11 @@ class UserController extends AbstractController
 
         $user = new User();
         $user->setEmail($data['email']);
-        $user->setPassword($data['password']);  
         $user->setUsername($data['username']);
+
+        $hashedPassword = $this->passwordHasher->hashPassword($user, $data['password']);
+        $user->setPassword($hashedPassword);
+
         $em->persist($user);
         $em->flush();
 
@@ -69,8 +80,13 @@ class UserController extends AbstractController
         }
 
         $user->setEmail($data['email'] ?? $user->getEmail());
-        $user->setPassword($data['password'] ?? $user->getPassword());
         $user->setUsername($data['username'] ?? $user->getUsername());
+
+        if (!empty($data['password'])) {
+            $hashedPassword = $this->passwordHasher->hashPassword($user, $data['password']);
+            $user->setPassword($hashedPassword);
+        }
+
         $em->flush();
 
         return $this->json($user->toArray());
