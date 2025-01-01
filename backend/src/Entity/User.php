@@ -6,13 +6,15 @@ use App\Repository\UserRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
+use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 #[ORM\Table(name: 'user')]
 #[ORM\UniqueConstraint(name: 'unique_email', columns: ['email'])]
 #[ORM\UniqueConstraint(name: 'unique_username', columns: ['username'])]
-class User
+class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -56,7 +58,6 @@ class User
     public function setUsername(string $username): static
     {
         $this->username = $username;
-
         return $this;
     }
 
@@ -68,7 +69,6 @@ class User
     public function setEmail(string $email): static
     {
         $this->email = $email;
-
         return $this;
     }
 
@@ -80,8 +80,22 @@ class User
     public function setPassword(string $password): static
     {
         $this->password = $password;
-
         return $this;
+    }
+
+    public function getRoles(): array
+    {
+        return ['ROLE_USER'];
+    }
+
+    public function eraseCredentials(): void
+    {
+        // Si tienes credenciales temporales, elimínalas aquí
+    }
+
+    public function getUserIdentifier(): string
+    {
+        return $this->email;
     }
 
     /**
@@ -98,19 +112,16 @@ class User
             $this->houses->add($house);
             $house->setUserId($this);
         }
-
         return $this;
     }
 
     public function removeHouse(House $house): static
     {
         if ($this->houses->removeElement($house)) {
-            // set the owning side to null (unless already changed)
             if ($house->getUserId() === $this) {
                 $house->setUserId(null);
             }
         }
-
         return $this;
     }
 
@@ -120,7 +131,6 @@ class User
             'id' => $this->getId(),
             'username' => $this->getUsername(),
             'email' => $this->getEmail(),
-            'password' => $this->getPassword(),
         ];
     }
 }
