@@ -47,27 +47,32 @@ class ProductController extends AbstractController
     public function create(Request $request, EntityManagerInterface $em): JsonResponse
     {
         $data = json_decode($request->getContent(), true);
-
+    
         if (empty($data['name']) || empty($data['house_id']) || empty($data['category_id'])) {
             return $this->json(['error' => 'Name, house_id, and category_id are required'], 400);
         }
-
+    
         $house = $em->getRepository(House::class)->find($data['house_id']);
         $category = $em->getRepository(Category::class)->find($data['category_id']);
-
+    
         if (!$house || !$category) {
             return $this->json(['error' => 'House or category not found'], 404);
         }
-
+    
         $product = new Product();
         $product->setName($data['name']);
-        $product->setImage($data['image'] ?? null);
         $product->setHouseId($house);
         $product->setCategoryId($category);
-
+    
         $em->persist($product);
         $em->flush();
-
+    
+        if (isset($data['image'])) {
+            $imageFileName = $this->saveImage($data['image'], $product->getId());
+            $product->setImage($imageFileName);
+            $em->flush(); 
+        }
+    
         return $this->json(['message' => 'Product created', 'id' => $product->getId()], 201);
     }
 
@@ -78,10 +83,6 @@ class ProductController extends AbstractController
 
         if (!empty($data['name'])) {
             $product->setName($data['name']);
-        }
-
-        if (isset($data['image'])) {
-            $product->setImage($data['image']);
         }
 
         if (!empty($data['house_id'])) {
@@ -100,6 +101,13 @@ class ProductController extends AbstractController
             $product->setCategoryId($category);
         }
 
+        // Handle image update (delete old and save new one)
+        if (isset($data['image'])) {
+            $this->deleteImage($product->getImage());
+            $imageFileName = $this->saveImage($data['image'], $product->getId());
+            $product->setImage($imageFileName);
+        }
+
         $em->flush();
 
         return $this->json(['message' => 'Product updated', 'id' => $product->getId()]);
@@ -108,9 +116,32 @@ class ProductController extends AbstractController
     #[Route('/{id}', name: 'delete', methods: ['DELETE'])]
     public function delete(Product $product, EntityManagerInterface $em): JsonResponse
     {
+        // Delete image when deleting the product
+        $this->deleteImage($product->getImage());
+
         $em->remove($product);
         $em->flush();
 
         return $this->json(['message' => 'Product deleted']);
+    }
+
+    private function saveImage(string $base64Image, int $productId): string
+    {
+        $imageData = base64_decode(explode(',', $base64Image)[1]);
+        
+        $fileName = 'uploads/product/' . $productId . '.jpg';
+        
+        file_put_contents($this->getParameter('kernel.project_dir') . '/public/' . $fileName, $imageData);
+    
+        return $fileName;
+    }
+
+    private function deleteImage(string $imagePath): void
+    {
+        $fullPath = $this->getParameter('kernel.project_dir') . '/public/' . $imagePath;
+
+        if (file_exists($fullPath)) {
+            unlink($fullPath);
+        }
     }
 }
