@@ -24,7 +24,11 @@ class ProductController extends AbstractController
             'image' => $product->getImage(),
             'house_id' => $product->getHouseId()?->getId(),
             'category_id' => $product->getCategoryId()?->getId(),
-            'details' => count($product->getProductDetails())
+            'details' => array_map(fn($detail) => [
+                'id' => $detail->getId(),
+                'quantity' => $detail->getQuantity(),
+                'expiration_date' => $detail->getExpirationDate()->format('Y-m-d')
+            ], $product->getProductDetails()->toArray())
         ], $products);
         
         return $this->json($productArray);
@@ -39,7 +43,11 @@ class ProductController extends AbstractController
             'image' => $product->getImage(),
             'house_id' => $product->getHouseId()?->getId(),
             'category_id' => $product->getCategoryId()?->getId(),
-            'details' => array_map(fn($detail) => $detail->getId(), $product->getProductDetails()->toArray())
+            'details' => array_map(fn($detail) => [
+                'id' => $detail->getId(),
+                'quantity' => $detail->getQuantity(),
+                'expiration_date' => $detail->getExpirationDate()->format('Y-m-d')
+            ], $product->getProductDetails()->toArray())
         ]);
     }
 
