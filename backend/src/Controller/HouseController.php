@@ -21,7 +21,17 @@ class HouseController extends AbstractController
             'id' => $house->getId(),
             'name' => $house->getName(),
             'user_id' => $house->getUserId()?->getId(),
-            'products' => count($house->getProducts())
+            'products' => array_map(fn($product) => [
+                'id' => $product->getId(),
+                'name' => $product->getName(),
+                'category' => $product->getCategoryId()?->getName(),
+                'image' => $product->getImage(),
+                'details' => array_map(fn($detail) => [
+                    'id' => $detail->getId(),
+                    'quantity' => $detail->getQuantity(),
+                    'expiration_date' => $detail->getExpirationDate()->format('Y-m-d')
+                ], $product->getProductDetails()->toArray())
+            ], $house->getProducts()->toArray())
         ], $houses);
         
         return $this->json($houseArray);
@@ -34,7 +44,11 @@ class HouseController extends AbstractController
             'id' => $house->getId(),
             'name' => $house->getName(),
             'user_id' => $house->getUserId()?->getId(),
-            'products' => array_map(fn($product) => $product->getId(), $house->getProducts()->toArray())
+            'products' => array_map(fn($product) => [
+                'id' => $product->getId(),
+                'name' => $product->getName(),
+                'category' => $product->getCategoryId()?->getName()
+            ], $house->getProducts()->toArray())
         ]);
     }
 
