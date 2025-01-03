@@ -13,6 +13,8 @@ frontend/dist/
 # Symfony secrets
 /backend/.env.local
 /backend/.env.*.local
+/backend/.env
+/backend/.env.dev
 
 # Composer
 /backend/composer.lock
