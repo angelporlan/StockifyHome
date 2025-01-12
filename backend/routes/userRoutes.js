@@ -1,10 +1,14 @@
 const express = require('express');
-const { registerUser, loginUser } = require('../controllers/userController');
+
+const { registerUser, loginUser, getUserProfile } = require('../controllers/userController');
+
+const authenticateToken = require('../middlewares/authenticateToken');
+const validateRegister = require('../middlewares/validateRegister');
+
 const router = express.Router();
 
-router.post('/register', registerUser);
+router.post('/register', validateRegister, registerUser);
 router.post('/login', loginUser);
-router.get('/', (req, res) => {
-    res.json({ message: 'User route works!' });
-});
+router.get('/profile', authenticateToken, getUserProfile);
+
 module.exports = router;
