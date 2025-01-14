@@ -1,0 +1,1 @@
+const { ProductDetail } = require('../models');
