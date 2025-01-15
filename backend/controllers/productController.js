@@ -1,4 +1,4 @@
-const { Product, Category } = require('../models');
+const { Product, Category, ProductDetail } = require('../models'); // Add ProductDetail model
 
 const createProduct = async (req, res) => {
     try {
@@ -16,7 +16,10 @@ const getProductsByHouse = async (req, res) => {
 
         const products = await Product.findAll({
             where: { house_id },
-            include: [{ model: Category, attributes: ['name'] }]
+            include: [
+                { model: Category, attributes: ['name'] },
+                { model: ProductDetail, attributes: ['id', 'quantity', 'expiration_date'] }
+            ]
         });
 
         if (products[0].house_id !== parseInt(house_id)) return res.status(404).json({ error: 'House not found or access denied' });
@@ -32,7 +35,10 @@ const getProductById = async (req, res) => {
         const { id } = req.params;
         const product = await Product.findOne({
             where: { id },
-            include: [{ model: Category, attributes: ['name'] }]
+            include: [
+                { model: Category, attributes: ['name'] },
+                { model: ProductDetail, attributes: ['id', 'quantity', 'expiration_date'] }
+            ]
         });
 
         if (!product) return res.status(404).json({ error: 'Product not found' });
