@@ -14,9 +14,9 @@ import { AuthService } from '../../services/auth.service';
 export class AuthComponent {
   isLoading: boolean = false;
   loginActive: boolean = true;
-  email: any;
-  password: any;
-  username: any;
+  email: string = '';
+  password: string = '';
+  username: string = '';
   submitText: string = 'Login';
   
   constructor(private router: Router,
