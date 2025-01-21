@@ -1,8 +1,9 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
+import { AuthStore } from '../../store/auth.store';
 
 @Component({
   selector: 'app-auth',
@@ -14,10 +15,11 @@ import { AuthService } from '../../services/auth.service';
 export class AuthComponent {
   isLoading: boolean = false;
   loginActive: boolean = true;
-  email: string = '';
-  password: string = '';
+  email: string = 'angel@gmail.com';
+  password: string = '1234';
   username: string = '';
   submitText: string = 'Login';
+  authStore = inject(AuthStore);
   
   constructor(private router: Router,
     private authService: AuthService,
@@ -43,9 +45,11 @@ export class AuthComponent {
     this.authService.login(this.email, this.password).subscribe(
       (res) => {
         this.isLoading = false;
-        console.log(res)
         console.log('Login successful');
-        console.log('home');
+        console.log(res.token);
+  
+        this.authStore.setToken(res.token);
+        console.log('Token saved:', this.authStore.token());
       },
       (err) => {
         this.isLoading = false;
