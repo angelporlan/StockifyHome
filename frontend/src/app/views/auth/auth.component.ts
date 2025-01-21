@@ -47,7 +47,7 @@ export class AuthComponent {
         this.isLoading = false;
         console.log('Login successful');
         console.log(res.token);
-  
+        this.navigateTo('dashboard');
         this.authStore.setToken(res.token);
         console.log('Token saved:', this.authStore.token());
       },
