@@ -1,0 +1,17 @@
+<div class="box" [ngClass]="{ 'hidden-box': isSidebarHidden }">
+    <ul class="list-unstyled components" [ngClass]="{ 'hidden-ul': isSidebarHidden }">
+        <li [ngClass]="{ 'active': isActive('dashboard') }" (click)="navigateTo('dashboard')">
+            <img src="../../../assets/icons/home.svg" alt="svg">
+            <span [ngClass]="{ 'hidden-span': isSidebarHidden }">Dashboard</span>
+        </li>
+        <li [ngClass]="{ 'active': isActive('houses') }" (click)="navigateTo('houses')">
+            <img src="../../../assets/icons/home.svg" alt="svg">
+            <span [ngClass]="{ 'hidden-span': isSidebarHidden }">Houses</span>
+        </li>
+        <li [ngClass]="{ 'active': isActive('products') || isActive('product') }" (click)="navigateTo('products')">
+            <img src="../../../assets/icons/products.svg" alt="svg">
+            <span [ngClass]="{ 'hidden-span': isSidebarHidden }">Products</span>
+        </li>
+    </ul>
+    <img src="../../../assets/icons/arrow.svg" class="arrow" alt="arrow" [ngClass]="{ 'hidden-img': isSidebarHidden }" (click)="isSidebarHidden = !isSidebarHidden;">
+</div>
