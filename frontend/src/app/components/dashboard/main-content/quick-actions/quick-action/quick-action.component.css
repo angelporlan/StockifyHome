@@ -1,0 +1,23 @@
+button {
+    background-color: var(--gray-color);
+    color: black;
+    border: none;
+    border-radius: 12px;
+    text-align: center;
+    height: 32px;
+    padding: 0 12px 0 12px;
+}
+
+button:hover {
+    background-color: var(--gray-semihover-color);
+    cursor: pointer;
+    /* transcision */
+    transition: background-color 0.3s;
+}
+
+@media (max-width: 800px) {
+    button {
+        width: 100%;
+        padding: 0;
+    }
+}
