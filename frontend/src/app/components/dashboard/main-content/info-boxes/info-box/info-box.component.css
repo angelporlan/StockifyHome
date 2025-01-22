@@ -1,0 +1,37 @@
+article {
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid var(--gray-color);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.number {
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.title {
+    font-size: 16px;
+    color: var(--gray-dark-color);
+    margin-top: 6px;
+}
+
+@media (max-width: 1213px) {
+    .title {
+        margin-top: 4px;
+    }
+}
+
+@media (max-width: 800px) {
+    article {
+        padding: 8px;
+    }
+
+    .number {
+        font-size: 18px;
+    }
+}
