@@ -1,9 +1,9 @@
 div {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Ajusta el comportamiento del grid */
-    gap: 12px; /* Espaciado uniforme entre filas y columnas */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+    gap: 12px;
     border: 1px solid red;
-    width: 100%; /* Asegura que el contenedor ocupe todo el espacio disponible */
+    width: 100%; 
 }
 
 @media (min-width: 900px) and (max-width: 1213px) {
