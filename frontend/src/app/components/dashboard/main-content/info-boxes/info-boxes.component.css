@@ -1,0 +1,26 @@
+div {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Ajusta el comportamiento del grid */
+    gap: 12px; /* Espaciado uniforme entre filas y columnas */
+    border: 1px solid red;
+    width: 100%; /* Asegura que el contenedor ocupe todo el espacio disponible */
+}
+
+@media (min-width: 900px) and (max-width: 1213px) {
+    div {
+        grid-template-columns: 1f 1fr;
+        grid-template-rows: 1fr 1fr;
+    }
+
+    .row2 {
+        grid-column: span 2;
+        grid-row-start: 2;
+    }
+}
+
+
+@media (max-width: 800px) {
+    div {
+        grid-template-columns: 1fr;
+    }
+}
