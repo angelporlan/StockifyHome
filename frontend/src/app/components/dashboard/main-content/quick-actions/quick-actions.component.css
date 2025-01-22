@@ -1,0 +1,19 @@
+div {
+    border: 1px solid red;
+}
+
+div > :nth-child(2) {
+    margin: 0 12px 0 12px;
+}
+
+@media (max-width: 800px) {
+    div {
+        display: grid;
+        gap: 12px;
+        grid-template-columns: 1fr;
+    }
+
+    div > :nth-child(2) {
+        margin: 0;
+    }
+}
