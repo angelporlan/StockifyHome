@@ -8,75 +8,74 @@ import { AuthStore } from '../../store/auth.store';
 @Component({
   selector: 'app-auth',
   standalone: true,
-  imports: [CommonModule, FormsModule, ],
+  imports: [CommonModule, FormsModule],
   templateUrl: './auth.component.html',
-  styleUrl: './auth.component.css'
+  styleUrls: ['./auth.component.css'],
 })
 export class AuthComponent {
-  isLoading: boolean = false;
-  loginActive: boolean = true;
-  email: string = 'angel@gmail.com';
-  password: string = '1234';
-  username: string = '';
-  submitText: string = 'Login';
+  isLoading = false;
+  loginActive = true;
+  email = 'angel@gmail.com';
+  password = '1234';
+  username = '';
   authStore = inject(AuthStore);
-  
-  constructor(private router: Router,
-    private authService: AuthService,
-    // private snackBar: MatSnackBar
-  ) { }
+  submitText = this.getSubmitText();
 
-  showMessage(message: string): void {
-    // this.snackBar.open(message, 'Close', {
-    //   duration: 3000,
-    //   verticalPosition: 'top',
-    //   horizontalPosition: 'center'
-    // });
-  }
+  constructor(private router: Router, private authService: AuthService) {}
 
   toggleAuth(value: boolean): void {
     this.loginActive = value;
-    this.submitText = value ? 'Login' : 'Register';
+    this.submitText = this.getSubmitText();
+  }
+
+  private getSubmitText(): string {
+    return this.loginActive ? 'Login' : 'Register';
   }
 
   login(): void {
-    this.isLoading = true;
-    console.log(this.email, this.password);
-    this.authService.login(this.email, this.password).subscribe(
-      (res) => {
-        this.isLoading = false;
-        console.log('Login successful');
-        console.log(res.token);
+    this.startLoading();
+    this.authService.login(this.email, this.password).subscribe({
+      next: (res) => this.handleLoginSuccess(res.token),
+      error: (err) => this.handleError('Login failed', err),
+    });
+  }
+
+  private handleLoginSuccess(token: string): void {
+    this.authStore.setToken(token);
+    this.authService.profile().subscribe({
+      next: (profile) => {
+        this.authStore.setProfile(profile);
         this.navigateTo('dashboard');
-        this.authStore.setToken(res.token);
-        console.log('Token saved:', this.authStore.token());
       },
-      (err) => {
-        this.isLoading = false;
-        console.log('Login failed', err);
-      }
-    );
+      error: (err) => this.handleError('Profile fetch failed', err),
+    });
   }
 
   register(): void {
-    this.isLoading = true;
-    console.log(this.email, this.password, this.username);
-    this.authService.register(this.email, this.password, this.username).subscribe(
-      (res) => {
-        this.isLoading = false;
-        console.log(res)
-        console.log('Registration successful');
-        console.log('home');
+    this.startLoading();
+    this.authService.register(this.email, this.password, this.username).subscribe({
+      next: () => {
+        this.loginActive = true;
+        this.stopLoading();
       },
-      (err) => {
-        this.isLoading = false;
-        console.log('Registration failed');
-      }
-    );
+      error: (err) => this.handleError('Registration failed', err),
+    });
   }
 
   navigateTo(path: string): void {
     this.router.navigate([path]);
   }
 
+  private startLoading(): void {
+    this.isLoading = true;
+  }
+
+  private stopLoading(): void {
+    this.isLoading = false;
+  }
+
+  private handleError(message: string, error: any): void {
+    console.error(message, error);
+    this.stopLoading();
+  }
 }
