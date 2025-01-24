@@ -1,8 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { SidebarComponent } from '../../components/dashboard/sidebar/sidebar.component';
 import { HeaderComponent } from '../../components/dashboard/header/header.component';
 import { Router, NavigationEnd, RouterModule } from '@angular/router'; 
 import { filter, map } from 'rxjs/operators';
+import { AuthStore } from '../../store/auth.store';
+import { HouseService } from '../../services/house/house.service';
+import { HouseStore } from '../../store/house.store';
 
 @Component({
   selector: 'app-dashboard',
@@ -12,15 +15,22 @@ import { filter, map } from 'rxjs/operators';
 })
 export class DashboardComponent {
   title: string = 'Dashboard';
-
+  authStore = inject(AuthStore);
+  houseStore = inject(HouseStore);
+  
   private readonly routes = {
     main: '/dashboard/main',
     houses: '/dashboard/houses',
     products: '/dashboard/products',
   };
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private houseService: HouseService) {
     this.initializeTitleUpdater();
+  }
+
+  ngOnInit(): void {
+    this.getHouses();
+    console.log('after getHouses, time: ', new Date().getTime());
   }
 
   private initializeTitleUpdater(): void {
@@ -35,7 +45,7 @@ export class DashboardComponent {
 
   private determineTitle(url: string): string {
     if (url.includes(this.routes.main)) {
-      return this.getTimeBasedGreeting();
+      return `${this.getTimeBasedGreeting()}, ${this.authStore.username()}itomelenaselreydelasnenas`;
     } else if (url.includes(this.routes.houses)) {
       return 'Houses';
     } else if (url.includes(this.routes.products)) {
@@ -53,4 +63,16 @@ export class DashboardComponent {
     }
     return 'Good Night';
   }
+
+  private getHouses(): void {
+    this.houseService.getHouses().subscribe({
+      next: (houses) => {
+        this.houseStore.setHouses(houses);
+      },
+      error: (err) => {
+        console.error(err);
+      }
+    });
+  }
+
 }
