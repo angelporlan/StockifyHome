@@ -5,11 +5,12 @@ import { FormsModule } from '@angular/forms';
 import { AuthService } from '../../services/auth/auth.service';
 import { AuthStore } from '../../store/auth.store';
 import { MatSnackBarService } from '../../services/matSnackBar/mat-snack-bar.service';
+import { LoaderComponent } from '../../components/general/loader/loader.component';
 
 @Component({
   selector: 'app-auth',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, LoaderComponent],
   templateUrl: './auth.component.html',
   styleUrls: ['./auth.component.css'],
 })

@@ -25,3 +25,5 @@
         <button class="submit" (click)="loginActive ? login() : register()">{{submitText}}</button>
     </div>
 </div>
+
+<app-loader [isLoading]="isLoading"></app-loader>
