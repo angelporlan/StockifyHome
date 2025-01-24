@@ -45,7 +45,7 @@ const getProductsByHouse = async (req, res) => {
         const products = await Product.findAll({
             where: { house_id },
             include: [
-                { model: Category, attributes: ['name'] },
+                { model: Category, attributes: ['id', 'name'] },
                 { model: ProductDetail, attributes: ['id', 'quantity', 'expiration_date'] }
             ]
         });
