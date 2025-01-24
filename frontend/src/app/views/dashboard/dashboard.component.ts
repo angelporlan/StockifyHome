@@ -45,7 +45,7 @@ export class DashboardComponent {
 
   private determineTitle(url: string): string {
     if (url.includes(this.routes.main)) {
-      return `${this.getTimeBasedGreeting()}, ${this.authStore.username()}itomelenaselreydelasnenas`;
+      return `${this.getTimeBasedGreeting()}, ${this.authStore.username()}`;
     } else if (url.includes(this.routes.houses)) {
       return 'Houses';
     } else if (url.includes(this.routes.products)) {
