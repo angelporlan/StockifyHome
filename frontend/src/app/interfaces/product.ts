@@ -10,5 +10,5 @@ export interface Product {
     houseId: number,
     categoryId: number,
     category: Category,
-    ProductDetails: ProductDetail[]
+    productDetails: ProductDetail[]
 }
