@@ -2,8 +2,9 @@ import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
-import { AuthService } from '../../services/auth.service';
+import { AuthService } from '../../services/auth/auth.service';
 import { AuthStore } from '../../store/auth.store';
+import { MatSnackBarService } from '../../services/matSnackBar/mat-snack-bar.service';
 
 @Component({
   selector: 'app-auth',
@@ -21,8 +22,8 @@ export class AuthComponent {
   authStore = inject(AuthStore);
   submitText = this.getSubmitText();
 
-  constructor(private router: Router, private authService: AuthService) {}
-
+  constructor(private router: Router, private authService: AuthService, private matSnackBarService: MatSnackBarService) { }
+  
   toggleAuth(value: boolean): void {
     this.loginActive = value;
     this.submitText = this.getSubmitText();
@@ -45,6 +46,7 @@ export class AuthComponent {
     this.authService.profile().subscribe({
       next: (profile) => {
         this.authStore.setProfile(profile);
+        this.matSnackBarService.showSuccess('Login successful!');
         this.navigateTo('dashboard');
       },
       error: (err) => this.handleError('Profile fetch failed', err),
@@ -55,6 +57,7 @@ export class AuthComponent {
     this.startLoading();
     this.authService.register(this.email, this.password, this.username).subscribe({
       next: () => {
+        this.matSnackBarService.showSuccess('Registration successful!');
         this.loginActive = true;
         this.stopLoading();
       },
@@ -76,6 +79,7 @@ export class AuthComponent {
 
   private handleError(message: string, error: any): void {
     console.error(message, error);
+    this.matSnackBarService.showError(error.error.error || message);
     this.stopLoading();
   }
 }
