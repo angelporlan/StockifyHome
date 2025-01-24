@@ -48,7 +48,7 @@ export class AuthComponent {
       next: (profile) => {
         this.authStore.setProfile(profile);
         this.matSnackBarService.showSuccess('Login successful!');
-        this.navigateTo('dashboard');
+        this.navigateTo('dashboard/main');
       },
       error: (err) => this.handleError('Profile fetch failed', err),
     });
