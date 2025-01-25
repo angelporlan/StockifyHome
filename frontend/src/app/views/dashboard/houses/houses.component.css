@@ -1,0 +1,14 @@
+.search-button {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    gap: 24px;
+    margin-bottom: 24px;
+}
+
+@media (max-width: 550px) {
+    .search-button {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+}
