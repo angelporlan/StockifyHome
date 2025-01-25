@@ -13,4 +13,7 @@ export class HouseBoxesComponent {
   private houseStore = inject(HouseStore);
   public houses = this.houseStore.houses();
 
+  ngOnInit(): void {
+    console.log('houses: ', this.houses);    
+  }
 }
