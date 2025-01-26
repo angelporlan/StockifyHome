@@ -10,7 +10,7 @@
             <p *ngIf="isProduct" class="category">{{product.Category.name}}</p>
         </div>
         <div class="right-zone">
-
+            <p *ngIf="isProduct" class="quantity">{{this.getAllQuantity()}}</p>
         </div>
     </div>
 </article>

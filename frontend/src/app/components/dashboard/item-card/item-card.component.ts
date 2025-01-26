@@ -4,6 +4,7 @@ import { Product } from '../../../interfaces/product';
 import { HouseStore } from '../../../store/house.store';
 import { MatSnackBarService } from '../../../services/matSnackBar/mat-snack-bar.service';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-item-card',
@@ -37,7 +38,7 @@ export class ItemCardComponent {
   }
   private houseStore = inject(HouseStore);
 
-  constructor(private matSnackBarService: MatSnackBarService) { }
+  constructor(private matSnackBarService: MatSnackBarService, private router: Router) { }
 
   ngOnInit(): void {
     if (this.isProduct) {
@@ -49,6 +50,8 @@ export class ItemCardComponent {
     if (!this.isProduct) {
       this.houseStore.setHouseSelected(this.house);
       this.matSnackBarService.showSuccess(`House ${this.house.name} selected`);
+    } else {
+      this.router.navigate([`dashboard/product/${this.product.id}`]);
     }
   }
 
@@ -78,5 +81,13 @@ export class ItemCardComponent {
       return 'Expired ' + Math.abs(days) + ' days ago';
     }
     return days + ' days to expire';
+  }
+
+  getAllQuantity(): number {
+    let quantity = 0;
+    this.product.ProductDetails.forEach((productDetail) => {
+      quantity += productDetail.quantity;
+    });
+    return quantity;
   }
 }

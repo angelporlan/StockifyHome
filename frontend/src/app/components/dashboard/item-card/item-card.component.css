@@ -20,7 +20,7 @@ img {
     margin-left: 16px;
     grid-template-columns: 1fr auto;
     align-items: center;
-    justify-items: center;
+    width: 100%;
 }
 
 .left-zone {
@@ -31,4 +31,8 @@ img {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+}
+
+.right-zone {
+    margin-left: 12px;
 }
