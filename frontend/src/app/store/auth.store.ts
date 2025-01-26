@@ -1,6 +1,4 @@
 import { signalStore, withMethods, withState, patchState } from '@ngrx/signals';
-import { HouseStore } from './house.store';
-import { inject } from 'vue';
 
 export interface AuthState {
   id: number;
@@ -34,9 +32,6 @@ export const AuthStore = signalStore(
         username: '',
         createdAt: '',
         updatedAt: '',
-        selectedProducts: [],
-        selectedHouse: [],
-        houses: []
       }
 
       localStorage.removeItem('stockifyHomeData');
@@ -64,16 +59,15 @@ export const AuthStore = signalStore(
       }));
     },
     deleteToken: () => {
-      localStorage.removeItem('stockifyHomeData');
-
-      patchState(store, (state) => ({
-        token: '',
-        id: 0,
-        email: '',
-        username: '',
-        createdAt: '',
-        updatedAt: '',
-      }));
+        localStorage.removeItem('stockifyHomeData');
+        patchState(store, (state) => ({
+            token: '',
+            id: 0,
+            email: '',
+            username: '',
+            createdAt: '',
+            updatedAt: '',
+        }));
     },
   }))
 );
