@@ -44,5 +44,11 @@ export const HouseStore = signalStore(
         selectedHouse: house,
       }));
     },
+    resetState: () => {
+      patchState(store, (state) => ({
+        selectedHouse: null,
+        houses: [],
+      }));
+    },
   }))
 );
