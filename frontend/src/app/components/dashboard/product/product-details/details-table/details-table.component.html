@@ -1,0 +1,14 @@
+<table>
+    <thead>
+        <tr>
+            <th>Date</th>
+            <th>Quantity</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let detail of details">
+            <td>{{ getFormattedDate(detail.expiration_date) }}</td>
+            <td class="quantity">{{ detail.quantity }}</td>
+        </tr>
+    </tbody>
+</table>
