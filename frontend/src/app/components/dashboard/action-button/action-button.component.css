@@ -18,3 +18,11 @@ button {
 button:hover {
     background-color: var(--blue-hover-color);
 }
+
+.red {
+    background-color: var(--red-button-color);
+}
+
+.red:hover {
+    background-color: var(--red-button-hover-color);
+}
