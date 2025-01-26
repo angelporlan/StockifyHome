@@ -3,10 +3,11 @@ import { House } from '../../../interfaces/house';
 import { Product } from '../../../interfaces/product';
 import { HouseStore } from '../../../store/house.store';
 import { MatSnackBarService } from '../../../services/matSnackBar/mat-snack-bar.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-item-card',
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './item-card.component.html',
   styleUrl: './item-card.component.css'
 })
@@ -20,11 +21,11 @@ export class ItemCardComponent {
     updatedAt: '',
     houseId: 0,
     categoryId: 0,
-    category: {
+    Category: {
       id: 0,
       name: ''
     },
-    productDetails: []
+    ProductDetails: []
   }
     ;
   @Input() house: House = {
@@ -38,10 +39,44 @@ export class ItemCardComponent {
 
   constructor(private matSnackBarService: MatSnackBarService) { }
 
+  ngOnInit(): void {
+    if (this.isProduct) {
+      console.log('aaa ' + this.getLatestProductDetailDate())
+    }
+  }
+
   onSelectItem() {
     if (!this.isProduct) {
       this.houseStore.setHouseSelected(this.house);
       this.matSnackBarService.showSuccess(`House ${this.house.name} selected`);
     }
+  }
+
+  getLatestProductDetailDate(): String {
+    if (this.product.ProductDetails.length === 0) {
+      return 'No expiration date';
+    }
+    let latestDate = new Date(this.product.ProductDetails[0].expiration_date);
+    this.product.ProductDetails.forEach((productDetail) => {
+      const expirationDate = new Date(productDetail.expiration_date);
+      if (expirationDate > latestDate) {
+        latestDate = expirationDate;
+      }
+    });
+    return latestDate.getDate() + '-' + (latestDate.getMonth() + 1) + '-' + latestDate.getFullYear();
+  }
+  
+  getTheDaysToExpire(): string {
+    if (this.product.ProductDetails.length === 0) {
+      return 'No expiration date';
+    }
+    let latestDate = new Date(this.product.ProductDetails[0].expiration_date);
+    let today = new Date();
+    let difference = latestDate.getTime() - today.getTime();
+    let days = Math.ceil(difference / (1000 * 3600 * 24));
+    if (days < 0) {
+      return 'Expired ' + Math.abs(days) + ' days ago';
+    }
+    return days + ' days to expire';
   }
 }

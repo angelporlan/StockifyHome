@@ -1,12 +1,13 @@
 <article (click)="onSelectItem()">
     <div class="image">
-        <img src="../../../../assets/images/house.jpg" alt="item.name">
+        <img [src]="isProduct ? '../../../../assets/images/product.avif' : '../../../../assets/images/house.jpg'" 
+             [alt]="house.name || product.name">
     </div>
     <div class="content">
         <div class="left-zone">
-            <p class="name">{{house.name}}</p>
-            <!-- <p class="expiration-date"></p> -->
-            <!-- <p class="category"></p> -->
+            <p class="name">{{house.name || product.name}}</p>
+            <p *ngIf="isProduct" class="expiration-date">{{ this.getTheDaysToExpire() }}</p>
+            <p *ngIf="isProduct" class="category">{{product.Category.name}}</p>
         </div>
         <div class="right-zone">
 
