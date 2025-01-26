@@ -9,5 +9,5 @@ import { Component, Input } from '@angular/core';
 export class ActionButtonComponent {
   @Input() text: string = 'Button';
   @Input() actionType: 'addHouse' | 'editHouse' | 'deleteHouse' | 
-  'addProduct' | 'editProduct' | 'deleteProduct' = 'addHouse';
+  'addProduct' | 'addProductDetail' | 'editProduct' | 'deleteProduct' = 'addHouse';
 }
