@@ -3,6 +3,8 @@ import { inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { delay } from 'rxjs/operators';
 import { AuthStore } from '../../store/auth.store';
+import { HouseStore } from '../../store/house.store';
+import { ProductStore } from '../../store/product.store';
 
 @Injectable({
   providedIn: 'root'
@@ -10,6 +12,8 @@ import { AuthStore } from '../../store/auth.store';
 export class AuthService {
   private apiUrl: string = 'http://127.0.0.1:3000/api/users';
   authStore = inject(AuthStore);
+  houseStore = inject(HouseStore);
+  productStore = inject(ProductStore);
   
   constructor(private http: HttpClient) { }
 
@@ -30,5 +34,11 @@ export class AuthService {
     return this.http.get(`${this.apiUrl}/profile`, { 
       headers: { Authorization: `Bearer ${token}` }
     });
+  }
+
+  logout(): void {
+    this.authStore.deleteToken();
+    this.houseStore.resetState();
+    this.productStore.resetState();
   }
 }
