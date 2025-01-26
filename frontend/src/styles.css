@@ -1,5 +1,6 @@
 /* src/styles.css */
 :root {
+    --table-color: #61708A;
     --navbar-line-color: #f1f1f1;
     --blue-color: #72C2FC;
     --blue-hover-color: #61afe8;
@@ -11,6 +12,8 @@
     --red-color: #f00;
     --red-hover-color: #d00;
     --red-ligth-color: #fdd;
+    --red-button-color: #FF9395;
+    --red-button-hover-color: #FF6B6E;
   }
   
 
