@@ -3,10 +3,11 @@ import { Product } from '../../../../interfaces/product';
 import { TitleComponent } from '../../title/title.component';
 import { ProductDetail } from '../../../../interfaces/product-detail';
 import { DetailsTableComponent } from './details-table/details-table.component';
+import { ActionButtonComponent } from '../../action-button/action-button.component';
 
 @Component({
   selector: 'app-product-details',
-  imports: [TitleComponent, DetailsTableComponent],
+  imports: [TitleComponent, DetailsTableComponent, ActionButtonComponent],
   templateUrl: './product-details.component.html',
   styleUrl: './product-details.component.css'
 })
