@@ -1,6 +1,6 @@
 <article (click)="onSelectItem()">
     <div class="image">
-        <img [src]="isProduct ? '../../../../assets/images/product.avif' : '../../../../assets/images/house.jpg'" 
+        <img [src]="isProduct ? (product.image ? '../../../../assets/products/' + product.image : '../../../../assets/images/product.avif') : '../../../../assets/images/house.jpg'" 
              [alt]="house.name || product.name">
     </div>
     <div class="content">
