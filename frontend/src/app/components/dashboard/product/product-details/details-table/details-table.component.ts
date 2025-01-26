@@ -1,10 +1,11 @@
 import { Component, Input } from '@angular/core';
 import { ProductDetail } from '../../../../../interfaces/product-detail';
 import { CommonModule } from '@angular/common';
+import { CounterComponent } from '../counter/counter.component';
 
 @Component({
   selector: 'app-details-table',
-  imports: [CommonModule],
+  imports: [CommonModule, CounterComponent],
   templateUrl: './details-table.component.html',
   styleUrl: './details-table.component.css'
 })

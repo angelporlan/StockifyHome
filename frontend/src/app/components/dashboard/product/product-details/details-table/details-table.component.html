@@ -8,7 +8,9 @@
     <tbody>
         <tr *ngFor="let detail of details">
             <td>{{ getFormattedDate(detail.expiration_date) }}</td>
-            <td class="quantity">{{ detail.quantity }}</td>
+            <td class="quantity">
+                <app-counter [number]="detail.quantity" ></app-counter>
+            </td>
         </tr>
     </tbody>
 </table>
