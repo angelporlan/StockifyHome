@@ -43,6 +43,7 @@ export class AuthComponent {
   }
 
   private handleLoginSuccess(token: string): void {
+    this.authService.logout();
     this.authStore.setToken(token);
     this.authService.profile().subscribe({
       next: (profile) => {
