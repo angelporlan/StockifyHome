@@ -9,6 +9,6 @@ export interface Product {
     updatedAt: string,
     houseId: number,
     categoryId: number,
-    category: Category,
-    productDetails: ProductDetail[]
+    Category: Category,
+    ProductDetails: ProductDetail[]
 }
