@@ -25,7 +25,7 @@ const createProduct = async (req, res) => {
         const { name, image, house_id, category_id } = req.body;
         let imageName = null;
         if (image) {
-            const uploadsDir = path.join(__dirname, '../uploads');
+            const uploadsDir = path.join(__dirname, '../../frontend/src/assets/products');
             if (!fs.existsSync(uploadsDir)) {
                 fs.mkdirSync(uploadsDir, { recursive: true });
             }
@@ -80,7 +80,7 @@ const updateProduct = async (req, res) => {
         const product = await Product.findByPk(id);
         if (!product) return res.status(404).json({ error: 'Product not found' });
 
-        const uploadsDir = path.join(__dirname, '../uploads');
+        const uploadsDir = path.join(__dirname, '../../frontend/src/assets/products');
         if (image && product.image) {
             deleteImage(product.image, uploadsDir);
         }
@@ -104,7 +104,7 @@ const deleteProduct = async (req, res) => {
         const product = await Product.findByPk(id);
         if (!product) return res.status(404).json({ error: 'Product not found' });
 
-        const uploadsDir = path.join(__dirname, '../uploads');
+        const uploadsDir = path.join(__dirname, '../../frontend/src/assets/products');
         if (product.image) {
             deleteImage(product.image, uploadsDir);
         }
