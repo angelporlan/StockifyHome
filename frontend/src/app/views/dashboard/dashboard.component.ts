@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, effect, inject } from '@angular/core';
 import { SidebarComponent } from '../../components/dashboard/sidebar/sidebar.component';
 import { HeaderComponent } from '../../components/dashboard/header/header.component';
 import { Router, NavigationEnd, RouterModule } from '@angular/router'; 
@@ -6,6 +6,8 @@ import { filter, map } from 'rxjs/operators';
 import { AuthStore } from '../../store/auth.store';
 import { HouseService } from '../../services/house/house.service';
 import { HouseStore } from '../../store/house.store';
+import { ProductService } from '../../services/product/product.service';
+import { ProductStore } from '../../store/product.store';
 
 @Component({
   selector: 'app-dashboard',
@@ -17,6 +19,7 @@ export class DashboardComponent {
   title: string = 'Dashboard';
   authStore = inject(AuthStore);
   houseStore = inject(HouseStore);
+  productStore = inject(ProductStore);
   
   private readonly routes = {
     main: '/dashboard/main',
@@ -24,13 +27,16 @@ export class DashboardComponent {
     products: '/dashboard/products',
   };
 
-  constructor(private router: Router, private houseService: HouseService) {
+  constructor(private router: Router, private houseService: HouseService, private productService: ProductService) {
     this.initializeTitleUpdater();
+    this.observeSelectedHouse();
   }
 
   ngOnInit(): void {
     this.getHouses();
     console.log('after getHouses, time: ', new Date().getTime());
+    this.getProducts();
+    console.log('after getProducts, time: ', this.productStore.selectedProducts());
   }
 
   private initializeTitleUpdater(): void {
@@ -40,6 +46,16 @@ export class DashboardComponent {
         map((event: NavigationEnd) => this.determineTitle(event.urlAfterRedirects))
       )
       .subscribe(title => (this.title = title));
+  }
+
+  private observeSelectedHouse(): void {
+    effect(() => {
+      const house = this.houseStore.selectedHouse();
+      if (house) {
+        console.log('Selected house changed: ', house);
+        this.getProducts();
+      }
+    });
   }
 
 
@@ -73,6 +89,17 @@ export class DashboardComponent {
         console.error(err);
       }
     });
+  }
+
+  private getProducts(): void {
+    this.productService.getProducts().subscribe({
+      next: (products) => {
+        console.log('products: ', products);
+        this.productStore.setProducts(products);
+      },
+      error: (err) => {
+        console.error('error product ' + err);
+      }});
   }
 
 }
