@@ -1,5 +1,5 @@
 export interface ProductDetail {
     id: number,
     quantity: number,
-    expirationDate: string
+    expiration_date: string
 }
