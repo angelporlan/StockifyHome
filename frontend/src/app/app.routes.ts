@@ -9,6 +9,7 @@ import { MainContentComponent } from './views/dashboard/main-content/main-conten
 import { HousesComponent } from './views/dashboard/houses/houses.component';
 import { ProductsComponent } from './views/dashboard/products/products.component';
 import { ProductComponent } from './views/dashboard/product/product.component';
+import { ProfileComponent } from './views/dashboard/profile/profile.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -18,6 +19,7 @@ export const routes: Routes = [
     { path: 'houses', component: HousesComponent },
     { path: 'products', component: ProductsComponent },
     { path: 'product/:id', component: ProductComponent },
+    { path: 'profile', component: ProfileComponent },    
   ]
   },
 ]
