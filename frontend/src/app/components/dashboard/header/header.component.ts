@@ -17,4 +17,7 @@ export class HeaderComponent {
   ngOnInit(): void {
   }
 
+  goBack(): void {
+    window.history.back();
+  }
 }
