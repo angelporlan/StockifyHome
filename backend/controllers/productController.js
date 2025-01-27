@@ -1,4 +1,4 @@
-const { Product, Category, ProductDetail } = require('../models');
+const { Product, Category, ProductDetail, sequelize } = require('../models'); // Import sequelize for transactions
 const fs = require('fs');
 const path = require('path');
 
@@ -21,8 +21,9 @@ const deleteImage = (imageName, folderPath) => {
 };
 
 const createProduct = async (req, res) => {
+    const transaction = await sequelize.transaction();
     try {
-        const { name, image, house_id, category_id } = req.body;
+        const { name, image, house_id, category_id, product_details } = req.body;
         let imageName = null;
         if (image) {
             const uploadsDir = path.join(__dirname, '../../frontend/src/assets/products');
@@ -32,9 +33,18 @@ const createProduct = async (req, res) => {
             const fileName = `${Date.now()}.png`;
             imageName = saveBase64Image(image, uploadsDir, fileName);
         }
-        const newProduct = await Product.create({ name, image: imageName, house_id, category_id });
+        const newProduct = await Product.create({ name, image: imageName, house_id, category_id }, { transaction });
+        
+        if (product_details && product_details.length > 0) {
+            for (const detail of product_details) {
+                await ProductDetail.create({ ...detail, product_id: newProduct.id }, { transaction });
+            }
+        }
+
+        await transaction.commit();
         res.status(201).json(newProduct);
     } catch (error) {
+        await transaction.rollback();
         res.status(500).json({ error: error.message });
     }
 };
