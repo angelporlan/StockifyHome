@@ -1,11 +1,14 @@
-import { Component } from '@angular/core';
-import { MatDialogModule } from '@angular/material/dialog';
+import { Component, inject } from '@angular/core';
+import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { DefaultInputComponent } from '../../inputs/default-input/default-input.component';
 import { DefaultSelectComponent } from '../../inputs/default-select/default-select.component';
 import { DefaultInputFileComponent } from '../../inputs/default-input-file/default-input-file.component';
 import { CommonModule } from '@angular/common';
 import { ProductDetailsModalComponent } from './product-details-modal/product-details-modal.component';
 import { MatButton } from '@angular/material/button';
+import { ProductService } from '../../../../services/product/product.service';
+import { MatSnackBarService } from '../../../../services/matSnackBar/mat-snack-bar.service';
+import { ProductStore } from '../../../../store/product.store';
 
 @Component({
   selector: 'app-product-modal',
@@ -47,11 +50,45 @@ export class ProductModalComponent {
   categoryId: number = 0;
   image: string = '';
   details: { date: string; quantity: number }[] = [];
+  productStore = inject(ProductStore);
+  private dialogRef = inject(MatDialogRef<ProductModalComponent>);
+
+  constructor(private productService: ProductService, private matSnackBarService: MatSnackBarService) {}
 
   createProduct() {
-    console.log('name ' + this.name);
-    console.log('categoryId ' + this.categoryId);
-    console.log('image ' + this.image);
-    console.log(this.details);
+
+    const product: { name: string; category_id: number; image?: string; product_details: { date: string; quantity: number }[] } = {
+      name: this.name,
+      category_id: this.categoryId,
+      image: this.image,
+      product_details: this.details
+    };
+
+    if (product.image === '') {
+      delete product.image;
+    }
+
+
+    this.productService.createProduct(product).subscribe(
+      (response) => {
+        this.matSnackBarService.showSuccess('Product created successfully');
+        this.getProducts();
+        this.dialogRef.close(); 
+      },
+      (error) => {
+        this.matSnackBarService.showError('Failed to create product');
+      }
+    );
+  }
+
+  private getProducts(): void {
+    this.productService.getProducts().subscribe({
+      next: (products) => {
+        console.log('products: ', products);
+        this.productStore.setProducts(products);
+      },
+      error: (err) => {
+        console.error('error product ' + err);
+      }});
   }
 }
