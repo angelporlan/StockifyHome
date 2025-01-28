@@ -1,0 +1,4 @@
+<div class="image-preview" [ngStyle]="{'background-image': 'url(' + imageUrl + ')'}">
+  <input type="file" (change)="onFileSelected($event)" accept="image/*" />
+  <p *ngIf="!imageUrl">Select an image</p>
+</div>
