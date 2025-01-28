@@ -10,8 +10,5 @@ import { CommonModule } from '@angular/common';
   styleUrl: './product-boxes.component.css'
 })
 export class ProductBoxesComponent {
-  private productStore = inject(ProductStore);
-  public products = this.productStore.selectedProducts();
-
-
+  productStore = inject(ProductStore);
 }
