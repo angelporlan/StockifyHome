@@ -1,1 +1,13 @@
-<p>profile works!</p>
+<div class="profile-container">
+    <h2>User Profile</h2>
+    <div class="profile-info">
+        <p><strong>Username:</strong> {{ this.authStore.username() }}</p>
+        <p><strong>Created At:</strong> {{ this.authStore.createdAt() }}</p>
+        <p><strong>Updated At:</strong> {{ this.authStore.updatedAt() }}</p>
+        <p><strong>Email:</strong> {{ this.authStore.email() }}</p>
+    </div>
+    <div class="profile-actions">
+        <button (click)="openDialog()">Change Password</button>
+        <button (click)="closeSession()">Close Session</button>
+    </div>
+</div>
