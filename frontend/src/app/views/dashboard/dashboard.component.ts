@@ -25,6 +25,8 @@ export class DashboardComponent {
     main: '/dashboard/main',
     houses: '/dashboard/houses',
     products: '/dashboard/products',
+    product: '/dashboard/product',
+    user: '/dashboard/profile',
   };
 
   constructor(private router: Router, private houseService: HouseService, private productService: ProductService) {
@@ -66,8 +68,10 @@ export class DashboardComponent {
       return 'Houses';
     } else if (url.includes(this.routes.products)) {
       return 'Products';
+    } else if (url.includes(this.routes.product)) {
+      return 'Product';
     }
-    return 'Dashboard';
+    return 'Profile';
   }
 
   private getTimeBasedGreeting(): string {
