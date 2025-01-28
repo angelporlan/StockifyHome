@@ -1,0 +1,8 @@
+<mat-form-field class="example-full-width">
+  <mat-label>{{ label }}</mat-label>
+  <mat-select [(ngModel)]="value" (ngModelChange)="onInputChange()">
+    <mat-option *ngFor="let option of options" [value]="option.id">
+      {{ option.name }}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
