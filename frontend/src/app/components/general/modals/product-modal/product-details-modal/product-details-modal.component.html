@@ -1,0 +1,25 @@
+<div class="title-button">
+    <h3>Expiration details</h3>
+    <button mat-icon-button (click)="addDetail()">
+      <mat-icon>add</mat-icon>
+    </button>
+  </div>
+  
+  <div *ngFor="let detail of productDetails; let i = index" class="input-container">
+    <app-default-input-date 
+      [(ngModel)]="productDetails[i].date" 
+      (ngModelChange)="onDetailChange(i, 'date', $event)">
+    </app-default-input-date>
+  
+    <app-default-input-number 
+      label="Quantity" 
+      placeholder="Ex. 10" 
+      [(ngModel)]="productDetails[i].quantity" 
+      (ngModelChange)="onDetailChange(i, 'quantity', $event)">
+    </app-default-input-number>
+  
+    <button mat-icon-button (click)="removeDetail(i)" class="remove-button">
+      <mat-icon>remove</mat-icon>
+    </button>
+  </div>
+  

@@ -1,0 +1,41 @@
+import { Component, EventEmitter, Output } from '@angular/core';
+import { DefaultInputDateComponent } from '../../../inputs/default-input-date/default-input-date.component';
+import { DefaultInputNumberComponent } from '../../../inputs/default-input-number/default-input-number.component';
+import { MatIconModule } from '@angular/material/icon';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+
+@Component({
+  selector: 'app-product-details-modal',
+  imports: [DefaultInputDateComponent, DefaultInputNumberComponent, MatIconModule, CommonModule, FormsModule],
+  templateUrl: './product-details-modal.component.html',
+  styleUrl: './product-details-modal.component.css'
+})
+export class ProductDetailsModalComponent {
+  @Output() productDetailsChange = new EventEmitter<{ date: string; quantity: number }[]>();
+  
+  productDetails: { date: string; quantity: number }[] = [
+    { date: '', quantity: 0 },
+  ];
+
+  addDetail() {
+    this.productDetails.push({ date: '', quantity: 0 });
+    console.log(this.productDetails);
+  }
+
+  removeDetail(index: number) {
+    if (this.productDetails.length > 1) {
+      this.productDetails.splice(index, 1);
+      console.log(this.productDetails);
+    }
+  }
+
+  onDetailChange<K extends keyof typeof this.productDetails[number]>(
+    index: number,
+    field: K,
+    value: typeof this.productDetails[number][K]
+  ) {
+    this.productDetails[index][field] = value;
+    this.productDetailsChange.emit(this.productDetails);
+  }
+}
