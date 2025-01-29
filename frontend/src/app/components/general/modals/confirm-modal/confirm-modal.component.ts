@@ -5,10 +5,11 @@ import { Inject } from '@angular/core';
 import { MatButton } from '@angular/material/button';
 import { CommonModule } from '@angular/common';
 import { Observable } from 'rxjs';
+import { LoaderModalComponent } from '../loader-modal/loader-modal.component';
 
 @Component({
   selector: 'app-confirm-modal',
-  imports: [MatDialogModule, MatButton, CommonModule],
+  imports: [MatDialogModule, MatButton, CommonModule, LoaderModalComponent],
   templateUrl: './confirm-modal.component.html',
   styleUrl: './confirm-modal.component.css'
 })
