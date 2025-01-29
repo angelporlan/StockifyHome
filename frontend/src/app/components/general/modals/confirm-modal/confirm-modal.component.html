@@ -4,6 +4,7 @@
 
 </mat-dialog-content>
 <mat-dialog-actions>
+  <img src="../../../../../assets/icons/loader.svg" alt="loader" *ngIf="isLoading" />
   <button mat-button mat-dialog-close>Close</button>
-  <button mat-button (click)="actionModal()">Save</button>
+  <button mat-button (click)="actionModal()">Confirm</button>
 </mat-dialog-actions>
