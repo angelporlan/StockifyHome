@@ -14,7 +14,7 @@ export class AuthService {
   authStore = inject(AuthStore);
   houseStore = inject(HouseStore);
   productStore = inject(ProductStore);
-  
+
   constructor(private http: HttpClient) { }
 
   login(email: string, password: string): Observable<any> {
@@ -31,9 +31,21 @@ export class AuthService {
 
   profile(): Observable<any> {
     const token = this.authStore.token();
-    return this.http.get(`${this.apiUrl}/profile`, { 
+    return this.http.get(`${this.apiUrl}/profile`, {
       headers: { Authorization: `Bearer ${token}` }
     });
+  }
+
+  updateProfile(username?: string, email?: string, password?: string): Observable<any> {
+    const token = this.authStore.token();
+    const body: any = {};
+    if (username) body.username = username;
+    if (email) body.email = email;
+    if (password) body.password = password;
+    return this.http.put(`${this.apiUrl}/profile`, body, {
+      headers: { Authorization: `Bearer ${token}` }
+    }).pipe(
+      delay(2000));
   }
 
   logout(): void {
