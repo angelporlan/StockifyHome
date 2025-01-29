@@ -33,5 +33,20 @@ export const ProductStore = signalStore(
                 selectedProducts: [],
             }));
         },
+        deleteProduct: (id: number) => {
+            const stockifyHomeData = JSON.parse(localStorage.getItem('stockifyHomeData') || '{}');
+
+            const updatedProducts = store.selectedProducts().filter(product => product.id !== id);
+        
+            const updatedData = {
+                ...stockifyHomeData,
+                selectedProducts: updatedProducts,
+            };
+            localStorage.setItem('stockifyHomeData', JSON.stringify(updatedData));
+        
+            patchState(store, (state) => ({
+                selectedProducts: updatedProducts,
+            }));
+        }
     }))
 );
