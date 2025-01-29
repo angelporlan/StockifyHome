@@ -38,4 +38,18 @@ const getUserProfile = async (req, res) => {
     }
 }
 
-module.exports = { registerUser, loginUser, getUserProfile };
+const updateUserProfile = async (req, res) => {
+    try {
+        const { username, email, password } = req.body;
+        const user = await User.findByPk(req.user.id);
+        user.username = username || user.username;
+        user.email = email || user.email;
+        if (password) user.password = await bcrypt.hash(password, 10);
+        await user.save();
+        res.status(200).json(user);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+}
+
+module.exports = { registerUser, loginUser, getUserProfile, updateUserProfile };
