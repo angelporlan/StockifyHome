@@ -1,0 +1,10 @@
+<h2 mat-dialog-title>{{title}}</h2>
+<mat-dialog-content>
+  <app-default-input [label]="labelInput" [placeholder]="placeholderInput" (inputValueChange)="value = $event"></app-default-input>
+
+</mat-dialog-content>
+<mat-dialog-actions>
+  <app-loader-modal *ngIf="isLoading"></app-loader-modal>
+  <button mat-button mat-dialog-close>Close</button>
+  <button mat-button (click)="actionModal()">Save</button>
+</mat-dialog-actions>
