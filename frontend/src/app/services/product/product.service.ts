@@ -1,7 +1,7 @@
 import { inject, Injectable } from '@angular/core';
 import { AuthStore } from '../../store/auth.store';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { delay, Observable } from 'rxjs';
 import { HouseStore } from '../../store/house.store';
 
 @Injectable({
@@ -27,5 +27,13 @@ export class ProductService {
     return this.http.post(`${this.apiUrl}`, product, { 
       headers: { Authorization: `Bearer ${this.authStore.token()}` }
     });
+  }
+
+  deleteProduct(id: number): Observable<any> {
+    return this.http.delete(`${this.apiUrl}/${id}`, { 
+      headers: { Authorization: `Bearer ${this.authStore.token()}` }
+    }).pipe(
+      delay(5000)
+    );
   }
 }
