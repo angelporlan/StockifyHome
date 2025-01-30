@@ -1,7 +1,8 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, Input } from '@angular/core';
 import { HouseStore } from '../../../../store/house.store';
 import { ItemCardComponent } from '../../item-card/item-card.component';
 import { CommonModule } from '@angular/common';
+import { House } from '../../../../interfaces/house';
 
 @Component({
   selector: 'app-house-boxes',
@@ -10,10 +11,14 @@ import { CommonModule } from '@angular/common';
   styleUrl: './house-boxes.component.css'
 })
 export class HouseBoxesComponent {
-  private houseStore = inject(HouseStore);
-  public houses = this.houseStore.houses();
-
-  ngOnInit(): void {
-    console.log('houses: ', this.houses);    
+  houseStore = inject(HouseStore);
+  @Input() searchText: string = '';
+  
+  filterHouses(houses: House[]) {
+    if (this.searchText === '') {
+      return houses;
+    }
+    const searchTextLower = this.searchText.toLowerCase();
+    return houses.filter((house: any) => house.name.toLowerCase().includes(searchTextLower));
   }
 }

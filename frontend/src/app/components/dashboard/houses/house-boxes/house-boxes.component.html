@@ -1,1 +1,1 @@
-<app-item-card *ngFor="let house of houses" [isProduct]="false" [house]="house"></app-item-card>
+<app-item-card *ngFor="let house of filterHouses(this.houseStore.houses())" [isProduct]="false" [house]="house"></app-item-card>
