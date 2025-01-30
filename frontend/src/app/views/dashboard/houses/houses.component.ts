@@ -10,8 +10,9 @@ import { ActionButtonComponent } from '../../../components/dashboard/action-butt
   styleUrl: './houses.component.css'
 })
 export class HousesComponent {
+  inputText: string = '';
 
   onSearchChange(event: any) {
-    console.log(event);
+    this.inputText = event
   }
 }
