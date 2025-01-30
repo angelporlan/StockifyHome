@@ -1,2 +1,2 @@
 <app-title [title]="text" *ngIf="this.productStore.selectedProducts().length < 1"></app-title>
-<app-item-card *ngFor="let product of this.productStore.selectedProducts()" [isProduct]="true" [product]="product"></app-item-card>
+<app-item-card *ngFor="let product of filterProducts(this.productStore.selectedProducts())" [isProduct]="true" [product]="product"></app-item-card>
