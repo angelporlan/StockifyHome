@@ -9,14 +9,13 @@ import { AuthStore } from '../../store/auth.store';
 export class HouseService {
   private apiUrl: string = 'http://127.0.0.1:3000/api/houses';
   authStore = inject(AuthStore);
-  private token = this.authStore.token();
 
   constructor(private http: HttpClient) { }
 
   getHouses(): Observable<any> {
 
     return this.http.get(`${this.apiUrl}`, { 
-      headers: { Authorization: `Bearer ${this.token}` }
+      headers: { Authorization: `Bearer ${this.authStore.token()}` }
     });
   }
 }
