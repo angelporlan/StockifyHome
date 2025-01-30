@@ -47,6 +47,20 @@ export const ProductStore = signalStore(
             patchState(store, (state) => ({
                 selectedProducts: updatedProducts,
             }));
+        },
+        deleteProducts: () => {
+            const stockifyHomeData = JSON.parse(localStorage.getItem('stockifyHomeData') || '{}');
+        
+            const updatedData = {
+                ...stockifyHomeData,
+                selectedProducts: [],
+            };
+        
+            localStorage.setItem('stockifyHomeData', JSON.stringify(updatedData));
+        
+            patchState(store, (state) => ({
+                selectedProducts: [],
+            }));
         }
     }))
 );
