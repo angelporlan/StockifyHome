@@ -50,5 +50,18 @@ export const HouseStore = signalStore(
         houses: [],
       }));
     },
+    deleteHouseSelected: () => {
+      const stockifyHomeData = JSON.parse(localStorage.getItem('stockifyHomeData') || '{}');
+      const updatedData = {
+        ...stockifyHomeData,
+        selectedHouse: null,
+      };
+
+      localStorage.setItem('stockifyHomeData', JSON.stringify(updatedData));
+
+      patchState(store, (state) => ({
+        selectedHouse: null,
+      }));
+    }
   }))
 );
