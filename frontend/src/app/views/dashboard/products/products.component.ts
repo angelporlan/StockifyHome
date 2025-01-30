@@ -13,9 +13,10 @@ import { MatDialog } from '@angular/material/dialog';
 })
 export class ProductsComponent {
   constructor(public dialog: MatDialog) {}
-  
+  inputText: string = '';
+
   onSearchChange(event: any) {
-    console.log(event);
+    this.inputText = event
   }
 
   openDialog() {
