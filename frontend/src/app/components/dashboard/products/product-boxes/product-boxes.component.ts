@@ -4,6 +4,7 @@ import { ItemCardComponent } from '../../item-card/item-card.component';
 import { CommonModule } from '@angular/common';
 import { TitleComponent } from '../../title/title.component';
 import { Product } from '../../../../interfaces/product';
+import { HouseStore } from '../../../../store/house.store';
 
 @Component({
   selector: 'app-product-boxes',
@@ -14,7 +15,9 @@ import { Product } from '../../../../interfaces/product';
 export class ProductBoxesComponent {
   productStore = inject(ProductStore);
   text: string = 'Not products found in this house, try adding one!';
+
   @Input() searchText: string = '';
+  houseStore = inject(HouseStore);
 
   filterProducts(products: Product[]) {
     if (this.searchText === '') {
