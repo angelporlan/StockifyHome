@@ -9,7 +9,7 @@
         <tr *ngFor="let detail of details">
             <td>{{ getFormattedDate(detail.expiration_date) }}</td>
             <td class="quantity">
-                <app-counter [number]="detail.quantity" ></app-counter>
+                <app-counter [isLoading]="isLoading[detail.id]" [id]="detail.id" [quantity]="detail.quantity" (numberChange)="updateDetail($event)"></app-counter>
             </td>
         </tr>
     </tbody>
