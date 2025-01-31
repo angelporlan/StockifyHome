@@ -1,19 +1,28 @@
-import { Component, Input } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-counter',
-  imports: [],
   templateUrl: './counter.component.html',
-  styleUrl: './counter.component.css'
+  styleUrls: ['./counter.component.css'],
+  imports: [CommonModule]
 })
 export class CounterComponent {
-  @Input() number: number = 0;
+  @Input() id: number = 0;
+  @Input() quantity: number = 0;
+  @Input() isLoading: boolean = true;
+  @Output() numberChange: EventEmitter<{ id: number, quantity: number }> = new EventEmitter<{ id: number, quantity: number }>();
+  lastId: number = 0;
 
   increment(): void {
-    this.number++;
+    this.quantity++;
+    this.lastId = this.id;
+    this.numberChange.emit({ id: this.id, quantity: this.quantity });
   }
 
   decrement(): void {
-    this.number--;
+    this.quantity--;
+    this.lastId = this.id;
+    this.numberChange.emit({ id: this.id, quantity: this.quantity });
   }
 }
