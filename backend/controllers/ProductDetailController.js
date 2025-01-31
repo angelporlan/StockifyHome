@@ -13,18 +13,23 @@ const createProductDetail = async (req, res) => {
 const updateProductDetail = async (req, res) => {
     try {
         const { id } = req.params;
-        const [updated] = await ProductDetail.update(req.body, {
+        const { quantity } = req.body;
+
+        const [updated] = await ProductDetail.update({ quantity }, {
             where: { id },
         });
+
         if (updated) {
             const updatedProductDetail = await ProductDetail.findOne({ where: { id } });
             return res.status(200).json(updatedProductDetail);
         }
+
         throw new Error('ProductDetail not found');
     } catch (error) {
         return res.status(500).json({ error: error.message });
     }
 };
+
 
 const deleteProductDetail = async (req, res) => {
     try {
