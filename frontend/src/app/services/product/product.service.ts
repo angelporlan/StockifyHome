@@ -8,14 +8,15 @@ import { HouseStore } from '../../store/house.store';
   providedIn: 'root'
 })
 export class ProductService {
-  private apiUrl: string = 'http://localhost:3000/api/products';
+  private apiProductUrl: string = 'http://localhost:3000/api/products';
+  private apiProductDetailUrl: string = 'http://localhost:3000/api/productDetails';
   authStore = inject(AuthStore);
   houseStore = inject(HouseStore);
 
   constructor(private http: HttpClient) { }
 
   getProducts(): Observable<any> {
-    return this.http.get(`${this.apiUrl}/house/${this.houseStore.selectedHouse()?.id}`, { 
+    return this.http.get(`${this.apiProductUrl}/house/${this.houseStore.selectedHouse()?.id}`, { 
       headers: { Authorization: `Bearer ${this.authStore.token()}` }
     });
   }
@@ -24,16 +25,24 @@ export class ProductService {
     const house_id = this.houseStore.selectedHouse()?.id;
     product.house_id = house_id;
     console.log(product);
-    return this.http.post(`${this.apiUrl}`, product, { 
+    return this.http.post(`${this.apiProductUrl}`, product, { 
       headers: { Authorization: `Bearer ${this.authStore.token()}` }
     });
   }
 
   deleteProduct(id: number): Observable<any> {
-    return this.http.delete(`${this.apiUrl}/${id}`, { 
+    return this.http.delete(`${this.apiProductUrl}/${id}`, { 
       headers: { Authorization: `Bearer ${this.authStore.token()}` }
     }).pipe(
       delay(5000)
+    );
+  }
+
+  updateProductDetail(productDetail: any): Observable<any> {
+    return this.http.put(`${this.apiProductDetailUrl}/${productDetail.id}`, productDetail, { 
+      headers: { Authorization: `Bearer ${this.authStore.token()}` }
+    }).pipe(
+      delay(2000)
     );
   }
 }
