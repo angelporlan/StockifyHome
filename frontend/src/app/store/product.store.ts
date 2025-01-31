@@ -61,6 +61,33 @@ export const ProductStore = signalStore(
             patchState(store, (state) => ({
                 selectedProducts: [],
             }));
+        },
+        updateProductDetail: (productId: number, detailId: number, newQuantity: number) => {
+            const stockifyHomeData = JSON.parse(localStorage.getItem('stockifyHomeData') || '{}');
+        
+            const updatedProducts = store.selectedProducts().map(product => {
+                if (product.id === productId) {
+                    const updatedProductDetails = product.ProductDetails.map(detail => {
+                        if (detail.id === detailId) {
+                            return { ...detail, quantity: newQuantity };
+                        }
+                        return detail;
+                    });
+                    return { ...product, ProductDetails: updatedProductDetails };
+                }
+                return product;
+            });
+        
+            const updatedData = {
+                ...stockifyHomeData,
+                selectedProducts: updatedProducts,
+            };
+        
+            localStorage.setItem('stockifyHomeData', JSON.stringify(updatedData));
+        
+            patchState(store, () => ({
+                selectedProducts: updatedProducts,
+            }));
         }
     }))
 );
