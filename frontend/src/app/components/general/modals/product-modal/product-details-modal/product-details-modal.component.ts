@@ -12,14 +12,14 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './product-details-modal.component.css'
 })
 export class ProductDetailsModalComponent {
-  @Output() productDetailsChange = new EventEmitter<{ date: string; quantity: number }[]>();
+  @Output() productDetailsChange = new EventEmitter<{ expiration_date: string; quantity: number }[]>();
   
-  productDetails: { date: string; quantity: number }[] = [
-    { date: '', quantity: 0 },
+  productDetails: { expiration_date: string; quantity: number }[] = [
+    { expiration_date: '', quantity: 0 },
   ];
 
   addDetail() {
-    this.productDetails.push({ date: '', quantity: 0 });
+    this.productDetails.push({ expiration_date: '', quantity: 0 });
     console.log(this.productDetails);
   }
 

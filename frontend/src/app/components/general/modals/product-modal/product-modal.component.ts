@@ -49,7 +49,7 @@ export class ProductModalComponent {
   name: string = '';
   categoryId: number = 0;
   image: string = '';
-  details: { date: string; quantity: number }[] = [];
+  details: { expiration_date: string; quantity: number }[] = [];
   productStore = inject(ProductStore);
   private dialogRef = inject(MatDialogRef<ProductModalComponent>);
 
@@ -57,7 +57,7 @@ export class ProductModalComponent {
 
   createProduct() {
 
-    const product: { name: string; category_id: number; image?: string; product_details: { date: string; quantity: number }[] } = {
+    const product: { name: string; category_id: number; image?: string; product_details: { expiration_date: string; quantity: number }[] } = {
       name: this.name,
       category_id: this.categoryId,
       image: this.image,
@@ -76,7 +76,7 @@ export class ProductModalComponent {
         this.dialogRef.close(); 
       },
       (error) => {
-        this.matSnackBarService.showError('Failed to create product');
+        this.matSnackBarService.showError('Failed to create product: ' + error.error.error);
       }
     );
   }
