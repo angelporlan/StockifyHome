@@ -1,5 +1,5 @@
-import { Component, inject } from '@angular/core';
-import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
+import { Component, Inject, inject, Input } from '@angular/core';
+import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { DefaultInputComponent } from '../../inputs/default-input/default-input.component';
 import { DefaultSelectComponent } from '../../inputs/default-select/default-select.component';
 import { DefaultInputFileComponent } from '../../inputs/default-input-file/default-input-file.component';
@@ -17,6 +17,9 @@ import { ProductStore } from '../../../../store/product.store';
   styleUrl: './product-modal.component.css'
 })
 export class ProductModalComponent {
+  @Input() isProduct: boolean = true;
+  title: string = 'Create product';
+
   expirationDetails: { date: string, quantity: number }[] = [];
   categories = [
     { id: 1, name: "Oil, spices, and sauces" },
@@ -53,7 +56,18 @@ export class ProductModalComponent {
   productStore = inject(ProductStore);
   private dialogRef = inject(MatDialogRef<ProductModalComponent>);
 
-  constructor(private productService: ProductService, private matSnackBarService: MatSnackBarService) {}
+  constructor(private productService: ProductService,
+    private matSnackBarService: MatSnackBarService,
+    @Inject(MAT_DIALOG_DATA) public data: any
+  ) {
+    this.isProduct = data?.isProduct ?? true;
+  }
+
+  ngOnInit(): void {
+    if (!this.isProduct) {
+      this.title = 'Create product details';
+    }    
+  }
 
   createProduct() {
 
@@ -73,7 +87,7 @@ export class ProductModalComponent {
       (response) => {
         this.matSnackBarService.showSuccess('Product created successfully');
         this.getProducts();
-        this.dialogRef.close(); 
+        this.dialogRef.close();
       },
       (error) => {
         this.matSnackBarService.showError('Failed to create product: ' + error.error.error);
@@ -89,6 +103,7 @@ export class ProductModalComponent {
       },
       error: (err) => {
         console.error('error product ' + err);
-      }});
+      }
+    });
   }
 }

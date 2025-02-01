@@ -1,8 +1,8 @@
-<h2 mat-dialog-title>Create Product</h2>
+<h2 mat-dialog-title>{{ title }}</h2>
 <mat-dialog-content>
-  <app-default-input-file (imageSelected)="image = $event"></app-default-input-file>
-  <app-default-input label="Name" placeholder="Ex. Potatoes" (inputValueChange)="name = $event"></app-default-input>
-  <app-default-select label="Category" [options]="categories" (inputValueChange)="categoryId = $event"></app-default-select>
+  <app-default-input-file *ngIf="isProduct" (imageSelected)="image = $event"></app-default-input-file>
+  <app-default-input *ngIf="isProduct" label="Name" placeholder="Ex. Potatoes" (inputValueChange)="name = $event"></app-default-input>
+  <app-default-select *ngIf="isProduct" label="Category" [options]="categories" (inputValueChange)="categoryId = $event"></app-default-select>
   <app-product-details-modal (productDetailsChange)="details = $event"></app-product-details-modal>
 
 </mat-dialog-content>
