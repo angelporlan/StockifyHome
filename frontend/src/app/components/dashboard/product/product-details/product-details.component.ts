@@ -4,6 +4,8 @@ import { TitleComponent } from '../../title/title.component';
 import { ProductDetail } from '../../../../interfaces/product-detail';
 import { DetailsTableComponent } from './details-table/details-table.component';
 import { ActionButtonComponent } from '../../action-button/action-button.component';
+import { MatDialog } from '@angular/material/dialog';
+import { ProductModalComponent } from '../../../general/modals/product-modal/product-modal.component';
 
 @Component({
   selector: 'app-product-details',
@@ -19,6 +21,8 @@ export class ProductDetailsComponent {
     expiration_date: ''
   }];
 
+  constructor(public dialog: MatDialog) {}
+
   ngOnInit(): void {
     this.getDetailsProduct();
   }
@@ -27,5 +31,12 @@ export class ProductDetailsComponent {
     if (this.product) {
       this.product.ProductDetails.length > 0 ? this.details = this.product.ProductDetails : null;
     }
+  }
+
+  openDialog() {
+    this.dialog.open(ProductModalComponent, {
+      width: '400px',
+      data: { isProduct: false }
+    });
   }
 }

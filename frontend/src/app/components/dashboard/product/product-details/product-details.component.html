@@ -1,6 +1,6 @@
 <div class="title-button">
     <app-title title="Details by expiration date"></app-title>
-    <app-action-button text="Add detail" [actionType]="'addProductDetail'"></app-action-button>
+    <app-action-button text="Add detail" [actionType]="'addProductDetail'" (click)="openDialog()"></app-action-button>
 </div>
 
 <app-details-table [productId]="product?.id" [details]="details"></app-details-table>
