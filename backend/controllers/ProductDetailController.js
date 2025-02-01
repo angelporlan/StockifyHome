@@ -2,13 +2,19 @@ const { ProductDetail } = require('../models');
 
 const createProductDetail = async (req, res) => {
     try {
-        const { quantity, expiration_date, product_id } = req.body;
-        const newProductDetail = await ProductDetail.create({ quantity, expiration_date, product_id });
-        res.status(201).json(newProductDetail);
+        let productDetails = req.body;
+
+        if (!Array.isArray(productDetails)) {
+            productDetails = [productDetails];
+        }
+
+        const newProductDetails = await ProductDetail.bulkCreate(productDetails);
+        res.status(201).json(newProductDetails);
     } catch (error) {
         res.status(500).json({ error: error.message });
     }
 };
+
 
 const updateProductDetail = async (req, res) => {
     try {
