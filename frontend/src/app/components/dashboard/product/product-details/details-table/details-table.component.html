@@ -9,7 +9,7 @@
     <tbody>
         <tr *ngFor="let detail of details">
             <td>
-                <img src="../../../../../../assets/icons/trash.svg" alt="trash" (click)="openDialog()">
+                <img src="../../../../../../assets/icons/trash.svg" alt="trash" (click)="openDialog(detail.id)">
             </td>
             <td>{{ getFormattedDate(detail.expiration_date) }}</td>
             <td class="quantity">
