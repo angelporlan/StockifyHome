@@ -13,7 +13,7 @@ import { ProductStore } from '../../../../../store/product.store';
 })
 export class DetailsTableComponent {
   @Input() productId: number | undefined = 0;
-  @Input() details: ProductDetail[] = [{
+  @Input() details: ProductDetail[] | undefined = [{
     id: 0,
     quantity: 0,
     expiration_date: ''
@@ -48,5 +48,4 @@ export class DetailsTableComponent {
 
     });
   }
-  
 }
