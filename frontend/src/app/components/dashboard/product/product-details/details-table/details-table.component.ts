@@ -34,17 +34,10 @@ export class DetailsTableComponent {
   }
 
   updateDetail(event: any): void {
-    this.isLoading[event.id] = true;
+    if (this.productId !== undefined) {
+      this.productStore.updateProductDetail(this.productId, event.id, event.quantity);
+    }
     this.productService.updateProductDetail(event).subscribe({
-      next: () => {
-        if (this.productId !== undefined) {
-          console.log(this.productId);
-          console.log(event.id);
-          console.log(event.quantity);
-          this.productStore.updateProductDetail(this.productId, event.id, event.quantity);
-        }
-        this.isLoading[event.id] = false;
-      }
 
     });
   }
