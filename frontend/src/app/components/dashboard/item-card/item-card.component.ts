@@ -43,6 +43,7 @@ export class ItemCardComponent {
   onSelectItem() {
     if (!this.isProduct) {
       this.houseStore.setHouseSelected(this.house);
+      this.router.navigate([`dashboard/products`]);
       this.matSnackBarService.showSuccess(`House ${this.house.name} selected`);
     } else {
       this.router.navigate([`dashboard/product/${this.product.id}`]);
