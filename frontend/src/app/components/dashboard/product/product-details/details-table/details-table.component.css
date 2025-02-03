@@ -34,3 +34,13 @@ tr:last-child td:last-child {
 .quantity {
     width: 10px;
 }
+
+tr td:first-child {
+    width: 20px;
+}
+
+img {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}

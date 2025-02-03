@@ -1,12 +1,16 @@
 <table *ngIf="details!= null && details.length > 0" class="table">
     <thead>
         <tr>
+            <th></th>
             <th>Date</th>
             <th>Quantity</th>
         </tr>
     </thead>
     <tbody>
         <tr *ngFor="let detail of details">
+            <td>
+                <img src="../../../../../../assets/icons/trash.svg" alt="trash" (click)="openDialog()">
+            </td>
             <td>{{ getFormattedDate(detail.expiration_date) }}</td>
             <td class="quantity">
                 <app-counter [isLoading]="isLoading[detail.id]" [id]="detail.id" [quantity]="detail.quantity" (numberChange)="updateDetail($event)"></app-counter>
