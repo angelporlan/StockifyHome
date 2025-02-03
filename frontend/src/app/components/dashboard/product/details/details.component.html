@@ -1,5 +1,5 @@
 <app-title title="Details"></app-title>
-<app-item-card [isProduct]="true" [product]="realProduct"></app-item-card>
+<app-item-card [isProduct]="true" [product]="product ? product : realProduct"></app-item-card>
 <div class="buttons">
     <app-action-button text="edit" actionType="editProduct"></app-action-button>
     <app-action-button text="delete" actionType="deleteProduct" (click)="openDialog()"></app-action-button>
