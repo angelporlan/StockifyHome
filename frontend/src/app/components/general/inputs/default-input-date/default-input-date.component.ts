@@ -24,7 +24,8 @@ export class DefaultInputDateComponent implements ControlValueAccessor {
 
   onInputChange() {
     if (this.value) {
-      const formattedDate = this.value.toISOString().split('T')[0];
+      const localDate = new Date(this.value.getTime() - this.value.getTimezoneOffset() * 60000);
+      const formattedDate = localDate.toISOString().split('T')[0];
       this.onChange(formattedDate);
       this.inputValueChange.emit(formattedDate);
     } else {
