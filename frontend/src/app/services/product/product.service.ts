@@ -24,17 +24,18 @@ export class ProductService {
   createProduct(product: any): Observable<any> {
     const house_id = this.houseStore.selectedHouse()?.id;
     product.house_id = house_id;
-    console.log(product);
     return this.http.post(`${this.apiProductUrl}`, product, { 
       headers: { Authorization: `Bearer ${this.authStore.token()}` }
-    });
+    }).pipe(
+      delay(2000)
+      );
   }
 
   deleteProduct(id: number): Observable<any> {
     return this.http.delete(`${this.apiProductUrl}/${id}`, { 
       headers: { Authorization: `Bearer ${this.authStore.token()}` }
     }).pipe(
-      delay(5000)
+      delay(1000)
     );
   }
 
@@ -44,5 +45,11 @@ export class ProductService {
     }).pipe(
       delay(2000)
     );
+  }
+
+  createProductDetail(productDetail: any): Observable<any> {
+    return this.http.post(`${this.apiProductDetailUrl}`, productDetail, { 
+      headers: { Authorization: `Bearer ${this.authStore.token()}` }
+    });
   }
 }
