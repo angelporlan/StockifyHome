@@ -42,7 +42,14 @@ const createProduct = async (req, res) => {
         }
 
         await transaction.commit();
-        res.status(201).json(newProduct);
+        const createdProduct = await Product.findOne({
+            where: { id: newProduct.id },
+            include: [
+                { model: Category, attributes: ['id', 'name'] },
+                { model: ProductDetail, attributes: ['id', 'quantity', 'expiration_date'] }
+            ]
+        });
+        res.status(201).json(createdProduct);
     } catch (error) {
         await transaction.rollback();
         res.status(500).json({ error: error.message });
@@ -72,7 +79,7 @@ const getProductById = async (req, res) => {
         const product = await Product.findOne({
             where: { id },
             include: [
-                { model: Category, attributes: ['name'] },
+                { model: Category, attributes: ['id', 'name'] },
                 { model: ProductDetail, attributes: ['id', 'quantity', 'expiration_date'] }
             ]
         });
