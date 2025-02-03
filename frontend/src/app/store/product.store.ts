@@ -33,6 +33,9 @@ export const ProductStore = signalStore(
                 selectedProducts: [],
             }));
         },
+        getProductsById: (id: number) => {
+            return store.selectedProducts().find(product => product.id === id);
+        },
         deleteProduct: (id: number) => {
             const stockifyHomeData = JSON.parse(localStorage.getItem('stockifyHomeData') || '{}');
 
@@ -88,6 +91,47 @@ export const ProductStore = signalStore(
             patchState(store, () => ({
                 selectedProducts: updatedProducts,
             }));
-        }
+        },
+        addProduct: (product: Product) => {
+            const stockifyHomeData = JSON.parse(localStorage.getItem('stockifyHomeData') || '{}');
+        
+            const updatedProducts = [...store.selectedProducts(), product];
+        
+            const updatedData = {
+                ...stockifyHomeData,
+                selectedProducts: updatedProducts,
+            };
+        
+            localStorage.setItem('stockifyHomeData', JSON.stringify(updatedData));
+        
+            patchState(store, () => ({
+                selectedProducts: updatedProducts,
+            }));
+        },
+        addProductDetail: (productId: number, details: any[]) => {
+            const stockifyHomeData = JSON.parse(localStorage.getItem('stockifyHomeData') || '{}');
+        
+            const updatedProducts = store.selectedProducts().map(product => {
+                if (product.id === productId) {
+                    return { 
+                        ...product, 
+                        ProductDetails: [...product.ProductDetails, ...details] 
+                    };
+                }
+                return product;
+            });
+        
+            const updatedData = {
+                ...stockifyHomeData,
+                selectedProducts: updatedProducts,
+            };
+        
+            localStorage.setItem('stockifyHomeData', JSON.stringify(updatedData));
+        
+            patchState(store, () => ({
+                selectedProducts: updatedProducts,
+            }));
+        },
+        
     }))
 );
