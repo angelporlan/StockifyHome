@@ -90,7 +90,6 @@ export class ProductModalComponent {
       (response) => {
         console.log('response: ', response);
         this.matSnackBarService.showSuccess('Product created successfully');
-        // this.getProducts();
         this.productStore.addProduct(response);
         this.isLoading = false;
         this.dialogRef.close();
@@ -124,19 +123,5 @@ export class ProductModalComponent {
       }
     );
 
-  }
-
-  // borrar el servicio de get products y gestionar de manera local el crear producto y detalles!!!!!!!!!!!!!!!!
-
-  private getProducts(): void {
-    this.productService.getProducts().subscribe({
-      next: (products) => {
-        console.log('products: ', products);
-        this.productStore.setProducts(products);
-      },
-      error: (err) => {
-        console.error('error product ' + err);
-      }
-    });
   }
 }
