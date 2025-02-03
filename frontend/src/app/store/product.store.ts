@@ -132,5 +132,27 @@ export const ProductStore = signalStore(
                 selectedProducts: updatedProducts,
             }));
         },
+        deleteProductDetail: (productId: number, detailId: number) => {
+            const stockifyHomeData = JSON.parse(localStorage.getItem('stockifyHomeData') || '{}');
+        
+            const updatedProducts = store.selectedProducts().map(product => {
+                if (product.id === productId) {
+                    const updatedProductDetails = product.ProductDetails.filter(detail => detail.id !== detailId);
+                    return { ...product, ProductDetails: updatedProductDetails };
+                }
+                return product;
+            });
+        
+            const updatedData = {
+                ...stockifyHomeData,
+                selectedProducts: updatedProducts,
+            };
+        
+            localStorage.setItem('stockifyHomeData', JSON.stringify(updatedData));
+        
+            patchState(store, () => ({
+                selectedProducts: updatedProducts,
+            }));
+        },
     }))
 );
