@@ -7,6 +7,7 @@
 
 </mat-dialog-content>
 <mat-dialog-actions>
+  <app-loader-modal *ngIf="isLoading"></app-loader-modal>
   <button mat-button mat-dialog-close>Close</button>
-  <button mat-button (click)="createProduct()">Save</button>
+  <button mat-button (click)="isProduct? createProduct() : createProductDetails()">Save</button>
 </mat-dialog-actions>

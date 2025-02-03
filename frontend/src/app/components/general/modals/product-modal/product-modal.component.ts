@@ -9,16 +9,18 @@ import { MatButton } from '@angular/material/button';
 import { ProductService } from '../../../../services/product/product.service';
 import { MatSnackBarService } from '../../../../services/matSnackBar/mat-snack-bar.service';
 import { ProductStore } from '../../../../store/product.store';
+import { LoaderModalComponent } from '../loader-modal/loader-modal.component';
 
 @Component({
   selector: 'app-product-modal',
-  imports: [MatDialogModule, DefaultInputComponent, DefaultSelectComponent, DefaultInputFileComponent, CommonModule, ProductDetailsModalComponent, MatButton],
+  imports: [MatDialogModule, DefaultInputComponent, DefaultSelectComponent, DefaultInputFileComponent, CommonModule, ProductDetailsModalComponent, MatButton, LoaderModalComponent],
   templateUrl: './product-modal.component.html',
   styleUrl: './product-modal.component.css'
 })
 export class ProductModalComponent {
   @Input() isProduct: boolean = true;
   title: string = 'Create product';
+  isLoading: boolean = false;
 
   expirationDetails: { date: string, quantity: number }[] = [];
   categories = [
@@ -70,6 +72,7 @@ export class ProductModalComponent {
   }
 
   createProduct() {
+    this.isLoading = true;
 
     const product: { name: string; category_id: number; image?: string; product_details: { expiration_date: string; quantity: number }[] } = {
       name: this.name,
@@ -85,8 +88,11 @@ export class ProductModalComponent {
 
     this.productService.createProduct(product).subscribe(
       (response) => {
+        console.log('response: ', response);
         this.matSnackBarService.showSuccess('Product created successfully');
-        this.getProducts();
+        // this.getProducts();
+        this.productStore.addProduct(response);
+        this.isLoading = false;
         this.dialogRef.close();
       },
       (error) => {
@@ -94,6 +100,33 @@ export class ProductModalComponent {
       }
     );
   }
+
+  createProductDetails() {
+    this.isLoading = true;
+    const productId = Number(window.location.href.split('/').pop());
+    console.log('productId: ', productId);
+    const productDetails = this.details.map((detail) => ({
+        expiration_date: detail.expiration_date,
+        quantity: detail.quantity,
+        product_id: productId
+    }));
+    console.log('productDetails: ', productDetails);
+
+    this.productService.createProductDetail(productDetails).subscribe(
+      (response) => {
+        this.matSnackBarService.showSuccess('Product details created successfully');
+        this.productStore.addProductDetail(productId, response);
+        this.isLoading = false;
+        this.dialogRef.close();
+      },
+      (error) => {
+        this.matSnackBarService.showError('Failed to create product details: ' + error.error.error);
+      }
+    );
+
+  }
+
+  // borrar el servicio de get products y gestionar de manera local el crear producto y detalles!!!!!!!!!!!!!!!!
 
   private getProducts(): void {
     this.productService.getProducts().subscribe({
