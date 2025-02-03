@@ -18,8 +18,4 @@ export class ProductComponent {
     return parseInt(segments[segments.length - 1]);
   }
 
-  getProductById(id: number) {
-    const products = this.productStore.selectedProducts();
-    return products.find(p => p.id === id);;
-  }
 }
