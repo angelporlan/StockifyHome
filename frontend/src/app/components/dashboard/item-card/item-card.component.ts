@@ -40,12 +40,6 @@ export class ItemCardComponent {
 
   constructor(private matSnackBarService: MatSnackBarService, private router: Router) { }
 
-  ngOnInit(): void {
-    if (this.isProduct) {
-      console.log('aaa ' + this.getLatestProductDetailDate())
-    }
-  }
-
   onSelectItem() {
     if (!this.isProduct) {
       this.houseStore.setHouseSelected(this.house);
