@@ -1,4 +1,4 @@
 <img *ngIf="isLoading" src="../../../../../../assets/icons/loader.svg" alt="loader">
-<button (click)="decrement()">-</button>
+<button [disabled]="quantity === 0" (click)="decrement()">-</button>
 <p>{{quantity}}</p>
 <button (click)="increment()">+</button>

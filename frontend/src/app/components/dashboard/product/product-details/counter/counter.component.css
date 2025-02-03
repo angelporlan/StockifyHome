@@ -37,6 +37,11 @@ img {
     position: absolute;
 }
 
+button:disabled {
+    background-color: var(--gray-color);
+    cursor: not-allowed;
+}
+
 @media (max-width: 350px) {
     p {
         margin: 0 2px;
