@@ -78,10 +78,6 @@ export class ItemCardComponent {
   }
 
   getAllQuantity(): number {
-    let quantity = 0;
-    this.product.ProductDetails.forEach((productDetail) => {
-      quantity += productDetail.quantity;
-    });
-    return quantity;
+    return this.product.ProductDetails.reduce((total, productDetail) => total + productDetail.quantity, 0);
   }
 }
