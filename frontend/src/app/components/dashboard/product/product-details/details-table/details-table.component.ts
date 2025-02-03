@@ -74,17 +74,4 @@ export class DetailsTableComponent {
     );
   }
 
-    // deleteProduct() {
-    //   return this.productService.deleteProduct(this.realProduct.id).pipe(
-    //     tap(() => {
-    //       this.productStore.deleteProduct(this.realProduct.id);
-    //       this.router.navigate(['/dashboard/products']);
-    //       this.matSnackBarService.showSuccess('Producto eliminado correctamente');
-    //     }),
-    //     catchError((error) => {
-    //       this.matSnackBarService.showError('Error al eliminar el producto');
-    //       return throwError(() => error);
-    //     })
-    //   );
-    // }
 }
