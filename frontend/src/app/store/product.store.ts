@@ -132,6 +132,5 @@ export const ProductStore = signalStore(
                 selectedProducts: updatedProducts,
             }));
         },
-        
     }))
 );
