@@ -52,4 +52,12 @@ export class ProductService {
       headers: { Authorization: `Bearer ${this.authStore.token()}` }
     });
   }
+
+  deleteProductDetail(id: number): Observable<any> {
+    return this.http.delete(`${this.apiProductDetailUrl}/${id}`, { 
+      headers: { Authorization: `Bearer ${this.authStore.token()}` }
+    }).pipe(
+      delay(1000)
+      );
+  }
 }
