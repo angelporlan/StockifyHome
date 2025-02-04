@@ -95,6 +95,7 @@ export class ProductModalComponent {
         this.dialogRef.close();
       },
       (error) => {
+        this.isLoading = false;
         this.matSnackBarService.showError('Failed to create product: ' + error.error.error);
       }
     );
@@ -109,7 +110,6 @@ export class ProductModalComponent {
         quantity: detail.quantity,
         product_id: productId
     }));
-    console.log('productDetails: ', productDetails);
 
     this.productService.createProductDetail(productDetails).subscribe(
       (response) => {
@@ -119,6 +119,7 @@ export class ProductModalComponent {
         this.dialogRef.close();
       },
       (error) => {
+        this.isLoading = false;
         this.matSnackBarService.showError('Failed to create product details: ' + error.error.error);
       }
     );
