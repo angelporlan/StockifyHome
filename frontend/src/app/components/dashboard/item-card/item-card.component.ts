@@ -5,6 +5,10 @@ import { HouseStore } from '../../../store/house.store';
 import { MatSnackBarService } from '../../../services/matSnackBar/mat-snack-bar.service';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
+import { ConfirmModalComponent } from '../../general/modals/confirm-modal/confirm-modal.component';
+import { HouseService } from '../../../services/house/house.service';
+import { catchError, tap, throwError } from 'rxjs';
 
 @Component({
   selector: 'app-item-card',
@@ -38,7 +42,7 @@ export class ItemCardComponent {
   }
   private houseStore = inject(HouseStore);
 
-  constructor(private matSnackBarService: MatSnackBarService, private router: Router) { }
+  constructor(private matSnackBarService: MatSnackBarService, private router: Router, private dialog: MatDialog, private houseService: HouseService) { }
 
   onSelectItem() {
     if (!this.isProduct) {
@@ -80,5 +84,31 @@ export class ItemCardComponent {
 
   getAllQuantity(): number {
     return this.product.ProductDetails.reduce((total, productDetail) => total + productDetail.quantity, 0);
+  }
+
+  openEditModal() {}
+
+  openDeleteModal() {
+    this.dialog.open(ConfirmModalComponent, {
+      width: '400px',
+      data: {
+        title: 'Delete house',
+        message: 'Are you sure you want to delete this house?',
+        action: () => this.deleteHouse()
+      }
+    });
+  }
+
+  deleteHouse() {
+    return this.houseService.deleteHouse(this.house.id).pipe(
+      tap(() => {
+        this.houseStore.deleteHouse(this.house.id);
+        this.matSnackBarService.showSuccess('House deleted successfully');
+      }),
+      catchError((error) => {
+        this.matSnackBarService.showError('Error deleting house');
+        return throwError(() => error);
+      }
+    ));
   }
 }

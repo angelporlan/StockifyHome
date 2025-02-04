@@ -1,7 +1,7 @@
 <article>
     <div class="options" *ngIf="!isProduct">
-        <img class="icons" src="../../../../assets/icons/edit.svg" alt="edit">
-        <img class="icons" src="../../../../assets/icons/trash.svg" alt="delete">
+        <img class="icons" src="../../../../assets/icons/edit.svg" alt="edit" (click)="openEditModal()">
+        <img class="icons" src="../../../../assets/icons/trash.svg" alt="delete" (click)="openDeleteModal()">
     </div>
     <div class="image" (click)="onSelectItem()">
         <img [src]="isProduct ? (product.image ? '../../../../assets/products/' + product.image : '../../../../assets/images/product.avif') : '../../../../assets/images/house.jpg'" 
