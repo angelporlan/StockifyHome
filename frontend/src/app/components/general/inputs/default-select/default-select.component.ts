@@ -15,7 +15,7 @@ export class DefaultSelectComponent {
 @Input() label: string = '';
 @Input() options: any[] = [];
 @Output() inputValueChange = new EventEmitter<number>();
-value: number = 0;
+@Input() value: number = 0;
 
 onInputChange() {
   this.inputValueChange.emit(this.value);
