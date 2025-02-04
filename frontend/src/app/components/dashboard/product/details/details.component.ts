@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 import { MatSnackBarService } from '../../../../services/matSnackBar/mat-snack-bar.service';
 import { ProductStore } from '../../../../store/product.store';
 import { catchError, tap, throwError } from 'rxjs';
+import { EditProductModalComponent } from '../../../general/modals/edit-product-modal/edit-product-modal.component';
 
 @Component({
   selector: 'app-details',
@@ -48,13 +49,25 @@ export class DetailsComponent {
     }
   }
 
-  openDialog(): void {
+  openDeleteDialog(): void {
     this.dialog.open(ConfirmModalComponent, {
       width: '400px',
       data: {
-        title: 'Eliminar producto',
-        message: '¿Estás seguro de que quieres eliminar este producto?',
+        title: 'Delete product',
+        message: 'Are you sure you want to delete this product?',
         action: () => this.deleteProduct()  
+      }
+    });
+  }
+
+  openEditDialog(): void {
+    this.dialog.open(EditProductModalComponent, {
+      width: '400px',
+      data: {
+        id: this.product ? this.product.id : this.realProduct.id,
+        name: this.product ? this.product.name : this.realProduct.name,
+        // image: this.product ? this.product.image : this.realProduct.image,
+        categoryId: this.product ? this.product.Category.id : this.realProduct.Category.id,
       }
     });
   }
