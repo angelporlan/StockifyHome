@@ -9,6 +9,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { ConfirmModalComponent } from '../../general/modals/confirm-modal/confirm-modal.component';
 import { HouseService } from '../../../services/house/house.service';
 import { catchError, tap, throwError } from 'rxjs';
+import { InputModalComponent } from '../../general/modals/input-modal/input-modal.component';
 
 @Component({
   selector: 'app-item-card',
@@ -86,7 +87,17 @@ export class ItemCardComponent {
     return this.product.ProductDetails.reduce((total, productDetail) => total + productDetail.quantity, 0);
   }
 
-  openEditModal() {}
+  openEditModal() {
+    this.dialog.open(InputModalComponent, {
+      width: '400px',
+      data: {
+        title: 'Edit house',
+        labelInput: 'New name',
+        placeholderInput: 'Ex. My new house',
+        action: (newName: string) => this.updateHouseName(newName)
+      }
+    });
+  }
 
   openDeleteModal() {
     this.dialog.open(ConfirmModalComponent, {
@@ -111,4 +122,18 @@ export class ItemCardComponent {
       }
     ));
   }
+
+  updateHouseName(newName: string) {
+    return this.houseService.updateHouse(this.house.id, { name: newName }).pipe(
+      tap(() => {
+        this.houseStore.updateHouse({ ...this.house, name: newName });
+        this.matSnackBarService.showSuccess('House updated successfully');
+      }),
+      catchError((error) => {
+        this.matSnackBarService.showError('Error updating house');
+        return throwError(() => error);
+      })
+    );
+  }
+
 }
