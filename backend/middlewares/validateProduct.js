@@ -1,8 +1,10 @@
+const { Op } = require('sequelize'); // Asegúrate de importar Op
 const { House, Category } = require('../models');
 
 const validateProduct = async (req, res, next) => {
     try {
         const { name, house_id, category_id } = req.body;
+        const productId = req.params.id || req.body.id; // Obtener productId si es una actualización
 
         if (req.method === 'POST') {
             if (!name || !house_id || !category_id) {
@@ -23,7 +25,13 @@ const validateProduct = async (req, res, next) => {
         }
 
         if (name) {
-            const existingProduct = await house.getProducts({ where: { name } });
+            const whereClause = { name };
+            if (productId) {
+                whereClause.id = { [Op.ne]: productId };
+            }
+
+            const existingProduct = await house.getProducts({ where: whereClause });
+
             if (existingProduct.length > 0) {
                 return res.status(400).json({ error: 'Product with the same name already exists in the house' });
             }
