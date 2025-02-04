@@ -1,0 +1,12 @@
+<h2 mat-dialog-title>{{ title }}</h2>
+<mat-dialog-content>
+  <!-- <app-default-input-file [imageUrl]="image" (imageSelected)="image = $event"></app-default-input-file> -->
+  <app-default-input label="Name" placeholder="Ex. Potatoes" [value]="name" (inputValueChange)="name = $event"></app-default-input>
+  <app-default-select label="Category" [options]="categories" [value]="categoryId" (inputValueChange)="categoryId = $event"></app-default-select>
+
+</mat-dialog-content>
+<mat-dialog-actions>
+  <app-loader-modal *ngIf="isLoading"></app-loader-modal>
+  <button mat-button mat-dialog-close>Close</button>
+  <button mat-button (click)="updateProduct()">Save</button>
+</mat-dialog-actions>
