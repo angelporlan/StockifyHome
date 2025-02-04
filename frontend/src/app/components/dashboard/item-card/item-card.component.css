@@ -36,3 +36,16 @@ img {
 .right-zone {
     margin-left: 12px;
 }
+
+.options {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    margin-right: 8px;
+    align-items: center;
+}
+
+.icons {
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+}
