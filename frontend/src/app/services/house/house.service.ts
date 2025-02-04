@@ -29,4 +29,10 @@ export class HouseService {
       headers: { Authorization: `Bearer ${this.authStore.token()}` }
     });
   }
+
+  createHouse(house: any): Observable<any> {
+    return this.http.post(`${this.apiUrl}`, house, { 
+      headers: { Authorization: `Bearer ${this.authStore.token()}` }
+    });
+  }
 }
