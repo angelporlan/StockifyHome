@@ -1,5 +1,5 @@
 <div class="search-button">
 <app-input-search placeholder="Search for a house" (searchChange)="onSearchChange($event)"></app-input-search>
-<app-action-button text="Add house"></app-action-button>
+<app-action-button text="Add house" (click)="openDialog()"></app-action-button>
 </div>
 <app-house-boxes [searchText]="inputText"></app-house-boxes>
