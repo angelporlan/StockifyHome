@@ -92,6 +92,19 @@ export const HouseStore = signalStore(
         houses: state.houses.map((h: House) => h.id === house.id ? house : h),
         selectedHouse: state.selectedHouse && state.selectedHouse.id === house.id ? house : state.selectedHouse,
       }));
+    },
+    addHouse: (house: House) => {
+      const stockifyHomeData = JSON.parse(localStorage.getItem('stockifyHomeData') || '{}');
+      const updatedData = {
+        ...stockifyHomeData,
+        houses: [...stockifyHomeData.houses, house],
+      };
+
+      localStorage.setItem('stockifyHomeData', JSON.stringify(updatedData));
+
+      patchState(store, (state) => ({
+        houses: [...state.houses, house],
+      }));
     }
   }))
 );
