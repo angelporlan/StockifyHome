@@ -23,4 +23,10 @@ export class HouseService {
       headers: { Authorization: `Bearer ${this.authStore.token()}` }
     });
   }
+
+  updateHouse(id: number, house: any): Observable<any> {
+    return this.http.put(`${this.apiUrl}/${id}`, house, { 
+      headers: { Authorization: `Bearer ${this.authStore.token()}` }
+    });
+  }
 }
