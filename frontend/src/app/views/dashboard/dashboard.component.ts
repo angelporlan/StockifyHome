@@ -102,7 +102,8 @@ export class DashboardComponent {
         this.productStore.setProducts(products);
       },
       error: (err) => {
-        console.error('error product ' + err);
+        console.error(err.error.error);
+        this.productStore.setProducts([]);
       }});
   }
 
