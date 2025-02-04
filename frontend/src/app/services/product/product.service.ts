@@ -60,4 +60,15 @@ export class ProductService {
       delay(1000)
       );
   }
+
+  updateProduct(product: any): Observable<any> {
+    const house_id = this.houseStore.selectedHouse()?.id;
+    product.house_id = house_id;
+    console.log('product: ', product);
+    return this.http.put(`${this.apiProductUrl}/${product.id}`, product, { 
+      headers: { Authorization: `Bearer ${this.authStore.token()}` }
+    }).pipe(
+      delay(2000)
+    );
+  }
 }
