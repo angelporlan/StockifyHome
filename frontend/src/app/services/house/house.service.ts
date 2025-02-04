@@ -13,8 +13,13 @@ export class HouseService {
   constructor(private http: HttpClient) { }
 
   getHouses(): Observable<any> {
-
     return this.http.get(`${this.apiUrl}`, { 
+      headers: { Authorization: `Bearer ${this.authStore.token()}` }
+    });
+  }
+
+  deleteHouse(id: number): Observable<any> {
+    return this.http.delete(`${this.apiUrl}/${id}`, { 
       headers: { Authorization: `Bearer ${this.authStore.token()}` }
     });
   }
