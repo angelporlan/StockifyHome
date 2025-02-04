@@ -62,6 +62,21 @@ export const HouseStore = signalStore(
       patchState(store, (state) => ({
         selectedHouse: null,
       }));
+    },
+    deleteHouse: (houseId: number) => {
+      const stockifyHomeData = JSON.parse(localStorage.getItem('stockifyHomeData') || '{}');
+      const updatedData = {
+        ...stockifyHomeData,
+        houses: stockifyHomeData.houses.filter((house: House) => house.id !== houseId),
+        selectedHouse: stockifyHomeData.selectedHouse && stockifyHomeData.selectedHouse.id === houseId ? null : stockifyHomeData.selectedHouse,
+      };
+
+      localStorage.setItem('stockifyHomeData', JSON.stringify(updatedData));
+
+      patchState(store, (state) => ({
+        houses: state.houses.filter((house: House) => house.id !== houseId),
+        selectedHouse: state.selectedHouse && state.selectedHouse.id === houseId ? null : state.selectedHouse,
+      }));
     }
   }))
 );
