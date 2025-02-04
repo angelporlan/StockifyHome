@@ -13,7 +13,7 @@ export class DefaultInputComponent {
 @Input() label: string = '';
 @Input() placeholder: string = '';
 @Output() inputValueChange = new EventEmitter<string>();
-  value: string = ''; 
+@Input() value: string = ''; 
 
   onInputChange() {
     this.inputValueChange.emit(this.value);
