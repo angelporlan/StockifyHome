@@ -36,9 +36,7 @@ export class DashboardComponent {
 
   ngOnInit(): void {
     this.getHouses();
-    console.log('after getHouses, time: ', new Date().getTime());
     this.getProducts();
-    console.log('after getProducts, time: ', this.productStore.selectedProducts());
   }
 
   private initializeTitleUpdater(): void {
@@ -54,7 +52,6 @@ export class DashboardComponent {
     effect(() => {
       const house = this.houseStore.selectedHouse();
       if (house) {
-        console.log('Selected house changed: ', house);
         this.getProducts();
       }
     });
@@ -98,7 +95,6 @@ export class DashboardComponent {
   private getProducts(): void {
     this.productService.getProducts().subscribe({
       next: (products) => {
-        console.log('products: ', products);
         this.productStore.setProducts(products);
       },
       error: (err) => {

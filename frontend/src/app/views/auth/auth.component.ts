@@ -17,8 +17,8 @@ import { LoaderComponent } from '../../components/general/loader/loader.componen
 export class AuthComponent {
   isLoading = false;
   loginActive = true;
-  email = 'angel@gmail.com';
-  password = '1234';
+  email = '';
+  password = '';
   username = '';
   authStore = inject(AuthStore);
   submitText = this.getSubmitText();
@@ -49,7 +49,7 @@ export class AuthComponent {
       next: (profile) => {
         this.authStore.setProfile(profile);
         this.matSnackBarService.showSuccess('Login successful!');
-        this.navigateTo('dashboard/main');
+        this.navigateTo('dashboard/houses');
       },
       error: (err) => this.handleError('Profile fetch failed', err),
     });
