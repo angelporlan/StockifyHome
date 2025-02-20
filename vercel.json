@@ -1,0 +1,16 @@
+{
+    "version": 2,
+    "builds": [
+      {
+        "src": "frontend/dist/frontend/index.html",
+        "use": "@vercel/static"
+      }
+    ],
+    "rewrites": [
+      {
+        "source": "/:match*",
+        "destination": "/index.html"
+      }
+    ]
+  }
+  
