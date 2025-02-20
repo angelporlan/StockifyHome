@@ -12,7 +12,7 @@ import { ProductComponent } from './views/dashboard/product/product.component';
 import { ProfileComponent } from './views/dashboard/profile/profile.component';
 
 export const routes: Routes = [
-  { path: '', redirectTo: 'home', pathMatch: 'full' },
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'login', component: AuthComponent },
   { path: 'dashboard', component: DashboardComponent, children: [
     { path: 'main', component: MainContentComponent },
