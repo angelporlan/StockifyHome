@@ -5,20 +5,20 @@ import { FormsModule } from '@angular/forms';
 import { AuthService } from '../../services/auth/auth.service';
 import { AuthStore } from '../../store/auth.store';
 import { MatSnackBarService } from '../../services/matSnackBar/mat-snack-bar.service';
-import { LoaderComponent } from '../../components/general/loader/loader.component';
+import { LoaderModalComponent } from '../../components/general/modals/loader-modal/loader-modal.component';
 
 @Component({
   selector: 'app-auth',
   standalone: true,
-  imports: [CommonModule, FormsModule, LoaderComponent],
+  imports: [CommonModule, FormsModule, LoaderModalComponent],
   templateUrl: './auth.component.html',
   styleUrls: ['./auth.component.css'],
 })
 export class AuthComponent {
   isLoading = false;
   loginActive = true;
-  email = '';
-  password = '';
+  email = 'prueba@gmail.com';
+  password = '123456';
   username = '';
   authStore = inject(AuthStore);
   submitText = this.getSubmitText();
