@@ -8,8 +8,10 @@ import { HouseStore } from '../../store/house.store';
   providedIn: 'root'
 })
 export class ProductService {
-  private apiProductUrl: string = 'http://localhost:3000/api/products';
-  private apiProductDetailUrl: string = 'http://localhost:3000/api/productDetails';
+  // private apiProductUrl: string = 'http://localhost:3000/api/products';
+  private apiProductUrl: string = 'https://stockifyhome.onrender.com/api/products';
+  // private apiProductDetailUrl: string = 'http://localhost:3000/api/productDetails';
+  private apiProductDetailUrl: string = 'https://stockifyhome.onrender.com/api/productDetails';
   authStore = inject(AuthStore);
   houseStore = inject(HouseStore);
 

@@ -7,7 +7,8 @@ import { AuthStore } from '../../store/auth.store';
   providedIn: 'root'
 })
 export class HouseService {
-  private apiUrl: string = 'http://127.0.0.1:3000/api/houses';
+  // private apiUrl: string = 'http://127.0.0.1:3000/api/houses';
+  private apiUrl: string = 'https://stockifyhome.onrender.com/api/houses';
   authStore = inject(AuthStore);
 
   constructor(private http: HttpClient) { }

@@ -6,7 +6,8 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class CategoryService {
-  private apiUrl: string = 'http://127.0.0.1:3000/api/cate';
+  // private apiUrl: string = 'http://127.0.0.1:3000/api/categories';
+  private apiUrl: string = 'https://stockifyhome.onrender.com/api/categories';
   authStore = inject(AuthStore);
   private token = this.authStore.token();
   
