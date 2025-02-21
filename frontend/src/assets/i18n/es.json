@@ -7,5 +7,11 @@
     "CHANGE_PASSWORD": "Cambiar contraseña",
     "LOG_OUT": "Cerrar sesión",
     "LABEL_LANGUAGE_SELECT": "Cambiar idioma"
+  },
+  "SIDEBAR": {
+    "DASHBOARD": "Dashboard",
+    "PROFILE": "Perfil",
+    "PRODUCTS": "Productos",
+    "HOUSES": "Casas"
   }
 }

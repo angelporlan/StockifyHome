@@ -7,5 +7,11 @@
     "CHANGE_PASSWORD": "Change password",
     "LOG_OUT": "Log out",
     "LABEL_LANGUAGE_SELECT": "Change language"
+  },
+  "SIDEBAR": {
+    "DASHBOARD": "Dashboard",
+    "PROFILE": "Profile",
+    "PRODUCTS": "Products",
+    "HOUSES": "Houses"
   }
 }
