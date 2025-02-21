@@ -22,6 +22,15 @@
         "TITLE": "Añadir casa",
         "LABEL_INPUT": "Nueva casa",
         "PLACEHOLDER_INPUT": "Ej. Casa de la playa"
+      },
+      "EDIT_HOUSE_DIALOG": {
+        "TITLE": "Editar casa",
+        "LABEL_INPUT": "Casa a editar",
+        "PLACEHOLDER_INPUT": "Ej. Casa de la playa"
+      },
+      "DELETE_HOUSE_DIALOG": {
+        "TITLE": "Eliminar casa",
+        "MESSAGE": "¿Estás seguro de que quieres eliminar esta casa?"
       }
     }
   },
