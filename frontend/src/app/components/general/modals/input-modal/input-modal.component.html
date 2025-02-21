@@ -5,6 +5,6 @@
 </mat-dialog-content>
 <mat-dialog-actions>
   <app-loader-modal *ngIf="isLoading"></app-loader-modal>
-  <button mat-button mat-dialog-close>Close</button>
-  <button mat-button (click)="actionModal()">Save</button>
+  <button mat-button mat-dialog-close>{{'MODALS.INPUT_MODAL.CANCEL' | translate}}</button>
+  <button mat-button (click)="actionModal()">{{'MODALS.INPUT_MODAL.CONFIRM' | translate}}</button>
 </mat-dialog-actions>
