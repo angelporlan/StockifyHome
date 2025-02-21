@@ -13,5 +13,11 @@
     "PROFILE": "Perfil",
     "PRODUCTS": "Productos",
     "HOUSES": "Casas"
+  },
+  "DASHBOARD": {
+    "HOUSES": {
+      "PLACEHOLDER": "Buscar casas",
+      "BUTTON_TEXT": "Añadir casa"
+    }
   }
 }
