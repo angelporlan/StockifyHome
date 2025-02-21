@@ -6,17 +6,30 @@ import { InputModalComponent } from '../../../components/general/modals/input-mo
 import { AuthService } from '../../../services/auth/auth.service';
 import { MatSnackBarService } from '../../../services/matSnackBar/mat-snack-bar.service';
 import { catchError, tap, throwError } from 'rxjs';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
+import { DefaultSelectComponent } from '../../../components/general/inputs/default-select/default-select.component';
 
 @Component({
   selector: 'app-profile',
-  imports: [],
+  imports: [TranslateModule, DefaultSelectComponent],
   templateUrl: './profile.component.html',
   styleUrl: './profile.component.css'
 })
 export class ProfileComponent {
   authStore = inject(AuthStore);
 
-  constructor(private router: Router, public dialog: MatDialog, private authService: AuthService, private matSnackBarService: MatSnackBarService) {}
+  languages = [
+    { id: 'en', name: 'English' },
+    { id: 'es', name: 'Español' }
+  ];
+
+  constructor(private router: Router, public dialog: MatDialog, private authService: AuthService, private matSnackBarService: MatSnackBarService, private translate: TranslateService) {}
+
+  changeLanguage(lang: any): void {
+    console.log(lang);
+    this.translate.setDefaultLang(lang);
+    this.translate.use(lang);
+  }
 
   closeSession(): void {
     this.authStore.deleteToken();
