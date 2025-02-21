@@ -18,7 +18,7 @@
     "HOUSES": {
       "PLACEHOLDER": "Buscar casas",
       "BUTTON_TEXT": "Añadir casa",
-      "DIALOG": {
+      "ADD_HOUSE_DIALOG": {
         "TITLE": "Añadir casa",
         "LABEL_INPUT": "Nueva casa",
         "PLACEHOLDER_INPUT": "Ej. Casa de la playa"

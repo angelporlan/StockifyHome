@@ -38,9 +38,9 @@ export class HousesComponent {
     this.dialog.open(InputModalComponent, {
       width: '400px',
       data: {
-      title: this.translate.instant('DASHBOARD.HOUSES.DIALOG.TITLE'),
-      labelInput: this.translate.instant('DASHBOARD.HOUSES.DIALOG.LABEL_INPUT'),
-      placeholderInput: this.translate.instant('DASHBOARD.HOUSES.DIALOG.PLACEHOLDER_INPUT'),
+      title: this.translate.instant('DASHBOARD.HOUSES.ADD_HOUSE_DIALOG.TITLE'),
+      labelInput: this.translate.instant('DASHBOARD.HOUSES.ADD_HOUSE_DIALOG.LABEL_INPUT'),
+      placeholderInput: this.translate.instant('DASHBOARD.HOUSES.ADD_HOUSE_DIALOG.PLACEHOLDER_INPUT'),
       action: (name: string) => this.newHouse(name)
       }
     });
