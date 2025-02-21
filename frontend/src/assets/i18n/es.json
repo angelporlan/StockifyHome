@@ -1,0 +1,11 @@
+{
+  "PROFILE": {
+    "USERNAME": "Nombre de usuario",
+    "CREATED_AT": "Creado el",
+    "UPDATED_AT": "Actualizado el",
+    "EMAIL": "Correo electrónico",
+    "CHANGE_PASSWORD": "Cambiar contraseña",
+    "LOG_OUT": "Cerrar sesión",
+    "LABEL_LANGUAGE_SELECT": "Cambiar idioma"
+  }
+}
