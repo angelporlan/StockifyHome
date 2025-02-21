@@ -6,10 +6,11 @@ import { LoaderModalComponent } from '../loader-modal/loader-modal.component';
 import { Observable } from 'rxjs';
 import { CommonModule } from '@angular/common';
 import { MatSnackBarService } from '../../../../services/matSnackBar/mat-snack-bar.service';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-input-modal',
-  imports: [MatDialogModule, MatButton, DefaultInputComponent, LoaderModalComponent, CommonModule],
+  imports: [MatDialogModule, MatButton, DefaultInputComponent, LoaderModalComponent, CommonModule, TranslatePipe],
   templateUrl: './input-modal.component.html',
   styleUrl: './input-modal.component.css'
 })
