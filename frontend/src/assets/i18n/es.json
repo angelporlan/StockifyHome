@@ -17,7 +17,18 @@
   "DASHBOARD": {
     "HOUSES": {
       "PLACEHOLDER": "Buscar casas",
-      "BUTTON_TEXT": "Añadir casa"
+      "BUTTON_TEXT": "Añadir casa",
+      "DIALOG": {
+        "TITLE": "Editar casa",
+        "LABEL_INPUT": "Nueva casa",
+        "PLACEHOLDER_INPUT": "Ej. Casa de la playa"
+      }
+    }
+  },
+  "MODALS": {
+    "INPUT_MODAL": {
+      "CANCEL": "Cancelar",
+      "CONFIRM": "Confirmar"
     }
   }
 }
