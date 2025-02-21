@@ -13,7 +13,7 @@ import { LoaderModalComponent } from '../loader-modal/loader-modal.component';
 
 @Component({
   selector: 'app-product-modal',
-  imports: [MatDialogModule, DefaultInputComponent, DefaultSelectComponent, DefaultInputFileComponent, CommonModule, ProductDetailsModalComponent, MatButton, LoaderModalComponent],
+  imports: [MatDialogModule, DefaultInputComponent, DefaultSelectComponent, CommonModule, ProductDetailsModalComponent, MatButton, LoaderModalComponent],
   templateUrl: './product-modal.component.html',
   styleUrl: './product-modal.component.css'
 })
