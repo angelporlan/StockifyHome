@@ -1,14 +1,18 @@
 <div class="profile-container">
     <h2>User Profile</h2>
     <div class="profile-info">
-        <p><strong>{{ "PROFILE.USERNAME" | translate }}</strong> {{ this.authStore.username() }}</p>
-        <p><strong>{{ "PROFILE.CREATED_AT" | translate }}</strong> {{ this.authStore.createdAt() }}</p>
-        <p><strong>{{ "PROFILE.UPDATED_AT" | translate }}:</strong> {{ this.authStore.updatedAt() }}</p>
-        <p><strong>{{ "PROFILE.EMAIL" | translate }}</strong> {{ this.authStore.email() }}</p>
+        <strong>{{ "PROFILE.USERNAME" | translate }}</strong>
+        <p>{{ this.authStore.username() }}</p>
+        <strong>{{ "PROFILE.CREATED_AT" | translate }}</strong>
+        <p>{{ this.authStore.createdAt() }}</p>
+        <strong>{{ "PROFILE.UPDATED_AT" | translate }}:</strong>
+        <p>{{ this.authStore.updatedAt() }}</p>
+        <strong>{{ "PROFILE.EMAIL" | translate }}</strong>
+        <p>{{ this.authStore.email() }}</p>
     </div>
     <div class="profile-actions">
         <button (click)="openDialog()">{{ "PROFILE.CHANGE_PASSWORD" | translate }}</button>
         <button (click)="closeSession()">{{ "PROFILE.LOG_OUT" | translate }}</button>
-        <app-default-select [label]="'PROFILE.LABEL_LANGUAGE_SELECT' | translate" [options]="this.languages" (inputValueChange)="changeLanguage($event)"></app-default-select>
     </div>
+    <app-default-select [label]="'PROFILE.LABEL_LANGUAGE_SELECT' | translate" [options]="this.languages" (inputValueChange)="changeLanguage($event)"></app-default-select>
 </div>
