@@ -8,6 +8,7 @@ import { HouseService } from '../../services/house/house.service';
 import { HouseStore } from '../../store/house.store';
 import { ProductService } from '../../services/product/product.service';
 import { ProductStore } from '../../store/product.store';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-dashboard',
@@ -29,7 +30,7 @@ export class DashboardComponent {
     user: '/dashboard/profile',
   };
 
-  constructor(private router: Router, private houseService: HouseService, private productService: ProductService) {
+  constructor(private router: Router, private houseService: HouseService, private productService: ProductService, private translate: TranslateService) {
     this.initializeTitleUpdater();
     this.observeSelectedHouse();
   }
@@ -62,23 +63,23 @@ export class DashboardComponent {
     if (url.includes(this.routes.main)) {
       return `${this.getTimeBasedGreeting()}, ${this.authStore.username()}`;
     } else if (url.includes(this.routes.houses)) {
-      return 'Houses';
+      return this.translate.instant('DASHBOARD.TITLES.HOUSES');
     } else if (url.includes(this.routes.products)) {
-      return 'Products';
+      return this.translate.instant('DASHBOARD.TITLES.PRODUCTS');
     } else if (url.includes(this.routes.product)) {
-      return 'Product';
+      return this.translate.instant('DASHBOARD.TITLES.PRODUCT');
     }
-    return 'Profile';
+    return this.translate.instant('DASHBOARD.TITLES.PROFILE');
   }
 
   private getTimeBasedGreeting(): string {
     const hour = new Date().getHours();
     if (hour >= 7 && hour < 12) {
-      return 'Good Morning';
+      return this.translate.instant('DASHBOARD.TITLES.GOOD_MORNING');
     } else if (hour >= 12 && hour < 20) {
-      return 'Good Afternoon';
+      return this.translate.instant('DASHBOARD.TITLES.GOOD_AFTERNOON');
     }
-    return 'Good Night';
+    return this.translate.instant('DASHBOARD.TITLES.GOOD_EVENING');
   }
 
   private getHouses(): void {
