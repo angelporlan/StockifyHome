@@ -9,7 +9,7 @@ import { HouseStore } from '../../../store/house.store';
 import { MatSnackBarService } from '../../../services/matSnackBar/mat-snack-bar.service';
 import { catchError, tap, throwError } from 'rxjs';
 import { House } from '../../../interfaces/house';
-import { TranslatePipe } from '@ngx-translate/core';
+import { TranslatePipe, TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-houses',
@@ -32,16 +32,16 @@ export class HousesComponent {
     this.inputText = event
   }
 
-  constructor(private dialog: MatDialog, private houseService: HouseService, private matSnackBarService: MatSnackBarService) { }
+  constructor(private dialog: MatDialog, private houseService: HouseService, private matSnackBarService: MatSnackBarService, private translate: TranslateService) { }
 
   openDialog() {
     this.dialog.open(InputModalComponent, {
       width: '400px',
       data: {
-        title: 'Edit house',
-        labelInput: 'New name',
-        placeholderInput: 'Ex. My new house',
-        action: (name: string) => this.newHouse(name)
+      title: this.translate.instant('DASHBOARD.HOUSES.DIALOG.TITLE'),
+      labelInput: this.translate.instant('DASHBOARD.HOUSES.DIALOG.LABEL_INPUT'),
+      placeholderInput: this.translate.instant('DASHBOARD.HOUSES.DIALOG.PLACEHOLDER_INPUT'),
+      action: (name: string) => this.newHouse(name)
       }
     });
   }
