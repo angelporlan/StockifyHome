@@ -9,10 +9,11 @@ import { HouseStore } from '../../../store/house.store';
 import { MatSnackBarService } from '../../../services/matSnackBar/mat-snack-bar.service';
 import { catchError, tap, throwError } from 'rxjs';
 import { House } from '../../../interfaces/house';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-houses',
-  imports: [InputSearchComponent, HouseBoxesComponent, ActionButtonComponent],
+  imports: [InputSearchComponent, HouseBoxesComponent, ActionButtonComponent, TranslatePipe],
   templateUrl: './houses.component.html',
   styleUrl: './houses.component.css'
 })
