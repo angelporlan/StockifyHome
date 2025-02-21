@@ -6,10 +6,11 @@ import { MatButton } from '@angular/material/button';
 import { CommonModule } from '@angular/common';
 import { Observable } from 'rxjs';
 import { LoaderModalComponent } from '../loader-modal/loader-modal.component';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-confirm-modal',
-  imports: [MatDialogModule, MatButton, CommonModule, LoaderModalComponent],
+  imports: [MatDialogModule, MatButton, CommonModule, LoaderModalComponent, TranslatePipe],
   templateUrl: './confirm-modal.component.html',
   styleUrl: './confirm-modal.component.css'
 })
