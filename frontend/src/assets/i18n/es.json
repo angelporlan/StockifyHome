@@ -15,6 +15,15 @@
     "HOUSES": "Casas"
   },
   "DASHBOARD": {
+    "TITLES": {
+      "PRODUCTS": "Productos",
+      "PRODUCT": "Producto",
+      "PROFILE": "Perfil",
+      "HOUSES": "Casas",
+      "GOOD_MORNING": "Buenos días",
+      "GOOD_AFTERNOON": "Buenas tardes",
+      "GOOD_EVENING": "Buenas noches"
+    },
     "HOUSES": {
       "PLACEHOLDER": "Buscar casas",
       "BUTTON_TEXT": "Añadir casa",
