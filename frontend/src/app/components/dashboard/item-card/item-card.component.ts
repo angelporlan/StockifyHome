@@ -10,6 +10,7 @@ import { ConfirmModalComponent } from '../../general/modals/confirm-modal/confir
 import { HouseService } from '../../../services/house/house.service';
 import { catchError, tap, throwError } from 'rxjs';
 import { InputModalComponent } from '../../general/modals/input-modal/input-modal.component';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-item-card',
@@ -43,7 +44,7 @@ export class ItemCardComponent {
   }
   private houseStore = inject(HouseStore);
 
-  constructor(private matSnackBarService: MatSnackBarService, private router: Router, private dialog: MatDialog, private houseService: HouseService) { }
+  constructor(private matSnackBarService: MatSnackBarService, private router: Router, private dialog: MatDialog, private houseService: HouseService, private translate: TranslateService) { }
 
   onSelectItem() {
     if (!this.isProduct) {
@@ -91,9 +92,9 @@ export class ItemCardComponent {
     this.dialog.open(InputModalComponent, {
       width: '400px',
       data: {
-        title: 'Edit house',
-        labelInput: 'New name',
-        placeholderInput: 'Ex. My new house',
+        title: this.translate.instant('DASHBOARD.HOUSES.EDIT_HOUSE_DIALOG.TITLE'),
+        labelInput: this.translate.instant('DASHBOARD.HOUSES.EDIT_HOUSE_DIALOG.LABEL_INPUT'),
+        placeholderInput: this.translate.instant('DASHBOARD.HOUSES.EDIT_HOUSE_DIALOG.PLACEHOLDER_INPUT'),
         action: (newName: string) => this.updateHouseName(newName)
       }
     });
@@ -103,8 +104,8 @@ export class ItemCardComponent {
     this.dialog.open(ConfirmModalComponent, {
       width: '400px',
       data: {
-        title: 'Delete house',
-        message: 'Are you sure you want to delete this house?',
+        title: this.translate.instant('DASHBOARD.HOUSES.DELETE_HOUSE_DIALOG.TITLE'),
+        message: this.translate.instant('DASHBOARD.HOUSES.DELETE_HOUSE_DIALOG.MESSAGE'),
         action: () => this.deleteHouse()
       }
     });
