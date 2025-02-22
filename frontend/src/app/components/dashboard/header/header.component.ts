@@ -2,10 +2,11 @@ import { Component, inject, Input } from '@angular/core';
 import { HouseStore } from '../../../store/house.store';
 import { CommonModule } from '@angular/common';
 import { ProductStore } from '../../../store/product.store';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-header',
-  imports: [CommonModule],
+  imports: [CommonModule, TranslatePipe],
   templateUrl: './header.component.html',
   styleUrl: './header.component.css'
 })

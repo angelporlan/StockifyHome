@@ -1,6 +1,6 @@
 <header>
     <img src="../../../../assets/icons/arrow.svg" (click)="goBack()">
     <h2>{{ title }}</h2>
-    <p>{{ houseStore.selectedHouse()?.name || 'Not house selected' }}</p>
+    <p>{{ houseStore.selectedHouse()?.name || ('DASHBOARD.TITLES.SELECTED_HOUSE' | translate) }}</p>
     <img *ngIf="houseStore.selectedHouse()?.name" src="../../../../assets/icons/close-square.svg" (click)="removeHouseSelected()" class="close-icon">
 </header>
