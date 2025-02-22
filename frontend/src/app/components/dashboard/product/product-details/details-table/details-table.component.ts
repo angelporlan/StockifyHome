@@ -8,10 +8,11 @@ import { MatDialog } from '@angular/material/dialog';
 import { ConfirmModalComponent } from '../../../../general/modals/confirm-modal/confirm-modal.component';
 import { catchError, tap, throwError } from 'rxjs';
 import { MatSnackBarService } from '../../../../../services/matSnackBar/mat-snack-bar.service';
+import { TranslatePipe, TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-details-table',
-  imports: [CommonModule, CounterComponent],
+  imports: [CommonModule, CounterComponent, TranslatePipe],
   templateUrl: './details-table.component.html',
   styleUrl: './details-table.component.css'
 })
@@ -26,7 +27,7 @@ export class DetailsTableComponent {
   isLoading: boolean[] = [];
   productStore = inject(ProductStore);
 
-  constructor(private productService: ProductService, private dialog: MatDialog, private matSnackBarService: MatSnackBarService) {}
+  constructor(private productService: ProductService, private dialog: MatDialog, private matSnackBarService: MatSnackBarService, private translate: TranslateService) {}
   
   ngOnInit(): void {
     console.log(this.details);
@@ -54,8 +55,8 @@ export class DetailsTableComponent {
     this.dialog.open(ConfirmModalComponent, {
       width: '400px',
       data: {
-        title: 'Delete detail',
-        message: '¿Are you sure you want to delete this detail?',
+        title: this.translate.instant('DASHBOARD.PRODUCT.PRODUCT_DETAILS.DETAILS_TABLE.DELETE_DETAIL_MODAL.TITLE'),
+        message: this.translate.instant('DASHBOARD.PRODUCT.PRODUCT_DETAILS.DETAILS_TABLE.DELETE_DETAIL_MODAL.MESSAGE'),
         action: () => this.deleteDetail(id)  
       }
     });
@@ -65,10 +66,10 @@ export class DetailsTableComponent {
     return this.productService.deleteProductDetail(id).pipe(
       tap(() => {
         this.productStore.deleteProductDetail(this.productId ? this.productId : 0, id);
-        this.matSnackBarService.showSuccess('Detail deleted correctly');
+        this.matSnackBarService.showSuccess(this.translate.instant('SNACKBAR.SUCCESS.PRODUCT_DETAILS_DELETED'));
       }),
       catchError((error) => {
-        this.matSnackBarService.showError('Error deleting detail');
+        this.matSnackBarService.showError(this.translate.instant('SNACKBAR.ERROR.PRODUCT_DETAILS_DELETE'));
         return throwError(() => error);
       })
     );
