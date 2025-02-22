@@ -5,6 +5,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { provideNativeDateAdapter } from '@angular/material/core';
 import { FormsModule } from '@angular/forms';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-default-input-date',
@@ -13,7 +14,7 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
     useExisting: forwardRef(() => DefaultInputDateComponent),
     multi: true,
   }],
-  imports: [MatFormFieldModule, MatInputModule, MatDatepickerModule, FormsModule],
+  imports: [MatFormFieldModule, MatInputModule, MatDatepickerModule, FormsModule, TranslatePipe],
   templateUrl: './default-input-date.component.html',
   styleUrls: ['./default-input-date.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,

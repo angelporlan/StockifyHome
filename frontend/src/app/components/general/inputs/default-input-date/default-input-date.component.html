@@ -1,5 +1,5 @@
 <mat-form-field class="width">
-    <mat-label>Choose a date</mat-label>
+    <mat-label>{{'DASHBOARD.PRODUCTS.PRODUCT_DETAILS_MODAL.DATE_INPUT.LABEL' | translate}}</mat-label>
     <input matInput [matDatepicker]="picker" [(ngModel)]="value" (ngModelChange)="onInputChange()">
     <mat-hint>MM/DD/YYYY</mat-hint>
     <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
