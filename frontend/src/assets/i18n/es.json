@@ -100,7 +100,8 @@
         "DETAILS_TABLE": {
           "HEADERS": {
             "DATE": "Fecha de caducidad",
-            "QUANTITY": "Cantidad"
+            "QUANTITY": "Cantidad",
+            "NO_DETAILS": "No se encontraron detalles de expiración para este producto"
           },
           "DELETE_DETAIL_MODAL": {
             "TITLE": "Eliminar fecha de caducidad",
