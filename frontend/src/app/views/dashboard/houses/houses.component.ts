@@ -50,11 +50,11 @@ export class HousesComponent {
     return this.houseService.createHouse({ name: newName }).pipe(
       tap((createdHouse: House) => {
         this.houseStore.addHouse(createdHouse);
-        this.matSnackBarService.showSuccess('House created successfully');
+        this.matSnackBarService.showSuccess(this.translate.instant('SNACKBARS.SUCCESS.HOUSE_ADDED'));
       }),
       catchError((error) => {
         console.log('Error creating house: ', error);
-        this.matSnackBarService.showError(error.error.error);
+        this.matSnackBarService.showError(this.translate.instant('SNACKBARS.ERROR.HOUSE_ADD'));
         return throwError(() => new Error('Error creating house'));
       })
     );
