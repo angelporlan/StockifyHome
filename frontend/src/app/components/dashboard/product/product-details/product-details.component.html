@@ -1,6 +1,6 @@
 <div class="title-button">
-    <app-title title="Details by expiration date"></app-title>
-    <app-action-button text="Add detail" [actionType]="'addProductDetail'" (click)="openDialog()"></app-action-button>
+    <app-title [title]="'DASHBOARD.PRODUCT.PRODUCT_DETAILS.TITLE' | translate"></app-title>
+    <app-action-button [text]="'DASHBOARD.PRODUCT.PRODUCT_DETAILS.BUTTON_TEXT' | translate" [actionType]="'addProductDetail'" (click)="openDialog()"></app-action-button>
 </div>
 
 <app-details-table [productId]="product?.id" [details]="product?.ProductDetails"></app-details-table>

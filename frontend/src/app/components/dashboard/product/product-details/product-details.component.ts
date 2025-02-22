@@ -6,10 +6,11 @@ import { DetailsTableComponent } from './details-table/details-table.component';
 import { ActionButtonComponent } from '../../action-button/action-button.component';
 import { MatDialog } from '@angular/material/dialog';
 import { ProductModalComponent } from '../../../general/modals/product-modal/product-modal.component';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-product-details',
-  imports: [TitleComponent, DetailsTableComponent, ActionButtonComponent],
+  imports: [TitleComponent, DetailsTableComponent, ActionButtonComponent, TranslatePipe],
   templateUrl: './product-details.component.html',
   styleUrl: './product-details.component.css'
 })
