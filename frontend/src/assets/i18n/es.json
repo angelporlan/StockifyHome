@@ -93,6 +93,20 @@
           "TITLE": "Eliminar producto",
           "MESSAGE": "¿Estás seguro de que deseas eliminar este producto?"
         }
+      },
+      "PRODUCT_DETAILS": {
+        "TITLE": "Detalles de expiración",
+        "BUTTON_TEXT": "Añadir fecha",
+        "DETAILS_TABLE": {
+          "HEADERS": {
+            "DATE": "Fecha de caducidad",
+            "QUANTITY": "Cantidad"
+          },
+          "DELETE_DETAIL_MODAL": {
+            "TITLE": "Eliminar fecha de caducidad",
+            "MESSAGE": "¿Estás seguro de que deseas eliminar esta fecha?"
+          }
+        }
       }
     }
   },
@@ -107,13 +121,15 @@
       "PRODUCT_ADDED": "Producto añadido correctamente",
       "PRODUCT_DETAILS_ADDED": "Detalles del producto añadidos correctamente",
       "PRODUCT_DELETED": "Producto eliminado correctamente",
-      "PRODUCT_UPDATED": "Producto actualizado correctamente"
+      "PRODUCT_UPDATED": "Producto actualizado correctamente",
+      "PRODUCT_DETAILS_DELETED": "Detalles del producto eliminados correctamente"
     },
     "ERROR": {
       "PRODUCT_ADD": "Error al añadir el producto",
       "PRODUCT_DETAILS_ADD": "Error al añadir los detalles del producto",
       "PRODUCT_DELETE": "Error al eliminar el producto",
-      "PRODUCT_UPDATE": "Error al actualizar el producto"
+      "PRODUCT_UPDATE": "Error al actualizar el producto",
+      "PRODUCT_DETAILS_DELETE": "Error al eliminar los detalles del producto"
     }
   }
 }
