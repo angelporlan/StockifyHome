@@ -11,16 +11,17 @@ import { MatSnackBarService } from '../../../../services/matSnackBar/mat-snack-b
 import { catchError, tap } from 'rxjs';
 import { ProductStore } from '../../../../store/product.store';
 import { ProductModalComponent } from '../product-modal/product-modal.component';
+import { TranslatePipe, TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-edit-product-modal',
-  imports: [MatDialogModule, DefaultInputComponent, DefaultSelectComponent, CommonModule, MatButton, LoaderModalComponent],
+  imports: [MatDialogModule, DefaultInputComponent, DefaultSelectComponent, CommonModule, MatButton, LoaderModalComponent, TranslatePipe],
   templateUrl: './edit-product-modal.component.html',
   styleUrl: './edit-product-modal.component.css'
 })
 export class EditProductModalComponent {
   id: number = 0;
-  title: string = 'Edit product';
+  title: string = this.translate.instant('DASHBOARD.PRODUCT.DETAILS.EDIT_MODAL.TITLE');
   // image: string = '';
   name: string = '';
   categoryId: number = 0;
@@ -57,6 +58,7 @@ export class EditProductModalComponent {
   ];
 
   constructor(private productService: ProductService,
+    private translate: TranslateService,
     private matSnackBarService: MatSnackBarService,
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {
@@ -79,12 +81,12 @@ export class EditProductModalComponent {
       tap(() => {
         this.isLoading = false;
         this.productStore.updateProduct(product);
-        this.matSnackBarService.showSuccess('Product updated successfully');
+        this.matSnackBarService.showSuccess(this.translate.instant('SNACKBARS.SUCCESS.PRODUCT_UPDATED'));
         this.dialogRef.close();
       }),
       catchError((error) => {
         this.isLoading = false;
-        this.matSnackBarService.showError(error.error.error);
+        this.matSnackBarService.showError(this.translate.instant('SNACKBARS.ERROR.PRODUCT_UPDATE'));
         throw error;
       })
     )
