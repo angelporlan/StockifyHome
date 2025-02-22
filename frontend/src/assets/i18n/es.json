@@ -46,9 +46,20 @@
     "PRODUCTS": {
       "PLACEHOLDER": "Buscar productos",
       "BUTTON_TEXT": "Añadir producto",
+      "PRODUCT_DETAILS_TITLE": "Crear detalles del producto",
       "PRODUCT_BOXES": {
         "SELECT_A_HOUSE": "Selecciona una casa para ver los productos",
         "NOT_HOUSES": "No se encontraron productos en esta casa, ¡intenta agregar uno!"
+      },
+      "PRODUCT_MODAL": {
+        "TITLE": "Añadir producto",
+        "NAME_INPUT": {
+            "LABEL": "Nombre",
+            "PLACEHOLDER": "Ej. Leche"
+        },
+        "CATEGORIES_SELECT": {
+            "LABEL": "Categoría"
+        }
       }
     }
   },
@@ -56,6 +67,16 @@
     "INPUT_MODAL": {
       "CANCEL": "Cancelar",
       "CONFIRM": "Confirmar"
+    }
+  },
+  "SNACKBARS": {
+    "SUCCESS": {
+      "PRODUCT_ADDED": "Producto añadido",
+      "PRODUCT_DETAILS_ADDED": "Detalles del producto añadidos"
+    },
+    "ERROR": {
+      "PRODUCT_ADD": "Error al añadir el producto",
+      "PRODUCT_DETAILS_ADD": "Error al añadir los detalles del producto"
     }
   }
 }
