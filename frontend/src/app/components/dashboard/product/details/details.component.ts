@@ -11,10 +11,11 @@ import { MatSnackBarService } from '../../../../services/matSnackBar/mat-snack-b
 import { ProductStore } from '../../../../store/product.store';
 import { catchError, tap, throwError } from 'rxjs';
 import { EditProductModalComponent } from '../../../general/modals/edit-product-modal/edit-product-modal.component';
+import { TranslatePipe, TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-details',
-  imports: [TitleComponent, ItemCardComponent, ActionButtonComponent],
+  imports: [TitleComponent, ItemCardComponent, ActionButtonComponent, TranslatePipe],
   templateUrl: './details.component.html',
   styleUrl: './details.component.css'
 })
@@ -36,7 +37,7 @@ export class DetailsComponent {
   }
   productStore = inject(ProductStore);
 
-  constructor(private dialog: MatDialog, private productService: ProductService, private router: Router, private matSnackBarService: MatSnackBarService) {}
+  constructor(private dialog: MatDialog, private productService: ProductService, private router: Router, private matSnackBarService: MatSnackBarService, private translate: TranslateService) {}
 
   ngOnInit(): void {
     this.validProduct();
@@ -53,8 +54,9 @@ export class DetailsComponent {
     this.dialog.open(ConfirmModalComponent, {
       width: '400px',
       data: {
-        title: 'Delete product',
-        message: 'Are you sure you want to delete this product?',
+        // title: 'Delete product',
+        title: this.translate.instant('DASHBOARD.PRODUCT.DETAILS.DELETE_MODAL.TITLE'),
+        message: this.translate.instant('DASHBOARD.PRODUCT.DETAILS.DELETE_MODAL.MESSAGE'),
         action: () => this.deleteProduct()  
       }
     });
@@ -77,10 +79,10 @@ export class DetailsComponent {
       tap(() => {
         this.productStore.deleteProduct(this.realProduct.id);
         this.router.navigate(['/dashboard/products']);
-        this.matSnackBarService.showSuccess('Producto eliminado correctamente');
+        this.matSnackBarService.showSuccess(this.translate.instant('SNACKBARS.SUCCESS.PRODUCT_DELETED'));
       }),
       catchError((error) => {
-        this.matSnackBarService.showError('Error al eliminar el producto');
+        this.matSnackBarService.showError(this.translate.instant('SNACKBARS.ERROR.PRODUCT_DELETE'));
         return throwError(() => error);
       })
     );
