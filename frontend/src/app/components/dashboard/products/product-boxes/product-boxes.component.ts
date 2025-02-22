@@ -5,7 +5,7 @@ import { CommonModule } from '@angular/common';
 import { TitleComponent } from '../../title/title.component';
 import { Product } from '../../../../interfaces/product';
 import { HouseStore } from '../../../../store/house.store';
-import { TranslatePipe, TranslateService } from '@ngx-translate/core';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-product-boxes',
@@ -15,9 +15,6 @@ import { TranslatePipe, TranslateService } from '@ngx-translate/core';
 })
 export class ProductBoxesComponent {
   productStore = inject(ProductStore);
-  text: string = this.translate.instant('DASHBOARD.PRODUCTS.PRODUCT_BOXES.NOT_HOUSES');
-
-  constructor(private translate: TranslateService) {}
 
   @Input() searchText: string = '';
   houseStore = inject(HouseStore);
