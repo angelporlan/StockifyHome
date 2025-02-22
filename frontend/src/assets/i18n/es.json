@@ -60,6 +60,16 @@
         "CATEGORIES_SELECT": {
             "LABEL": "Categoría"
         }
+      },
+      "PRODUCT_DETAILS_MODAL": {
+        "TITLE": "Detalles de caducidad",
+        "DATE_INPUT": {
+            "LABEL": "Fecha de caducidad"
+        },
+        "QUANTITY_INPUT": {
+            "LABEL": "Cantidad",
+            "PLACEHOLDER": "Ej. 1"
+        }
       }
     }
   },
