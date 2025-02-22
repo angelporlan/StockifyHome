@@ -73,6 +73,12 @@
       }
     },
     "PRODUCT": {
+      "NO_DATES": "No hay fecha de caducidad",
+      "EXPIRED": "Caducado",
+      "DAYS_AGO": "días atrás",
+      "DAYS_TO_EXPIRE": "días para caducar",
+      "EXPIRES_TODAY": "Caduca hoy",
+      "EXPIRES_TOMORROW": "Caduca mañana",
       "DETAILS": {
         "TITLE": "Detalles del producto",
         "BUTTONS": {
@@ -123,14 +129,20 @@
       "PRODUCT_DETAILS_ADDED": "Detalles del producto añadidos correctamente",
       "PRODUCT_DELETED": "Producto eliminado correctamente",
       "PRODUCT_UPDATED": "Producto actualizado correctamente",
-      "PRODUCT_DETAILS_DELETED": "Detalles del producto eliminados correctamente"
+      "PRODUCT_DETAILS_DELETED": "Detalles del producto eliminados correctamente",
+      "HOUSE_ADDED": "Casa añadida correctamente",
+      "HOUSE_UPDATED": "Casa actualizada correctamente",
+      "HOUSE_DELETED": "Casa eliminada correctamente"
     },
     "ERROR": {
       "PRODUCT_ADD": "Error al añadir el producto",
       "PRODUCT_DETAILS_ADD": "Error al añadir los detalles del producto",
       "PRODUCT_DELETE": "Error al eliminar el producto",
       "PRODUCT_UPDATE": "Error al actualizar el producto",
-      "PRODUCT_DETAILS_DELETE": "Error al eliminar los detalles del producto"
+      "PRODUCT_DETAILS_DELETE": "Error al eliminar los detalles del producto",
+      "HOUSE_ADD": "Error al añadir la casa",
+      "HOUSE_UPDATE": "Error al actualizar la casa",
+      "HOUSE_DELETE": "Error al eliminar"
     }
   }
 }
