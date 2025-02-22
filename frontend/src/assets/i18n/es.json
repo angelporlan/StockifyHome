@@ -71,6 +71,29 @@
             "PLACEHOLDER": "Ej. 1"
         }
       }
+    },
+    "PRODUCT": {
+      "DETAILS": {
+        "TITLE": "Detalles del producto",
+        "BUTTONS": {
+          "EDIT": "Editar",
+          "DELETE": "Eliminar"
+        },
+        "EDIT_MODAL": {
+          "TITLE": "Editar producto",
+          "NAME_INPUT": {
+            "LABEL": "Nombre",
+            "PLACEHOLDER": "Ej. Leche"
+          },
+          "CATEGORIES_SELECT": {
+            "LABEL": "Categoría"
+          }
+        },
+        "DELETE_MODAL": {
+          "TITLE": "Eliminar producto",
+          "MESSAGE": "¿Estás seguro de que deseas eliminar este producto?"
+        }
+      }
     }
   },
   "MODALS": {
@@ -81,12 +104,16 @@
   },
   "SNACKBARS": {
     "SUCCESS": {
-      "PRODUCT_ADDED": "Producto añadido",
-      "PRODUCT_DETAILS_ADDED": "Detalles del producto añadidos"
+      "PRODUCT_ADDED": "Producto añadido correctamente",
+      "PRODUCT_DETAILS_ADDED": "Detalles del producto añadidos correctamente",
+      "PRODUCT_DELETED": "Producto eliminado correctamente",
+      "PRODUCT_UPDATED": "Producto actualizado correctamente"
     },
     "ERROR": {
       "PRODUCT_ADD": "Error al añadir el producto",
-      "PRODUCT_DETAILS_ADD": "Error al añadir los detalles del producto"
+      "PRODUCT_DETAILS_ADD": "Error al añadir los detalles del producto",
+      "PRODUCT_DELETE": "Error al eliminar el producto",
+      "PRODUCT_UPDATE": "Error al actualizar el producto"
     }
   }
 }
