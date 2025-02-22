@@ -4,10 +4,11 @@ import { DefaultInputNumberComponent } from '../../../inputs/default-input-numbe
 import { MatIconModule } from '@angular/material/icon';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-product-details-modal',
-  imports: [DefaultInputDateComponent, DefaultInputNumberComponent, MatIconModule, CommonModule, FormsModule],
+  imports: [DefaultInputDateComponent, DefaultInputNumberComponent, MatIconModule, CommonModule, FormsModule, TranslatePipe],
   templateUrl: './product-details-modal.component.html',
   styleUrl: './product-details-modal.component.css'
 })

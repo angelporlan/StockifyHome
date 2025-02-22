@@ -1,5 +1,5 @@
 <div class="title-button">
-    <h3>Expiration details</h3>
+    <h3>{{'DASHBOARD.PRODUCTS.PRODUCT_DETAILS_MODAL.TITLE' | translate}}</h3>
     <button mat-icon-button (click)="addDetail()">
       <mat-icon>add</mat-icon>
     </button>
@@ -13,8 +13,8 @@
   
   
     <app-default-input-number 
-      label="Quantity" 
-      placeholder="Ex. 10" 
+      [label]="'DASHBOARD.PRODUCTS.PRODUCT_DETAILS_MODAL.QUANTITY_INPUT.LABEL' | translate" 
+      [placeholder]="'DASHBOARD.PRODUCTS.PRODUCT_DETAILS_MODAL.QUANTITY_INPUT.PLACEHOLDER' | translate" 
       [(ngModel)]="productDetails[i].quantity" 
       (ngModelChange)="onDetailChange(i, 'quantity', $event)">
     </app-default-input-number>
