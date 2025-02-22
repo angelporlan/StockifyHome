@@ -4,10 +4,11 @@ import { ActionButtonComponent } from "../../../components/dashboard/action-butt
 import { ProductBoxesComponent } from '../../../components/dashboard/products/product-boxes/product-boxes.component';
 import { ProductModalComponent } from '../../../components/general/modals/product-modal/product-modal.component';
 import { MatDialog } from '@angular/material/dialog';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-products',
-  imports: [InputSearchComponent, ActionButtonComponent, ProductBoxesComponent],
+  imports: [InputSearchComponent, ActionButtonComponent, ProductBoxesComponent, TranslatePipe],
   templateUrl: './products.component.html',
   styleUrl: './products.component.css'
 })
