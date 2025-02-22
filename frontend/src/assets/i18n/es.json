@@ -42,6 +42,14 @@
         "TITLE": "Eliminar casa",
         "MESSAGE": "¿Estás seguro de que quieres eliminar esta casa?"
       }
+    },
+    "PRODUCTS": {
+      "PLACEHOLDER": "Buscar productos",
+      "BUTTON_TEXT": "Añadir producto",
+      "PRODUCT_BOXES": {
+        "SELECT_A_HOUSE": "Selecciona una casa para ver los productos",
+        "NOT_HOUSES": "No se encontraron productos en esta casa, ¡intenta agregar uno!"
+      }
     }
   },
   "MODALS": {
