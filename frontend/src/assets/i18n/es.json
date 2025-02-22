@@ -28,6 +28,8 @@
     "HOUSES": {
       "PLACEHOLDER": "Buscar casas",
       "BUTTON_TEXT": "Añadir casa",
+      "HOUSE": "Casa",
+      "SELECTED": "seleccionada",
       "ADD_HOUSE_DIALOG": {
         "TITLE": "Añadir casa",
         "LABEL_INPUT": "Nueva casa",
