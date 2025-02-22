@@ -58,7 +58,7 @@ export class ItemCardComponent {
 
   getLatestProductDetailDate(): String {
     if (this.product.ProductDetails.length === 0) {
-      return 'No expiration date';
+      return this.translate.instant('DASHBOARD.PRODUCT.NO_DATES');
     }
     let latestDate = new Date(this.product.ProductDetails[0].expiration_date);
     this.product.ProductDetails.forEach((productDetail) => {
@@ -72,16 +72,21 @@ export class ItemCardComponent {
   
   getTheDaysToExpire(): string {
     if (this.product.ProductDetails.length === 0) {
-      return 'No expiration date';
+      return this.translate.instant('DASHBOARD.PRODUCT.NO_DATES');
     }
     let latestDate = new Date(this.product.ProductDetails[0].expiration_date);
     let today = new Date();
     let difference = latestDate.getTime() - today.getTime();
     let days = Math.ceil(difference / (1000 * 3600 * 24));
+    
     if (days < 0) {
-      return 'Expired ' + Math.abs(days) + ' days ago';
+      return `${this.translate.instant('DASHBOARD.PRODUCT.EXPIRED')} ${Math.abs(days)} ${this.translate.instant('DASHBOARD.PRODUCT.DAYS_AGO')}`;
+    } else if (days === 0) {
+      return this.translate.instant('DASHBOARD.PRODUCT.EXPIRES_TODAY');
+    } else if (days === 1) {
+      return this.translate.instant('DASHBOARD.PRODUCT.EXPIRES_TOMORROW');
     }
-    return days + ' days to expire';
+    return `${days} ${this.translate.instant('DASHBOARD.PRODUCT.DAYS_TO_EXPIRE')}`;
   }
 
   getAllQuantity(): number {
@@ -115,10 +120,10 @@ export class ItemCardComponent {
     return this.houseService.deleteHouse(this.house.id).pipe(
       tap(() => {
         this.houseStore.deleteHouse(this.house.id);
-        this.matSnackBarService.showSuccess('House deleted successfully');
+        this.matSnackBarService.showSuccess(this.translate.instant('SNACKBARS.SUCCESS.HOUSE_DELETED'));
       }),
       catchError((error) => {
-        this.matSnackBarService.showError('Error deleting house');
+        this.matSnackBarService.showError(this.translate.instant('SNACKBARS.ERROR.HOUSE_DELETE'));
         return throwError(() => error);
       }
     ));
@@ -128,10 +133,10 @@ export class ItemCardComponent {
     return this.houseService.updateHouse(this.house.id, { name: newName }).pipe(
       tap(() => {
         this.houseStore.updateHouse({ ...this.house, name: newName });
-        this.matSnackBarService.showSuccess('House updated successfully');
+        this.matSnackBarService.showSuccess(this.translate.instant('SNACKBARS.SUCCESS.HOUSE_UPDATED'));
       }),
       catchError((error) => {
-        this.matSnackBarService.showError('Error updating house');
+        this.matSnackBarService.showError(this.translate.instant('SNACKBARS.ERROR.HOUSE_UPDATE'));
         return throwError(() => error);
       })
     );
