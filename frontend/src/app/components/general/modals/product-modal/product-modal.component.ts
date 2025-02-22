@@ -10,16 +10,17 @@ import { ProductService } from '../../../../services/product/product.service';
 import { MatSnackBarService } from '../../../../services/matSnackBar/mat-snack-bar.service';
 import { ProductStore } from '../../../../store/product.store';
 import { LoaderModalComponent } from '../loader-modal/loader-modal.component';
+import { TranslatePipe, TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-product-modal',
-  imports: [MatDialogModule, DefaultInputComponent, DefaultSelectComponent, CommonModule, ProductDetailsModalComponent, MatButton, LoaderModalComponent],
+  imports: [MatDialogModule, DefaultInputComponent, DefaultSelectComponent, CommonModule, ProductDetailsModalComponent, MatButton, LoaderModalComponent, TranslatePipe],
   templateUrl: './product-modal.component.html',
   styleUrl: './product-modal.component.css'
 })
 export class ProductModalComponent {
   @Input() isProduct: boolean = true;
-  title: string = 'Create product';
+  title: string = this.translate.instant('DASHBOARD.PRODUCTS.PRODUCT_MODAL.TITLE');
   isLoading: boolean = false;
 
   expirationDetails: { date: string, quantity: number }[] = [];
@@ -60,6 +61,7 @@ export class ProductModalComponent {
 
   constructor(private productService: ProductService,
     private matSnackBarService: MatSnackBarService,
+    private translate: TranslateService,
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {
     this.isProduct = data?.isProduct ?? true;
@@ -67,7 +69,7 @@ export class ProductModalComponent {
 
   ngOnInit(): void {
     if (!this.isProduct) {
-      this.title = 'Create product details';
+      this.title = this.translate.instant('DASHBOARD.PRODUCTS.PRODUCT_DETAILS_TITLE');
     }    
   }
 
@@ -89,14 +91,14 @@ export class ProductModalComponent {
     this.productService.createProduct(product).subscribe(
       (response) => {
         console.log('response: ', response);
-        this.matSnackBarService.showSuccess('Product created successfully');
+        this.matSnackBarService.showSuccess(this.translate.instant('SNACKBARS.SUCCESS.PRODUCT_ADDED'));
         this.productStore.addProduct(response);
         this.isLoading = false;
         this.dialogRef.close();
       },
       (error) => {
         this.isLoading = false;
-        this.matSnackBarService.showError('Failed to create product: ' + error.error.error);
+        this.matSnackBarService.showError(this.translate.instant('SNACKBARS.ERROR.PRODUCT_ADD'));
       }
     );
   }
@@ -104,7 +106,6 @@ export class ProductModalComponent {
   createProductDetails() {
     this.isLoading = true;
     const productId = Number(window.location.href.split('/').pop());
-    console.log('productId: ', productId);
     const productDetails = this.details.map((detail) => ({
         expiration_date: detail.expiration_date,
         quantity: detail.quantity,
@@ -113,14 +114,14 @@ export class ProductModalComponent {
 
     this.productService.createProductDetail(productDetails).subscribe(
       (response) => {
-        this.matSnackBarService.showSuccess('Product details created successfully');
+        this.matSnackBarService.showSuccess(this.translate.instant('SNACKBARS.SUCCESS.PRODUCT_DETAILS_ADDED'));
         this.productStore.addProductDetail(productId, response);
         this.isLoading = false;
         this.dialogRef.close();
       },
       (error) => {
         this.isLoading = false;
-        this.matSnackBarService.showError('Failed to create product details: ' + error.error.error);
+        this.matSnackBarService.showError(this.translate.instant('SNACKBARS.ERROR.PRODUCT_DETAILS_ADD'));
       }
     );
 

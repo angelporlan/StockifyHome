@@ -1,13 +1,13 @@
 <h2 mat-dialog-title>{{ title }}</h2>
 <mat-dialog-content>
   <!-- <app-default-input-file *ngIf="isProduct" (imageSelected)="image = $event"></app-default-input-file> -->
-  <app-default-input *ngIf="isProduct" label="Name" placeholder="Ex. Potatoes" (inputValueChange)="name = $event"></app-default-input>
-  <app-default-select *ngIf="isProduct" label="Category" [options]="categories" (inputValueChange)="categoryId = $event"></app-default-select>
+  <app-default-input *ngIf="isProduct" [label]="'DASHBOARD.PRODUCTS.PRODUCT_MODAL.NAME_INPUT.LABEL' | translate" [placeholder]="'DASHBOARD.PRODUCTS.PRODUCT_MODAL.NAME_INPUT.PLACEHOLDER' | translate" (inputValueChange)="name = $event"></app-default-input>
+  <app-default-select *ngIf="isProduct" [label]="'DASHBOARD.PRODUCTS.PRODUCT_MODAL.CATEGORIES_SELECT.LABEL' | translate" [options]="categories" (inputValueChange)="categoryId = $event"></app-default-select>
   <app-product-details-modal (productDetailsChange)="details = $event"></app-product-details-modal>
 
 </mat-dialog-content>
 <mat-dialog-actions>
   <app-loader-modal *ngIf="isLoading"></app-loader-modal>
-  <button mat-button mat-dialog-close>Close</button>
-  <button mat-button (click)="isProduct? createProduct() : createProductDetails()">Save</button>
+  <button mat-button mat-dialog-close>{{'MODALS.INPUT_MODAL.CANCEL' | translate}}</button>
+  <button mat-button (click)="isProduct? createProduct() : createProductDetails()">{{'MODALS.INPUT_MODAL.CONFIRM' | translate}}</button>
 </mat-dialog-actions>
