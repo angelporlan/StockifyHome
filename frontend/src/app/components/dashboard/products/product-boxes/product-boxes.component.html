@@ -1,2 +1,2 @@
-<app-title [title]="!houseStore.selectedHouse()?.id ? 'Select one house to continue' : text" *ngIf="this.productStore.selectedProducts().length < 1"></app-title>
+<app-title [title]="!houseStore.selectedHouse()?.id ? ('DASHBOARD.PRODUCTS.PRODUCT_BOXES.SELECT_A_HOUSE' | translate) : text" *ngIf="this.productStore.selectedProducts().length < 1"></app-title>
 <app-item-card *ngFor="let product of filterProducts(this.productStore.selectedProducts())" [isProduct]="true" [product]="product"></app-item-card>

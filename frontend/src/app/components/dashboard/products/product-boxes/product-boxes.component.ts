@@ -5,16 +5,19 @@ import { CommonModule } from '@angular/common';
 import { TitleComponent } from '../../title/title.component';
 import { Product } from '../../../../interfaces/product';
 import { HouseStore } from '../../../../store/house.store';
+import { TranslatePipe, TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-product-boxes',
-  imports: [ItemCardComponent, CommonModule, TitleComponent],
+  imports: [ItemCardComponent, CommonModule, TitleComponent, TranslatePipe],
   templateUrl: './product-boxes.component.html',
   styleUrl: './product-boxes.component.css'
 })
 export class ProductBoxesComponent {
   productStore = inject(ProductStore);
-  text: string = 'Not products found in this house, try adding one!';
+  text: string = this.translate.instant('DASHBOARD.PRODUCTS.PRODUCT_BOXES.NOT_HOUSES');
+
+  constructor(private translate: TranslateService) {}
 
   @Input() searchText: string = '';
   houseStore = inject(HouseStore);
