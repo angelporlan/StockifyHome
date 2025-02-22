@@ -50,7 +50,7 @@ export class ItemCardComponent {
     if (!this.isProduct) {
       this.houseStore.setHouseSelected(this.house);
       this.router.navigate([`dashboard/products`]);
-      this.matSnackBarService.showSuccess(`House ${this.house.name} selected`);
+      this.matSnackBarService.showSuccess(`${this.translate.instant('DASHBOARD.HOUSES.HOUSE')} ${this.house.name} ${this.translate.instant('DASHBOARD.HOUSES.SELECTED')}`);
     } else {
       this.router.navigate([`dashboard/product/${this.product.id}`]);
     }
