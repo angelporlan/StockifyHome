@@ -146,5 +146,32 @@
       "HOUSE_UPDATE": "Error al actualizar la casa",
       "HOUSE_DELETE": "Error al eliminar"
     }
+  },
+  "CATEGORIES": {
+    "1": "Aceites, especias y salsas",
+    "2": "Agua y refrescos",
+    "3": "Snacks",
+    "4": "Arroz, legumbres y pasta",
+    "5": "Azúcar, caramelos y chocolate",
+    "6": "Bebé",
+    "7": "Bodega",
+    "8": "Cacao, café e infusiones",
+    "9": "Carne",
+    "10": "Cereales y galletas",
+    "11": "Charcutería y queso",
+    "12": "Congelados",
+    "13": "Conservas, caldos y cremas",
+    "14": "Cuidado capilar",
+    "15": "Cuidado facial y corporal",
+    "16": "Fitoterapia y farmacia",
+    "17": "Frutas y verduras",
+    "18": "Huevos, leche y mantequilla",
+    "19": "Limpieza y hogar",
+    "20": "Maquillaje",
+    "21": "Mariscos y pescado",
+    "22": "Mascotas",
+    "23": "Panadería y bollería",
+    "24": "Postres y yogures",
+    "25": "Zumos"
   }
 }
