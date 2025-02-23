@@ -43,8 +43,22 @@ export class ItemCardComponent {
     UserId: 0
   }
   private houseStore = inject(HouseStore);
+  categories: { id: number; name: string }[] = [];
 
   constructor(private matSnackBarService: MatSnackBarService, private router: Router, private dialog: MatDialog, private houseService: HouseService, private translate: TranslateService) { }
+
+  ngOnInit() {
+    this.translate.get('CATEGORIES').subscribe((translations: any) => {
+      this.categories = Object.keys(translations).map(id => ({
+        id: Number(id),
+        name: translations[id]
+      }));
+    });
+  }
+
+  getCategoryName() {
+    return this.categories.find(category => category.id === this.product.Category.id)?.name;
+  }
 
   onSelectItem() {
     if (!this.isProduct) {

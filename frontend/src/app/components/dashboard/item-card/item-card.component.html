@@ -4,14 +4,14 @@
         <img class="icons" src="../../../../assets/icons/trash.svg" alt="delete" (click)="openDeleteModal()">
     </div>
     <div class="image" (click)="onSelectItem()">
-        <img [src]="isProduct ? (product.image ? '../../../../assets/products/' + product.image : '../../../../assets/images/product.avif') : '../../../../assets/images/house.jpg'" 
+        <img [src]="isProduct ? (product.image ? '../../../../assets/products/' + product.image : '../../../../assets/categories_images/' + product.Category.id + '.webp') : '../../../../assets/images/house.jpg'" 
              [alt]="house.name || product.name">
     </div>
     <div class="content" (click)="onSelectItem()">
         <div class="left-zone">
             <p class="name">{{house.name || product.name}}</p>
             <p *ngIf="isProduct" class="expiration-date">{{ this.getTheDaysToExpire() }}</p>
-            <p *ngIf="isProduct" class="category">{{product.Category.name}}</p>
+            <p *ngIf="isProduct" class="category">{{getCategoryName()}}</p>
         </div>
         <div class="right-zone">
             <p *ngIf="isProduct" class="quantity">{{ getAllQuantity() }}</p>
