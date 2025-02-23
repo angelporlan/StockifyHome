@@ -134,7 +134,9 @@
       "PRODUCT_DETAILS_DELETED": "Detalles del producto eliminados correctamente",
       "HOUSE_ADDED": "Casa añadida correctamente",
       "HOUSE_UPDATED": "Casa actualizada correctamente",
-      "HOUSE_DELETED": "Casa eliminada correctamente"
+      "HOUSE_DELETED": "Casa eliminada correctamente",
+      "LOGIN": "Inicio de sesión exitoso",
+      "REGISTER": "Registro exitoso"
     },
     "ERROR": {
       "PRODUCT_ADD": "Error al añadir el producto",
@@ -144,7 +146,9 @@
       "PRODUCT_DETAILS_DELETE": "Error al eliminar los detalles del producto",
       "HOUSE_ADD": "Error al añadir la casa",
       "HOUSE_UPDATE": "Error al actualizar la casa",
-      "HOUSE_DELETE": "Error al eliminar"
+      "HOUSE_DELETE": "Error al eliminar",
+      "LOGIN": "Error al iniciar sesión",
+      "REGISTER": "Error al registrarse"
     }
   },
   "CATEGORIES": {
