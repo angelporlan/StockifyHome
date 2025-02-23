@@ -6,7 +6,12 @@
     "EMAIL": "Email",
     "CHANGE_PASSWORD": "Change password",
     "LOG_OUT": "Log out",
-    "LABEL_LANGUAGE_SELECT": "Change language"
+    "LABEL_LANGUAGE_SELECT": "Change language",
+    "CHANGE_PASSWORD_MODAL": {
+      "TITLE": "Change password",
+      "PASSWORD": "Password",
+      "NEW_PASSWORD_LABEL": "New password"
+    }
   },
   "SIDEBAR": {
     "DASHBOARD": "Dashboard",
@@ -136,7 +141,9 @@
       "HOUSE_UPDATED": "House updated successfully",
       "HOUSE_DELETED": "House deleted successfully",
       "LOGIN": "Login successful",
-      "REGISTER": "Registration successful"
+      "REGISTER": "Registration successful",
+      "PASSWORD_CHANGED": "Password changed successfully",
+      "PROFILE_UPDATED": "Profile updated successfully"
     },
     "ERROR": {
       "PRODUCT_ADD": "Error adding product",
@@ -148,7 +155,9 @@
       "HOUSE_UPDATE": "Error updating house",
       "HOUSE_DELETE": "Error deleting house",
       "LOGIN": "Login error",
-      "REGISTER": "Registration error"
+      "REGISTER": "Registration error",
+      "PASSWORD_CHANGE": "Error changing password",
+      "PROFILE_UPDATE": "Error updating profile"
     }
   },
   "CATEGORIES": {
