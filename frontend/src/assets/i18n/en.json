@@ -1,6 +1,6 @@
 {
   "PROFILE": {
-    "USERNAME": "KeepItUp",
+    "USERNAME": "Username",
     "CREATED_AT": "Created at",
     "UPDATED_AT": "Updated at",
     "EMAIL": "Email",
@@ -15,9 +15,167 @@
     "HOUSES": "Houses"
   },
   "DASHBOARD": {
+    "TITLES": {
+      "PRODUCTS": "Products",
+      "PRODUCT": "Product",
+      "PROFILE": "Profile",
+      "HOUSES": "Houses",
+      "GOOD_MORNING": "Good morning",
+      "GOOD_AFTERNOON": "Good afternoon",
+      "GOOD_EVENING": "Good evening",
+      "SELECTED_HOUSE": "No house selected"
+    },
     "HOUSES": {
-      "PLACEHOLDER": "Search for houses",
-      "BUTTON_TEXT": "Add house"
+      "PLACEHOLDER": "Search houses",
+      "BUTTON_TEXT": "Add house",
+      "HOUSE": "House",
+      "SELECTED": "selected",
+      "ADD_HOUSE_DIALOG": {
+        "TITLE": "Add house",
+        "LABEL_INPUT": "New house",
+        "PLACEHOLDER_INPUT": "E.g. Beach house"
+      },
+      "EDIT_HOUSE_DIALOG": {
+        "TITLE": "Edit house",
+        "LABEL_INPUT": "House to edit",
+        "PLACEHOLDER_INPUT": "E.g. Beach house"
+      },
+      "DELETE_HOUSE_DIALOG": {
+        "TITLE": "Delete house",
+        "MESSAGE": "Are you sure you want to delete this house?"
+      }
+    },
+    "PRODUCTS": {
+      "PLACEHOLDER": "Search products",
+      "BUTTON_TEXT": "Add product",
+      "PRODUCT_DETAILS_TITLE": "Create product details",
+      "PRODUCT_BOXES": {
+        "SELECT_A_HOUSE": "Select a house to view products",
+        "NOT_HOUSES": "No products found in this house, try adding one!"
+      },
+      "PRODUCT_MODAL": {
+        "TITLE": "Add product",
+        "NAME_INPUT": {
+            "LABEL": "Name",
+            "PLACEHOLDER": "E.g. Milk"
+        },
+        "CATEGORIES_SELECT": {
+            "LABEL": "Category"
+        }
+      },
+      "PRODUCT_DETAILS_MODAL": {
+        "TITLE": "Expiration details",
+        "DATE_INPUT": {
+            "LABEL": "Expiration date"
+        },
+        "QUANTITY_INPUT": {
+            "LABEL": "Quantity",
+            "PLACEHOLDER": "E.g. 1"
+        }
+      }
+    },
+    "PRODUCT": {
+      "NO_DATES": "No expiration date",
+      "EXPIRED": "Expired",
+      "DAYS_AGO": "days ago",
+      "DAYS_TO_EXPIRE": "days to expire",
+      "EXPIRES_TODAY": "Expires today",
+      "EXPIRES_TOMORROW": "Expires tomorrow",
+      "DETAILS": {
+        "TITLE": "Product details",
+        "BUTTONS": {
+          "EDIT": "Edit",
+          "DELETE": "Delete"
+        },
+        "EDIT_MODAL": {
+          "TITLE": "Edit product",
+          "NAME_INPUT": {
+            "LABEL": "Name",
+            "PLACEHOLDER": "E.g. Milk"
+          },
+          "CATEGORIES_SELECT": {
+            "LABEL": "Category"
+          }
+        },
+        "DELETE_MODAL": {
+          "TITLE": "Delete product",
+          "MESSAGE": "Are you sure you want to delete this product?"
+        }
+      },
+      "PRODUCT_DETAILS": {
+        "TITLE": "Expiration details",
+        "BUTTON_TEXT": "Add date",
+        "DETAILS_TABLE": {
+          "HEADERS": {
+            "DATE": "Expiration date",
+            "QUANTITY": "Quantity",
+            "NO_DETAILS": "No expiration details found for this product"
+          },
+          "DELETE_DETAIL_MODAL": {
+            "TITLE": "Delete expiration date",
+            "MESSAGE": "Are you sure you want to delete this date?"
+          }
+        }
+      }
     }
+  },
+  "MODALS": {
+    "INPUT_MODAL": {
+      "CANCEL": "Cancel",
+      "CONFIRM": "Confirm"
+    }
+  },
+  "SNACKBARS": {
+    "SUCCESS": {
+      "PRODUCT_ADDED": "Product added successfully",
+      "PRODUCT_DETAILS_ADDED": "Product details added successfully",
+      "PRODUCT_DELETED": "Product deleted successfully",
+      "PRODUCT_UPDATED": "Product updated successfully",
+      "PRODUCT_DETAILS_DELETED": "Product details deleted successfully",
+      "HOUSE_ADDED": "House added successfully",
+      "HOUSE_UPDATED": "House updated successfully",
+      "HOUSE_DELETED": "House deleted successfully",
+      "LOGIN": "Login successful",
+      "REGISTER": "Registration successful"
+    },
+    "ERROR": {
+      "PRODUCT_ADD": "Error adding product",
+      "PRODUCT_DETAILS_ADD": "Error adding product details",
+      "PRODUCT_DELETE": "Error deleting product",
+      "PRODUCT_UPDATE": "Error updating product",
+      "PRODUCT_DETAILS_DELETE": "Error deleting product details",
+      "HOUSE_ADD": "Error adding house",
+      "HOUSE_UPDATE": "Error updating house",
+      "HOUSE_DELETE": "Error deleting house",
+      "LOGIN": "Login error",
+      "REGISTER": "Registration error"
+    }
+  },
+  "CATEGORIES": {
+    "1": "Oils, spices, and sauces",
+    "2": "Water and soft drinks",
+    "3": "Snacks",
+    "4": "Rice, legumes, and pasta",
+    "5": "Sugar, candies, and chocolate",
+    "6": "Baby",
+    "7": "Winery",
+    "8": "Cocoa, coffee, and infusions",
+    "9": "Meat",
+    "10": "Cereals and cookies",
+    "11": "Deli and cheese",
+    "12": "Frozen foods",
+    "13": "Canned goods, broths, and soups",
+    "14": "Hair care",
+    "15": "Face and body care",
+    "16": "Herbal medicine and pharmacy",
+    "17": "Fruits and vegetables",
+    "18": "Eggs, milk, and butter",
+    "19": "Cleaning and home",
+    "20": "Makeup",
+    "21": "Seafood and fish",
+    "22": "Pets",
+    "23": "Bakery and pastries",
+    "24": "Desserts and yogurts",
+    "25": "Juices"
   }
 }
