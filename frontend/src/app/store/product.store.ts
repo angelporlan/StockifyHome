@@ -7,34 +7,6 @@ export interface ProductState {
 
 const storedData = JSON.parse(localStorage.getItem('stockifyHomeData') || '{}');
 
-const categories = [
-    { id: 1, name: "Oil, spices, and sauces" },
-    { id: 2, name: "Water and soft drinks" },
-    { id: 3, name: "Snacks" },
-    { id: 4, name: "Rice, legumes, and pasta" },
-    { id: 5, name: "Sugar, candies, and chocolate" },
-    { id: 6, name: "Baby" },
-    { id: 7, name: "Winery" },
-    { id: 8, name: "Cocoa, coffee, and infusions" },
-    { id: 9, name: "Meat" },
-    { id: 10, name: "Cereals and cookies" },
-    { id: 11, name: "Deli and cheese" },
-    { id: 12, name: "Frozen foods" },
-    { id: 13, name: "Preserves, broths, and creams" },
-    { id: 14, name: "Hair care" },
-    { id: 15, name: "Facial and body care" },
-    { id: 16, name: "Phytotherapy and pharmacy" },
-    { id: 17, name: "Fruits and vegetables" },
-    { id: 18, name: "Eggs, milk, and butter" },
-    { id: 19, name: "Cleaning and home" },
-    { id: 20, name: "Makeup" },
-    { id: 21, name: "Seafood and fish" },
-    { id: 22, name: "Pets" },
-    { id: 23, name: "Bakery and pastries" },
-    { id: 24, name: "Desserts and yogurts" },
-    { id: 25, name: "Juices" }
-  ];
-
 const initialState: ProductState = {
     selectedProducts: storedData.selectedProducts || []
 };
@@ -182,28 +154,27 @@ export const ProductStore = signalStore(
                 selectedProducts: updatedProducts,
             }));
         },
-        updateProduct: (product: any) => {
+        updateProduct: (product: any, translatedCategories: { id: number; name: string }[]) => {
             const stockifyHomeData = JSON.parse(localStorage.getItem('stockifyHomeData') || '{}');
         
+            const category = translatedCategories.find(c => c.id === product.category_id);
+            
             const updatedProducts = store.selectedProducts().map(p => {
                 if (p.id === product.id) {
-                    const category = categories.find(c => c.id === product.category_id);
-                    return { ...p, name: product.name, categoryId: product.category_id, Category: category || { id: 0, name: '' } };
+                    return { 
+                        ...p, 
+                        name: product.name, 
+                        categoryId: product.category_id, 
+                        Category: category || { id: 0, name: '' } 
+                    };
                 }
                 return p;
             });
         
-            const updatedData = {
-                ...stockifyHomeData,
-                selectedProducts: updatedProducts,
-            };
+            localStorage.setItem('stockifyHomeData', JSON.stringify({ ...stockifyHomeData, selectedProducts: updatedProducts }));
         
-            localStorage.setItem('stockifyHomeData', JSON.stringify(updatedData));
-        
-            patchState(store, {
-                selectedProducts: updatedProducts,
-            });
-        }
+            patchState(store, { selectedProducts: updatedProducts });
+        }        
         
     }))
 );
