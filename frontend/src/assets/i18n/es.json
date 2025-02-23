@@ -6,7 +6,12 @@
     "EMAIL": "Correo electrónico",
     "CHANGE_PASSWORD": "Cambiar contraseña",
     "LOG_OUT": "Cerrar sesión",
-    "LABEL_LANGUAGE_SELECT": "Cambiar idioma"
+    "LABEL_LANGUAGE_SELECT": "Cambiar idioma",
+    "CHANGE_PASSWORD_MODAL": {
+      "TITLE": "Cambiar contraseña",
+      "PASSWORD": "Contraseña",
+      "NEW_PASSWORD_LABEL": "Nueva contraseña"
+    }
   },
   "SIDEBAR": {
     "DASHBOARD": "Dashboard",
@@ -136,7 +141,9 @@
       "HOUSE_UPDATED": "Casa actualizada correctamente",
       "HOUSE_DELETED": "Casa eliminada correctamente",
       "LOGIN": "Inicio de sesión exitoso",
-      "REGISTER": "Registro exitoso"
+      "REGISTER": "Registro exitoso",
+      "PASSWORD_CHANGED": "Contraseña cambiada correctamente",
+      "PROFILE_UPDATED": "Perfil actualizado correctamente"
     },
     "ERROR": {
       "PRODUCT_ADD": "Error al añadir el producto",
@@ -148,7 +155,9 @@
       "HOUSE_UPDATE": "Error al actualizar la casa",
       "HOUSE_DELETE": "Error al eliminar",
       "LOGIN": "Error al iniciar sesión",
-      "REGISTER": "Error al registrarse"
+      "REGISTER": "Error al registrarse",
+      "PASSWORD_CHANGE": "Error al cambiar la contraseña",
+      "PROFILE_UPDATE": "Error al actualizar el perfil"
     }
   },
   "CATEGORIES": {
