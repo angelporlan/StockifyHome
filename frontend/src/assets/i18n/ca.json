@@ -1,0 +1,191 @@
+{
+    "PROFILE": {
+      "USERNAME": "Nom d'usuari",
+      "CREATED_AT": "Creat el",
+      "UPDATED_AT": "Actualitzat el",
+      "EMAIL": "Correu electrònic",
+      "CHANGE_PASSWORD": "Canviar contrasenya",
+      "LOG_OUT": "Tancar sessió",
+      "LABEL_LANGUAGE_SELECT": "Canviar idioma",
+      "CHANGE_PASSWORD_MODAL": {
+        "TITLE": "Canviar contrasenya",
+        "PASSWORD": "Contrasenya",
+        "NEW_PASSWORD_LABEL": "Nova contrasenya"
+      }
+    },
+    "SIDEBAR": {
+      "DASHBOARD": "Tauler",
+      "PROFILE": "Perfil",
+      "PRODUCTS": "Productes",
+      "HOUSES": "Cases"
+    },
+    "DASHBOARD": {
+      "TITLES": {
+        "PRODUCTS": "Productes",
+        "PRODUCT": "Producte",
+        "PROFILE": "Perfil",
+        "HOUSES": "Cases",
+        "GOOD_MORNING": "Bon dia",
+        "GOOD_AFTERNOON": "Bona tarda",
+        "GOOD_EVENING": "Bona nit",
+        "SELECTED_HOUSE": "Cap casa seleccionada"
+      },
+      "HOUSES": {
+        "PLACEHOLDER": "Cercar cases",
+        "BUTTON_TEXT": "Afegir casa",
+        "HOUSE": "Casa",
+        "SELECTED": "seleccionada",
+        "ADD_HOUSE_DIALOG": {
+          "TITLE": "Afegir casa",
+          "LABEL_INPUT": "Nova casa",
+          "PLACEHOLDER_INPUT": "Ex. Casa de la platja"
+        },
+        "EDIT_HOUSE_DIALOG": {
+          "TITLE": "Editar casa",
+          "LABEL_INPUT": "Casa a editar",
+          "PLACEHOLDER_INPUT": "Ex. Casa de la platja"
+        },
+        "DELETE_HOUSE_DIALOG": {
+          "TITLE": "Eliminar casa",
+          "MESSAGE": "Estàs segur que vols eliminar aquesta casa?"
+        }
+      },
+      "PRODUCTS": {
+        "PLACEHOLDER": "Cercar productes",
+        "BUTTON_TEXT": "Afegir producte",
+        "PRODUCT_DETAILS_TITLE": "Crear detalls del producte",
+        "PRODUCT_BOXES": {
+          "SELECT_A_HOUSE": "Selecciona una casa per veure els productes",
+          "NOT_HOUSES": "No s'han trobat productes en aquesta casa, prova d'afegir-ne un!"
+        },
+        "PRODUCT_MODAL": {
+          "TITLE": "Afegir producte",
+          "NAME_INPUT": {
+            "LABEL": "Nom",
+            "PLACEHOLDER": "Ex. Llet"
+          },
+          "CATEGORIES_SELECT": {
+            "LABEL": "Categoria"
+          }
+        },
+        "PRODUCT_DETAILS_MODAL": {
+          "TITLE": "Detalls de caducitat",
+          "DATE_INPUT": {
+            "LABEL": "Data de caducitat"
+          },
+          "QUANTITY_INPUT": {
+            "LABEL": "Quantitat",
+            "PLACEHOLDER": "Ex. 1"
+          }
+        }
+      },
+      "PRODUCT": {
+        "NO_DATES": "No hi ha data de caducitat",
+        "EXPIRED": "Caducat",
+        "DAYS_AGO": "dies enrere",
+        "DAYS_TO_EXPIRE": "dies per caducar",
+        "EXPIRES_TODAY": "Caduca avui",
+        "EXPIRES_TOMORROW": "Caduca demà",
+        "DETAILS": {
+          "TITLE": "Detalls del producte",
+          "BUTTONS": {
+            "EDIT": "Editar",
+            "DELETE": "Eliminar"
+          },
+          "EDIT_MODAL": {
+            "TITLE": "Editar producte",
+            "NAME_INPUT": {
+              "LABEL": "Nom",
+              "PLACEHOLDER": "Ex. Llet"
+            },
+            "CATEGORIES_SELECT": {
+              "LABEL": "Categoria"
+            }
+          },
+          "DELETE_MODAL": {
+            "TITLE": "Eliminar producte",
+            "MESSAGE": "Estàs segur que vols eliminar aquest producte?"
+          }
+        },
+        "PRODUCT_DETAILS": {
+          "TITLE": "Detalls de caducitat",
+          "BUTTON_TEXT": "Afegir data",
+          "DETAILS_TABLE": {
+            "HEADERS": {
+              "DATE": "Data de caducitat",
+              "QUANTITY": "Quantitat",
+              "NO_DETAILS": "No s'han trobat detalls de caducitat per aquest producte"
+            },
+            "DELETE_DETAIL_MODAL": {
+              "TITLE": "Eliminar data de caducitat",
+              "MESSAGE": "Estàs segur que vols eliminar aquesta data?"
+            }
+          }
+        }
+      }
+    },
+    "MODALS": {
+      "INPUT_MODAL": {
+        "CANCEL": "Cancel·lar",
+        "CONFIRM": "Confirmar"
+      }
+    },
+    "SNACKBARS": {
+      "SUCCESS": {
+        "PRODUCT_ADDED": "Producte afegit correctament",
+        "PRODUCT_DETAILS_ADDED": "Detalls del producte afegits correctament",
+        "PRODUCT_DELETED": "Producte eliminat correctament",
+        "PRODUCT_UPDATED": "Producte actualitzat correctament",
+        "PRODUCT_DETAILS_DELETED": "Detalls del producte eliminats correctament",
+        "HOUSE_ADDED": "Casa afegida correctament",
+        "HOUSE_UPDATED": "Casa actualitzada correctament",
+        "HOUSE_DELETED": "Casa eliminada correctament",
+        "LOGIN": "Inici de sessió reeixit",
+        "REGISTER": "Registre reeixit",
+        "PASSWORD_CHANGED": "Contrasenya canviada correctament",
+        "PROFILE_UPDATED": "Perfil actualitzat correctament"
+      },
+      "ERROR": {
+        "PRODUCT_ADD": "Error en afegir el producte",
+        "PRODUCT_DETAILS_ADD": "Error en afegir els detalls del producte",
+        "PRODUCT_DELETE": "Error en eliminar el producte",
+        "PRODUCT_UPDATE": "Error en actualitzar el producte",
+        "PRODUCT_DETAILS_DELETE": "Error en eliminar els detalls del producte",
+        "HOUSE_ADD": "Error en afegir la casa",
+        "HOUSE_UPDATE": "Error en actualitzar la casa",
+        "HOUSE_DELETE": "Error en eliminar",
+        "LOGIN": "Error en iniciar sessió",
+        "REGISTER": "Error en registrar-se",
+        "PASSWORD_CHANGE": "Error en canviar la contrasenya",
+        "PROFILE_UPDATE": "Error en actualitzar el perfil"
+      }
+    },
+    "CATEGORIES": {
+      "1": "Olis, espècies i salses",
+      "2": "Aigua i refrescos",
+      "3": "Aperitius",
+      "4": "Arròs, llegums i pasta",
+      "5": "Sucre, llaminadures i xocolata",
+      "6": "Nadó",
+      "7": "Bodega",
+      "8": "Cacau, cafè i infusions",
+      "9": "Carn",
+      "10": "Cereals i galetes",
+      "11": "Embotits i formatge",
+      "12": "Congelats",
+      "13": "Conserves, brous i cremes",
+      "14": "Cura capil·lar",
+      "15": "Cura facial i corporal",
+      "16": "Fitoteràpia i farmàcia",
+      "17": "Fruites i verdures",
+      "18": "Ous, llet i mantega",
+      "19": "Neteja i llar",
+      "20": "Maquillatge",
+      "21": "Marisc i peix",
+      "22": "Mascotes",
+      "23": "Forn i pastisseria",
+      "24": "Postres i iogurts",
+      "25": "Sucs"
+    }
+  }
+  
