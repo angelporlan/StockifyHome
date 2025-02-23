@@ -27,6 +27,7 @@ export class ProfileComponent {
 
   changeLanguage(lang: any): void {
     console.log(lang);
+    this.authStore.updateLanguagePreference(lang);
     this.translate.setDefaultLang(lang);
     this.translate.use(lang);
   }
