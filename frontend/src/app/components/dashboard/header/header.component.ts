@@ -3,6 +3,7 @@ import { HouseStore } from '../../../store/house.store';
 import { CommonModule } from '@angular/common';
 import { ProductStore } from '../../../store/product.store';
 import { TranslatePipe } from '@ngx-translate/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -16,7 +17,7 @@ export class HeaderComponent {
   public houseStore = inject(HouseStore);
   public productStore = inject(ProductStore);
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -28,5 +29,6 @@ export class HeaderComponent {
   removeHouseSelected(): void {
     this.houseStore.deleteHouseSelected();
     this.productStore.deleteProducts();
+    this.router.navigate(['/dashboard/houses']);
   }
 }
