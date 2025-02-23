@@ -40,9 +40,9 @@ export class ProfileComponent {
     this.dialog.open(InputModalComponent, {
       width: '400px',
       data: {
-        title: 'Change password',
-        labelInput: 'Password',
-        placeholderInput: 'Enter your new password',
+        title: this.translate.instant('PROFILE.CHANGE_PASSWORD_MODAL.TITLE'),
+        labelInput: this.translate.instant('PROFILE.CHANGE_PASSWORD_MODAL.PASSWORD'),
+        placeholderInput: this.translate.instant('PROFILE.CHANGE_PASSWORD_MODAL.NEW_PASSWORD_LABEL'),
         action: (newPassword: string) => this.updateProfile(newPassword)
       }
     });
@@ -52,11 +52,11 @@ export class ProfileComponent {
     return this.authService.updateProfile(undefined, undefined, newPassword).pipe(
       tap(() => {
         this.authService.updateProfile(newPassword);
-        this.matSnackBarService.showSuccess('Profile updated successfully');
+        this.matSnackBarService.showSuccess(this.translate.instant('SNACKBARS.SUCCESS.PROFILE_UPDATED'));
       }),
       catchError((error) => {
-        this.matSnackBarService.showError(error.error.error);
-        return throwError(() => new Error('Error updating profile'));
+        this.matSnackBarService.showError(this.translate.instant('SNACKBARS.ERROR.PROFILE_UPDATE'));
+        return throwError(() => new Error(error));
       })
     );
   }
