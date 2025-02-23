@@ -14,5 +14,5 @@
         <button (click)="openDialog()">{{ "PROFILE.CHANGE_PASSWORD" | translate }}</button>
         <button (click)="closeSession()">{{ "PROFILE.LOG_OUT" | translate }}</button>
     </div>
-    <app-default-select [label]="'PROFILE.LABEL_LANGUAGE_SELECT' | translate" [options]="this.languages" (inputValueChange)="changeLanguage($event)"></app-default-select>
+    <app-default-select [label]="'PROFILE.LABEL_LANGUAGE_SELECT' | translate" [options]="this.languages" [value]="this.authStore.languagePreference()" (inputValueChange)="changeLanguage($event)"></app-default-select>
 </div>
