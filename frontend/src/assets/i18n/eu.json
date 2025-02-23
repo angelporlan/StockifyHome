@@ -1,0 +1,191 @@
+{
+    "PROFILE": {
+      "USERNAME": "Erabiltzaile izena",
+      "CREATED_AT": "Sortuta",
+      "UPDATED_AT": "Eguneratuta",
+      "EMAIL": "E-posta",
+      "CHANGE_PASSWORD": "Pasahitza aldatu",
+      "LOG_OUT": "Saioa itxi",
+      "LABEL_LANGUAGE_SELECT": "Hizkuntza aldatu",
+      "CHANGE_PASSWORD_MODAL": {
+        "TITLE": "Pasahitza aldatu",
+        "PASSWORD": "Pasahitza",
+        "NEW_PASSWORD_LABEL": "Pasahitz berria"
+      }
+    },
+    "SIDEBAR": {
+      "DASHBOARD": "Aginte-panela",
+      "PROFILE": "Profila",
+      "PRODUCTS": "Produktuak",
+      "HOUSES": "Etxeak"
+    },
+    "DASHBOARD": {
+      "TITLES": {
+        "PRODUCTS": "Produktuak",
+        "PRODUCT": "Produktua",
+        "PROFILE": "Profila",
+        "HOUSES": "Etxeak",
+        "GOOD_MORNING": "Egun on",
+        "GOOD_AFTERNOON": "Arratsalde on",
+        "GOOD_EVENING": "Gabon",
+        "SELECTED_HOUSE": "Etxerik ez hautatuta"
+      },
+      "HOUSES": {
+        "PLACEHOLDER": "Etxeak bilatu",
+        "BUTTON_TEXT": "Etxea gehitu",
+        "HOUSE": "Etxea",
+        "SELECTED": "hautatuta",
+        "ADD_HOUSE_DIALOG": {
+          "TITLE": "Etxea gehitu",
+          "LABEL_INPUT": "Etxe berria",
+          "PLACEHOLDER_INPUT": "Adib. Hondartzako etxea"
+        },
+        "EDIT_HOUSE_DIALOG": {
+          "TITLE": "Etxea editatu",
+          "LABEL_INPUT": "Editatu nahi den etxea",
+          "PLACEHOLDER_INPUT": "Adib. Hondartzako etxea"
+        },
+        "DELETE_HOUSE_DIALOG": {
+          "TITLE": "Etxea ezabatu",
+          "MESSAGE": "Ziur zaude etxe hau ezabatu nahi duzula?"
+        }
+      },
+      "PRODUCTS": {
+        "PLACEHOLDER": "Produktuak bilatu",
+        "BUTTON_TEXT": "Produktua gehitu",
+        "PRODUCT_DETAILS_TITLE": "Produktuaren xehetasunak sortu",
+        "PRODUCT_BOXES": {
+          "SELECT_A_HOUSE": "Etxe bat hautatu produktuak ikusteko",
+          "NOT_HOUSES": "Ez da produkturik aurkitu etxe honetan, saiatu bat gehitzeko!"
+        },
+        "PRODUCT_MODAL": {
+          "TITLE": "Produktua gehitu",
+          "NAME_INPUT": {
+            "LABEL": "Izena",
+            "PLACEHOLDER": "Adib. Esnea"
+          },
+          "CATEGORIES_SELECT": {
+            "LABEL": "Kategoria"
+          }
+        },
+        "PRODUCT_DETAILS_MODAL": {
+          "TITLE": "Iraungitze xehetasunak",
+          "DATE_INPUT": {
+            "LABEL": "Iraungitze data"
+          },
+          "QUANTITY_INPUT": {
+            "LABEL": "Kantitatea",
+            "PLACEHOLDER": "Adib. 1"
+          }
+        }
+      },
+      "PRODUCT": {
+        "NO_DATES": "Ez dago iraungitze datarik",
+        "EXPIRED": "Iraungita",
+        "DAYS_AGO": "egun lehenago",
+        "DAYS_TO_EXPIRE": "egunera iraungi",
+        "EXPIRES_TODAY": "Gaur iraungi",
+        "EXPIRES_TOMORROW": "Bihar iraungi",
+        "DETAILS": {
+          "TITLE": "Produktuaren xehetasunak",
+          "BUTTONS": {
+            "EDIT": "Editatu",
+            "DELETE": "Ezabatu"
+          },
+          "EDIT_MODAL": {
+            "TITLE": "Produktua editatu",
+            "NAME_INPUT": {
+              "LABEL": "Izena",
+              "PLACEHOLDER": "Adib. Esnea"
+            },
+            "CATEGORIES_SELECT": {
+              "LABEL": "Kategoria"
+            }
+          },
+          "DELETE_MODAL": {
+            "TITLE": "Produktua ezabatu",
+            "MESSAGE": "Ziur zaude produktu hau ezabatu nahi duzula?"
+          }
+        },
+        "PRODUCT_DETAILS": {
+          "TITLE": "Iraungitze xehetasunak",
+          "BUTTON_TEXT": "Data gehitu",
+          "DETAILS_TABLE": {
+            "HEADERS": {
+              "DATE": "Iraungitze data",
+              "QUANTITY": "Kantitatea",
+              "NO_DETAILS": "Ez da produktu honen iraungitze xehetasunik aurkitu"
+            },
+            "DELETE_DETAIL_MODAL": {
+              "TITLE": "Iraungitze data ezabatu",
+              "MESSAGE": "Ziur zaude data hau ezabatu nahi duzula?"
+            }
+          }
+        }
+      }
+    },
+    "MODALS": {
+      "INPUT_MODAL": {
+        "CANCEL": "Utzi",
+        "CONFIRM": "Berretsi"
+      }
+    },
+    "SNACKBARS": {
+      "SUCCESS": {
+        "PRODUCT_ADDED": "Produktua behar bezala gehitu da",
+        "PRODUCT_DETAILS_ADDED": "Produktuaren xehetasunak behar bezala gehitu dira",
+        "PRODUCT_DELETED": "Produktua behar bezala ezabatu da",
+        "PRODUCT_UPDATED": "Produktua behar bezala eguneratu da",
+        "PRODUCT_DETAILS_DELETED": "Produktuaren xehetasunak behar bezala ezabatu dira",
+        "HOUSE_ADDED": "Etxea behar bezala gehitu da",
+        "HOUSE_UPDATED": "Etxea behar bezala eguneratu da",
+        "HOUSE_DELETED": "Etxea behar bezala ezabatu da",
+        "LOGIN": "Sarrera arrakastatsua",
+        "REGISTER": "Erregistro arrakastatsua",
+        "PASSWORD_CHANGED": "Pasahitza behar bezala aldatu da",
+        "PROFILE_UPDATED": "Profila behar bezala eguneratu da"
+      },
+      "ERROR": {
+        "PRODUCT_ADD": "Errorea produktua gehitzean",
+        "PRODUCT_DETAILS_ADD": "Errorea produktuaren xehetasunak gehitzean",
+        "PRODUCT_DELETE": "Errorea produktua ezabatzean",
+        "PRODUCT_UPDATE": "Errorea produktua eguneratzean",
+        "PRODUCT_DETAILS_DELETE": "Errorea produktuaren xehetasunak ezabatzean",
+        "HOUSE_ADD": "Errorea etxea gehitzean",
+        "HOUSE_UPDATE": "Errorea etxea eguneratzean",
+        "HOUSE_DELETE": "Errorea ezabatzean",
+        "LOGIN": "Errorea saioa hastean",
+        "REGISTER": "Errorea erregistratzean",
+        "PASSWORD_CHANGE": "Errorea pasahitza aldatzean",
+        "PROFILE_UPDATE": "Errorea profila eguneratzean"
+      }
+    },
+    "CATEGORIES": {
+      "1": "Oliobak, espezia eta saltsak",
+      "2": "Ur eta edari freskagarriak",
+      "3": "Aperitiboak",
+      "4": "Arroz, lekale eta pasta",
+      "5": "Azukrea, gozokiak eta txokolatea",
+      "6": "Haurra",
+      "7": "Upeltegia",
+      "8": "Kakaoa, kafea eta infusioak",
+      "9": "Haragia",
+      "10": "Zerealak eta gailetak",
+      "11": "Txarcuteria eta gazta",
+      "12": "Izozkiak",
+      "13": "Kontserbak, saltsak eta kremak",
+      "14": "Ilearen zaintza",
+      "15": "Aurpegiko eta gorputzeko zaintza",
+      "16": "Fitoterapia eta farmazia",
+      "17": "Fruitu eta barazkiak",
+      "18": "Arrautzak, esnea eta gurina",
+      "19": "Garbiketa eta etxea",
+      "20": "Makillajea",
+      "21": "Itsaskiak eta arraina",
+      "22": "Maskotak",
+      "23": "Okindegia eta gozogintza",
+      "24": "Postreak eta jogurtak",
+      "25": "Zukuak"
+    }
+  }
+  
