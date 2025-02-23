@@ -20,7 +20,9 @@ export class ProfileComponent {
 
   languages = [
     { id: 'en', name: 'English' },
-    { id: 'es', name: 'Español' }
+    { id: 'es', name: 'Español' },
+    { id: 'ca', name: 'Català' },
+    { id: 'eu', name: 'Euskara' },
   ];
 
   constructor(private router: Router, public dialog: MatDialog, private authService: AuthService, private matSnackBarService: MatSnackBarService, private translate: TranslateService) {}
