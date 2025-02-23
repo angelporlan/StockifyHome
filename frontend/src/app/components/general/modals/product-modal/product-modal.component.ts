@@ -24,34 +24,34 @@ export class ProductModalComponent {
   isLoading: boolean = false;
 
   expirationDetails: { date: string, quantity: number }[] = [];
-  categories = [
-    { id: 1, name: "Oil, spices, and sauces" },
-    { id: 2, name: "Water and soft drinks" },
-    { id: 3, name: "Snacks" },
-    { id: 4, name: "Rice, legumes, and pasta" },
-    { id: 5, name: "Sugar, candies, and chocolate" },
-    { id: 6, name: "Baby" },
-    { id: 7, name: "Winery" },
-    { id: 8, name: "Cocoa, coffee, and infusions" },
-    { id: 9, name: "Meat" },
-    { id: 10, name: "Cereals and cookies" },
-    { id: 11, name: "Deli and cheese" },
-    { id: 12, name: "Frozen foods" },
-    { id: 13, name: "Preserves, broths, and creams" },
-    { id: 14, name: "Hair care" },
-    { id: 15, name: "Facial and body care" },
-    { id: 16, name: "Phytotherapy and pharmacy" },
-    { id: 17, name: "Fruits and vegetables" },
-    { id: 18, name: "Eggs, milk, and butter" },
-    { id: 19, name: "Cleaning and home" },
-    { id: 20, name: "Makeup" },
-    { id: 21, name: "Seafood and fish" },
-    { id: 22, name: "Pets" },
-    { id: 23, name: "Bakery and pastries" },
-    { id: 24, name: "Desserts and yogurts" },
-    { id: 25, name: "Juices" }
-  ];
-
+  // categories = [
+  //   { id: 1, name: "Oil, spices, and sauces" },
+  //   { id: 2, name: "Water and soft drinks" },
+  //   { id: 3, name: "Snacks" },
+  //   { id: 4, name: "Rice, legumes, and pasta" },
+  //   { id: 5, name: "Sugar, candies, and chocolate" },
+  //   { id: 6, name: "Baby" },
+  //   { id: 7, name: "Winery" },
+  //   { id: 8, name: "Cocoa, coffee, and infusions" },
+  //   { id: 9, name: "Meat" },
+  //   { id: 10, name: "Cereals and cookies" },
+  //   { id: 11, name: "Deli and cheese" },
+  //   { id: 12, name: "Frozen foods" },
+  //   { id: 13, name: "Preserves, broths, and creams" },
+  //   { id: 14, name: "Hair care" },
+  //   { id: 15, name: "Facial and body care" },
+  //   { id: 16, name: "Phytotherapy and pharmacy" },
+  //   { id: 17, name: "Fruits and vegetables" },
+  //   { id: 18, name: "Eggs, milk, and butter" },
+  //   { id: 19, name: "Cleaning and home" },
+  //   { id: 20, name: "Makeup" },
+  //   { id: 21, name: "Seafood and fish" },
+  //   { id: 22, name: "Pets" },
+  //   { id: 23, name: "Bakery and pastries" },
+  //   { id: 24, name: "Desserts and yogurts" },
+  //   { id: 25, name: "Juices" }
+  // ];
+  categories: { id: number; name: string }[] = [];
   name: string = '';
   categoryId: number = 0;
   image: string = '';
@@ -70,7 +70,14 @@ export class ProductModalComponent {
   ngOnInit(): void {
     if (!this.isProduct) {
       this.title = this.translate.instant('DASHBOARD.PRODUCTS.PRODUCT_DETAILS_TITLE');
-    }    
+    }
+        
+    this.translate.get('CATEGORIES').subscribe((translations: any) => {
+      this.categories = Object.keys(translations).map(id => ({
+        id: Number(id),
+        name: translations[id]
+      }));
+    });
   }
 
   createProduct() {
