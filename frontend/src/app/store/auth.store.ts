@@ -7,6 +7,7 @@ export interface AuthState {
   createdAt: string;
   updatedAt: string;
   token: string;
+  languagePreference: string;
 }
 
 const storedData = JSON.parse(localStorage.getItem('stockifyHomeData') || '{}');
@@ -18,6 +19,7 @@ const initialState: AuthState = {
   username: storedData.username || '',
   createdAt: storedData.createdAt || '',
   updatedAt: storedData.updatedAt || '',
+  languagePreference: storedData.languagePreference || 'es',
 };
 
 export const AuthStore = signalStore(
@@ -32,6 +34,7 @@ export const AuthStore = signalStore(
         username: '',
         createdAt: '',
         updatedAt: '',
+        languagePreference: 'es',
       }
 
       localStorage.removeItem('stockifyHomeData');
@@ -41,13 +44,13 @@ export const AuthStore = signalStore(
       }));
     },
     setProfile: (profile: any) => {
-      
       const stockifyHomeData = JSON.parse(localStorage.getItem('stockifyHomeData') || '{}');
       stockifyHomeData.id = profile.id;
       stockifyHomeData.email = profile.email;
       stockifyHomeData.username = profile.username;
       stockifyHomeData.createdAt = profile.createdAt;
       stockifyHomeData.updatedAt = profile.updatedAt;
+      stockifyHomeData.languagePreference = profile.languagePreference || 'es';
       localStorage.setItem('stockifyHomeData', JSON.stringify(stockifyHomeData));
 
       patchState(store, (state) => ({
@@ -56,6 +59,7 @@ export const AuthStore = signalStore(
         username: profile.username,
         createdAt: profile.createdAt,
         updatedAt: profile.updatedAt,
+        languagePreference: profile.languagePreference || 'es',
       }));
     },
     deleteToken: () => {
@@ -67,7 +71,17 @@ export const AuthStore = signalStore(
             username: '',
             createdAt: '',
             updatedAt: '',
+            languagePreference: 'es',
         }));
+    },
+    updateLanguagePreference: (language: string) => {
+      const stockifyHomeData = JSON.parse(localStorage.getItem('stockifyHomeData') || '{}');
+      stockifyHomeData.languagePreference = language;
+      localStorage.setItem('stockifyHomeData', JSON.stringify(stockifyHomeData));
+
+      patchState(store, (state) => ({
+        languagePreference: language,
+      }));
     },
   }))
 );
