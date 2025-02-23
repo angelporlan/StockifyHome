@@ -6,6 +6,7 @@ import { AuthService } from '../../services/auth/auth.service';
 import { AuthStore } from '../../store/auth.store';
 import { MatSnackBarService } from '../../services/matSnackBar/mat-snack-bar.service';
 import { LoaderModalComponent } from '../../components/general/modals/loader-modal/loader-modal.component';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-auth',
@@ -23,7 +24,7 @@ export class AuthComponent {
   authStore = inject(AuthStore);
   submitText = this.getSubmitText();
 
-  constructor(private router: Router, private authService: AuthService, private matSnackBarService: MatSnackBarService) { }
+  constructor(private router: Router, private authService: AuthService, private matSnackBarService: MatSnackBarService, private translate: TranslateService) { }
   
   toggleAuth(value: boolean): void {
     this.loginActive = value;
@@ -38,7 +39,7 @@ export class AuthComponent {
     this.startLoading();
     this.authService.login(this.email, this.password).subscribe({
       next: (res) => this.handleLoginSuccess(res.token),
-      error: (err) => this.handleError('Login failed', err),
+      error: (err) => this.handleError(this.translate.instant('SNACKBARS.ERROR.LOGIN'), err),
     });
   }
 
@@ -48,10 +49,10 @@ export class AuthComponent {
     this.authService.profile().subscribe({
       next: (profile) => {
         this.authStore.setProfile(profile);
-        this.matSnackBarService.showSuccess('Login successful!');
+        this.matSnackBarService.showSuccess(this.translate.instant('SNACKBARS.SUCCESS.LOGIN'));
         this.navigateTo('dashboard/houses');
       },
-      error: (err) => this.handleError('Profile fetch failed', err),
+      error: (err) => this.handleError(this.translate.instant('SNACKBARS.ERROR.LOGIN'), err),
     });
   }
 
@@ -59,11 +60,11 @@ export class AuthComponent {
     this.startLoading();
     this.authService.register(this.email, this.password, this.username).subscribe({
       next: () => {
-        this.matSnackBarService.showSuccess('Registration successful!');
+        this.matSnackBarService.showSuccess(this.translate.instant('SNACKBARS.SUCCESS.REGISTER'));
         this.loginActive = true;
         this.stopLoading();
       },
-      error: (err) => this.handleError('Registration failed', err),
+      error: (err) => this.handleError(this.translate.instant('SNACKBARS.ERROR.REGISTER'), err),
     });
   }
 
@@ -81,7 +82,7 @@ export class AuthComponent {
 
   private handleError(message: string, error: any): void {
     console.error(message, error);
-    this.matSnackBarService.showError(error.error.error || message);
+    this.matSnackBarService.showError(message);
     this.stopLoading();
   }
 }
