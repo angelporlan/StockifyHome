@@ -26,7 +26,6 @@ export class ProfileComponent {
   constructor(private router: Router, public dialog: MatDialog, private authService: AuthService, private matSnackBarService: MatSnackBarService, private translate: TranslateService) {}
 
   changeLanguage(lang: any): void {
-    console.log(lang);
     this.authStore.updateLanguagePreference(lang);
     this.translate.setDefaultLang(lang);
     this.translate.use(lang);
