@@ -1,7 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { delay } from 'rxjs/operators';
 import { AuthStore } from '../../store/auth.store';
 import { HouseStore } from '../../store/house.store';
 import { ProductStore } from '../../store/product.store';
@@ -19,15 +18,11 @@ export class AuthService {
   constructor(private http: HttpClient) { }
 
   login(email: string, password: string): Observable<any> {
-    return this.http.post(`${this.apiUrl}/login`, { email, password }).pipe(
-      delay(2000)
-    );
+    return this.http.post(`${this.apiUrl}/login`, { email, password });
   }
 
   register(email: string, password: string, username: string): Observable<any> {
-    return this.http.post(`${this.apiUrl}/register`, { email, password, username }).pipe(
-      delay(2000)
-    );
+    return this.http.post(`${this.apiUrl}/register`, { email, password, username });
   }
 
   profile(): Observable<any> {
@@ -45,8 +40,7 @@ export class AuthService {
     if (password) body.password = password;
     return this.http.put(`${this.apiUrl}/profile`, body, {
       headers: { Authorization: `Bearer ${token}` }
-    }).pipe(
-      delay(2000));
+    });
   }
 
   logout(): void {
