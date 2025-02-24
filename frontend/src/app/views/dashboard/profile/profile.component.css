@@ -27,3 +27,13 @@
 .profile-actions button:hover {
     background-color: var(--blue-hover-color);
 }
+
+@media (max-width: 450px) {
+    .profile-actions button {
+        margin-bottom: 8px;
+    }
+
+    button {
+        width: 100%;
+    }
+}
