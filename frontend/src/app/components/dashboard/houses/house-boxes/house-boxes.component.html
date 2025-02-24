@@ -1,2 +1,3 @@
-<app-title [title]="'DASHBOARD.HOUSES.NO_HOUSES' | translate" *ngIf="this.houseStore.houses().length < 1"></app-title>
+<app-title [title]="'DASHBOARD.HOUSES.NO_HOUSES' | translate" *ngIf="this.houseStore.houses().length < 1 && this.houseStore.houses() != undefined"></app-title>
+<app-loader-modal *ngIf="this.houseStore.houses() === undefined"></app-loader-modal>
 <app-item-card *ngFor="let house of filterHouses(this.houseStore.houses())" [isProduct]="false" [house]="house"></app-item-card>

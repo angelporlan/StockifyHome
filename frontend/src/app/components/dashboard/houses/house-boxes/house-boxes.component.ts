@@ -4,11 +4,12 @@ import { ItemCardComponent } from '../../item-card/item-card.component';
 import { CommonModule } from '@angular/common';
 import { House } from '../../../../interfaces/house';
 import { TitleComponent } from '../../title/title.component';
-import { TranslatePipe, TranslateService } from '@ngx-translate/core';
+import { TranslatePipe } from '@ngx-translate/core';
+import { LoaderModalComponent } from '../../../general/modals/loader-modal/loader-modal.component';
 
 @Component({
   selector: 'app-house-boxes',
-  imports: [ItemCardComponent, CommonModule, TitleComponent, TranslatePipe],
+  imports: [ItemCardComponent, CommonModule, TitleComponent, TranslatePipe, LoaderModalComponent],
   templateUrl: './house-boxes.component.html',
   styleUrl: './house-boxes.component.css'
 })
