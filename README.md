@@ -55,6 +55,6 @@ Puedes ver el diseño en Figma [aquí](https://www.figma.com/design/slB0xzMDjXX0
 
 ## 📩 Contacto
 
-Si tienes dudas o sugerencias, puedes escribirme en [Linkedin](https://www.linkedin.com/in/angelporlan/) o [GotHub](https://github.com/angelporlan).
+Si tienes dudas o sugerencias, puedes escribirme en [Linkedin](https://www.linkedin.com/in/angelporlan/) o [GitHub](https://github.com/angelporlan).
 
 
