@@ -1,2 +1,15 @@
-<app-title [title]="!houseStore.selectedHouse()?.id ? ('DASHBOARD.PRODUCTS.PRODUCT_BOXES.SELECT_A_HOUSE' | translate) : ('DASHBOARD.PRODUCTS.PRODUCT_BOXES.NOT_HOUSES' | translate)" *ngIf="this.productStore.selectedProducts().length < 1"></app-title>
-<app-item-card *ngFor="let product of filterProducts(this.productStore.selectedProducts())" [isProduct]="true" [product]="product"></app-item-card>
+<app-title 
+    [title]="!houseStore.selectedHouse() ? ('DASHBOARD.PRODUCTS.PRODUCT_BOXES.SELECT_A_HOUSE' | translate) : (this.productStore.selectedProducts() != null ? ('DASHBOARD.PRODUCTS.PRODUCT_BOXES.NOT_HOUSES' | translate) : '')" 
+    *ngIf="(this.productStore.selectedProducts() || []).length < 1"></app-title>
+
+
+<div>
+<app-loader-modal *ngIf="this.productStore.selectedProducts() === null && houseStore.selectedHouse()?.id"></app-loader-modal>
+
+</div>
+
+<app-item-card 
+  *ngFor="let product of filterProducts(this.productStore.selectedProducts() || [])" 
+  [isProduct]="true" 
+  [product]="product">
+</app-item-card>

@@ -11,6 +11,7 @@ import { HouseService } from '../../../services/house/house.service';
 import { catchError, tap, throwError } from 'rxjs';
 import { InputModalComponent } from '../../general/modals/input-modal/input-modal.component';
 import { TranslateService } from '@ngx-translate/core';
+import { ProductStore } from '../../../store/product.store';
 
 @Component({
   selector: 'app-item-card',
@@ -43,6 +44,7 @@ export class ItemCardComponent {
     UserId: 0
   }
   private houseStore = inject(HouseStore);
+  private productStore = inject(ProductStore);
   categories: { id: number; name: string }[] = [];
 
   constructor(private matSnackBarService: MatSnackBarService, private router: Router, private dialog: MatDialog, private houseService: HouseService, private translate: TranslateService) { }
@@ -63,6 +65,7 @@ export class ItemCardComponent {
   onSelectItem() {
     if (!this.isProduct) {
       this.houseStore.setHouseSelected(this.house);
+      this.productStore.resetState();
       this.router.navigate([`dashboard/products`]);
       this.matSnackBarService.showSuccess(`${this.translate.instant('DASHBOARD.HOUSES.HOUSE')} ${this.house.name} ${this.translate.instant('DASHBOARD.HOUSES.SELECTED')}`);
     } else {

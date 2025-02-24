@@ -1,2 +1,2 @@
-<app-details [product]="this.productStore.getProductsById(this.getIdFromUrl())"></app-details>
-<app-product-details [product]="this.productStore.getProductsById(this.getIdFromUrl())"></app-product-details>
+<app-details [product]="this.productStore.getProductsById(this.getIdFromUrl()) || undefined"></app-details>
+<app-product-details [product]="this.productStore.getProductsById(this.getIdFromUrl()) || undefined"></app-product-details>

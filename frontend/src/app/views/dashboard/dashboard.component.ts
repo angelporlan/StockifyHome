@@ -108,14 +108,16 @@ export class DashboardComponent {
   }
 
   private getProducts(): void {
-    this.productService.getProducts().pipe(takeUntil(this.destroy$)).subscribe({
-      next: (products) => {
-        this.productStore.setProducts(products);
-      },
-      error: (err) => {
-        console.error(err.error.error);
-        this.productStore.setProducts([]);
-      }
-    });
+    if (this.houseStore.selectedHouse()) {
+      this.productService.getProducts().pipe(takeUntil(this.destroy$)).subscribe({
+        next: (products) => {
+          this.productStore.setProducts(products);
+        },
+        error: (err) => {
+          console.error(err.error.error);
+          this.productStore.setProducts([]);
+        }
+      });
+    }
   }
 }

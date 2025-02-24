@@ -29,6 +29,7 @@ export class HeaderComponent {
   removeHouseSelected(): void {
     this.houseStore.deleteHouseSelected();
     this.productStore.deleteProducts();
+    this.productStore.resetState();
     this.router.navigate(['/dashboard/houses']);
   }
 }

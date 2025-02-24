@@ -6,10 +6,11 @@ import { TitleComponent } from '../../title/title.component';
 import { Product } from '../../../../interfaces/product';
 import { HouseStore } from '../../../../store/house.store';
 import { TranslatePipe } from '@ngx-translate/core';
+import { LoaderModalComponent } from '../../../general/modals/loader-modal/loader-modal.component';
 
 @Component({
   selector: 'app-product-boxes',
-  imports: [ItemCardComponent, CommonModule, TitleComponent, TranslatePipe],
+  imports: [ItemCardComponent, CommonModule, TitleComponent, TranslatePipe, LoaderModalComponent],
   templateUrl: './product-boxes.component.html',
   styleUrl: './product-boxes.component.css'
 })
@@ -18,6 +19,11 @@ export class ProductBoxesComponent {
 
   @Input() searchText: string = '';
   houseStore = inject(HouseStore);
+
+  ngOnInit(): void {
+    if (this.productStore.selectedProducts())
+      console.log(this.productStore.selectedProducts());
+    }
 
   filterProducts(products: Product[]) {
     if (this.searchText === '') {
