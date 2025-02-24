@@ -33,6 +33,7 @@
       "HOUSES": {
         "PLACEHOLDER": "Etxeak bilatu",
         "BUTTON_TEXT": "Etxea gehitu",
+        "NO_HOUSES": "Ez da etxerik aurkitu, saiatu bat gehitzen!",
         "HOUSE": "Etxea",
         "SELECTED": "hautatuta",
         "ADD_HOUSE_DIALOG": {

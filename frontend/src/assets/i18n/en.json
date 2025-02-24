@@ -33,6 +33,7 @@
     "HOUSES": {
       "PLACEHOLDER": "Search houses",
       "BUTTON_TEXT": "Add house",
+      "NO_HOUSES": "No houses found, try adding one!",
       "HOUSE": "House",
       "SELECTED": "selected",
       "ADD_HOUSE_DIALOG": {

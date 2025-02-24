@@ -33,6 +33,7 @@
     "HOUSES": {
       "PLACEHOLDER": "Buscar casas",
       "BUTTON_TEXT": "Añadir casa",
+      "NO_HOUSES": "No se encontraron casas, ¡intenta agregar una!",
       "HOUSE": "Casa",
       "SELECTED": "seleccionada",
       "ADD_HOUSE_DIALOG": {
