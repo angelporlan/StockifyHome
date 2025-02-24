@@ -56,7 +56,7 @@ Puedes ver el diseño en Figma [aquí](https://www.figma.com/design/slB0xzMDjXX0
 ## 🎨 Base de datos
 
 Aquí puedes ver cómo se comunican las tablas:
-![tablas]([https://www.example.com/images/stockifyhome-logo.png](https://drive.google.com/file/d/1fntdu9zIO035sscSSikPAlWN-eiGTp_c/view?usp=sharing))
+![imagen](https://drive.google.com/file/d/1fntdu9zIO035sscSSikPAlWN-eiGTp_c/view?usp=sharing)
 
 ## 📩 Contacto
 
