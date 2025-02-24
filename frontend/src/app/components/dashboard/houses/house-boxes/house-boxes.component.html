@@ -1,3 +1,8 @@
-<app-title [title]="'DASHBOARD.HOUSES.NO_HOUSES' | translate" *ngIf="this.houseStore.houses().length < 1 && this.houseStore.houses() != undefined"></app-title>
-<app-loader-modal *ngIf="this.houseStore.houses() === undefined"></app-loader-modal>
-<app-item-card *ngFor="let house of filterHouses(this.houseStore.houses())" [isProduct]="false" [house]="house"></app-item-card>
+<div>
+    <app-loader-modal *ngIf="isLoading && houseStore.houses() === null"></app-loader-modal>
+  </div>
+  
+  <app-title [title]="'DASHBOARD.HOUSES.NO_HOUSES' | translate" *ngIf="isHouseListEmpty && houseStore.houses() != null"></app-title>
+  
+  <app-item-card *ngFor="let house of filterHouses(houseStore.houses() || [])" [isProduct]="false" [house]="house"></app-item-card>
+  

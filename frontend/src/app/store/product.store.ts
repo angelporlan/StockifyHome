@@ -24,10 +24,8 @@ export const ProductStore = signalStore(
             patchState(store, { selectedProducts: products });
         },
         resetState: () => {
-            // Actualizar el estado del store
             patchState(store, { selectedProducts: null });
         
-            // Actualizar también el almacenamiento local
             const stockifyHomeData = JSON.parse(localStorage.getItem('stockifyHomeData') || '{}');
             stockifyHomeData.selectedProducts = null;
         

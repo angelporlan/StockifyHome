@@ -16,6 +16,16 @@ import { LoaderModalComponent } from '../../../general/modals/loader-modal/loade
 export class HouseBoxesComponent {
   houseStore = inject(HouseStore);
   @Input() searchText: string = '';
+  isLoading = true; 
+
+  ngOnInit() {
+    const houses = this.houseStore.houses();
+    if (houses === null) {
+      this.isLoading = true;
+    } else {
+      this.isLoading = false;
+    }
+  }
 
   filterHouses(houses: House[]) {
     if (this.searchText === '') {
@@ -23,5 +33,10 @@ export class HouseBoxesComponent {
     }
     const searchTextLower = this.searchText.toLowerCase();
     return houses.filter((house: any) => house.name.toLowerCase().includes(searchTextLower));
+  }
+
+  get isHouseListEmpty() {
+    const houses = this.houseStore.houses();
+    return houses === null || houses.length === 0;
   }
 }
