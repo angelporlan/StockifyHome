@@ -53,11 +53,6 @@ ng serve
 
 Puedes ver el diseño en Figma [aquí](https://www.figma.com/design/slB0xzMDjXX0WidZw5086N/StockifyHome?node-id=0-1&t=ywTqqiLOcZO2L39K-1).
 
-## 🎨 Base de datos
-
-Aquí puedes ver cómo se comunican las tablas:
-![imagen](https://drive.google.com/file/d/1fntdu9zIO035sscSSikPAlWN-eiGTp_c/view?usp=sharing)
-
 ## 📩 Contacto
 
 Si tienes dudas o sugerencias, puedes escribirme en [Linkedin](https://www.linkedin.com/in/angelporlan/) o [GotHub](https://github.com/angelporlan).
