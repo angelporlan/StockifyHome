@@ -1,2 +1,2 @@
-<app-title [title]="text" *ngIf="this.houseStore.houses().length < 1"></app-title>
+<app-title [title]="'DASHBOARD.HOUSES.NO_HOUSES' | translate" *ngIf="this.houseStore.houses().length < 1"></app-title>
 <app-item-card *ngFor="let house of filterHouses(this.houseStore.houses())" [isProduct]="false" [house]="house"></app-item-card>

@@ -4,17 +4,17 @@ import { ItemCardComponent } from '../../item-card/item-card.component';
 import { CommonModule } from '@angular/common';
 import { House } from '../../../../interfaces/house';
 import { TitleComponent } from '../../title/title.component';
+import { TranslatePipe, TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-house-boxes',
-  imports: [ItemCardComponent, CommonModule, TitleComponent],
+  imports: [ItemCardComponent, CommonModule, TitleComponent, TranslatePipe],
   templateUrl: './house-boxes.component.html',
   styleUrl: './house-boxes.component.css'
 })
 export class HouseBoxesComponent {
   houseStore = inject(HouseStore);
   @Input() searchText: string = '';
-  text: string = 'Not houses found, try adding one!';
 
   filterHouses(houses: House[]) {
     if (this.searchText === '') {
