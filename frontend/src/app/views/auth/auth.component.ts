@@ -18,8 +18,8 @@ import { TranslateService } from '@ngx-translate/core';
 export class AuthComponent {
   isLoading = false;
   loginActive = true;
-  email = 'prueba@gmail.com';
-  password = '123456';
+  email = '';
+  password = '';
   username = '';
   authStore = inject(AuthStore);
   submitText = this.getSubmitText();
