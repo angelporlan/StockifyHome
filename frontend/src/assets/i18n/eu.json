@@ -89,6 +89,7 @@
         "EXPIRES_TOMORROW": "Bihar iraungi",
         "DETAILS": {
           "TITLE": "Produktuaren xehetasunak",
+          "QUANTITY_PRODUCT": "gainerako unitateak",
           "BUTTONS": {
             "EDIT": "Editatu",
             "DELETE": "Ezabatu"

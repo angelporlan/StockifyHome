@@ -89,6 +89,7 @@
       "EXPIRES_TOMORROW": "Expires tomorrow",
       "DETAILS": {
         "TITLE": "Product details",
+        "QUANTITY_PRODUCT": "remaining units",
         "BUTTONS": {
           "EDIT": "Edit",
           "DELETE": "Delete"
