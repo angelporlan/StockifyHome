@@ -1,4 +1,4 @@
-import { Component, inject, Input } from '@angular/core';
+import { Component, inject, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { TitleComponent } from '../../title/title.component';
 import { ItemCardComponent } from '../../item-card/item-card.component';
 import { ActionButtonComponent } from '../../action-button/action-button.component';
@@ -12,6 +12,7 @@ import { ProductStore } from '../../../../store/product.store';
 import { catchError, tap, throwError } from 'rxjs';
 import { EditProductModalComponent } from '../../../general/modals/edit-product-modal/edit-product-modal.component';
 import { TranslatePipe, TranslateService } from '@ngx-translate/core';
+import { ChangeDetectorRef } from '@angular/core';
 
 @Component({
   selector: 'app-details',
@@ -19,7 +20,7 @@ import { TranslatePipe, TranslateService } from '@ngx-translate/core';
   templateUrl: './details.component.html',
   styleUrl: './details.component.css'
 })
-export class DetailsComponent {
+export class DetailsComponent implements OnChanges {
   @Input() product: Product | undefined = undefined;
   realProduct: Product = {
     id: 0,
@@ -34,30 +35,48 @@ export class DetailsComponent {
       name: ''
     },
     ProductDetails: []
-  }
+  };
+  totalQuantity: number = 0;
   productStore = inject(ProductStore);
 
-  constructor(private dialog: MatDialog, private productService: ProductService, private router: Router, private matSnackBarService: MatSnackBarService, private translate: TranslateService) {}
+  constructor(
+    private dialog: MatDialog,
+    private productService: ProductService,
+    private router: Router,
+    private matSnackBarService: MatSnackBarService,
+    private translate: TranslateService,
+    private cdr: ChangeDetectorRef
+  ) {}
 
   ngOnInit(): void {
     this.validProduct();
   }
 
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['product']) {
+      this.validProduct();
+    }
+  }
+
   validProduct(): void {
     if (this.product) {
       this.realProduct = this.product;
-      console.log(this.product);
+      this.calculateTotalQuantity();
     }
+  }
+
+  private calculateTotalQuantity(): void {
+    this.totalQuantity = this.realProduct.ProductDetails.reduce((acc, detail) => acc + detail.quantity, 0);
+    this.cdr.markForCheck();
   }
 
   openDeleteDialog(): void {
     this.dialog.open(ConfirmModalComponent, {
       width: '400px',
       data: {
-        // title: 'Delete product',
         title: this.translate.instant('DASHBOARD.PRODUCT.DETAILS.DELETE_MODAL.TITLE'),
         message: this.translate.instant('DASHBOARD.PRODUCT.DETAILS.DELETE_MODAL.MESSAGE'),
-        action: () => this.deleteProduct()  
+        action: () => this.deleteProduct()
       }
     });
   }
@@ -68,7 +87,6 @@ export class DetailsComponent {
       data: {
         id: this.product ? this.product.id : this.realProduct.id,
         name: this.product ? this.product.name : this.realProduct.name,
-        // image: this.product ? this.product.image : this.realProduct.image,
         categoryId: this.product ? this.product.Category.id : this.realProduct.Category.id,
       }
     });
@@ -87,5 +105,4 @@ export class DetailsComponent {
       })
     );
   }
-
 }

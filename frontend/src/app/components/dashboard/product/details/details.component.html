@@ -1,5 +1,6 @@
-<app-title [title]="'DASHBOARD.PRODUCT.DETAILS.TITLE' | translate"></app-title>
+<app-title title="{{product?.name}}"></app-title>
 <app-item-card [isProduct]="true" [product]="product ? product : realProduct"></app-item-card>
+<p><b>{{totalQuantity}}</b> {{'DASHBOARD.PRODUCT.DETAILS.QUANTITY_PRODUCT' | translate}}</p>
 <div class="buttons">
     <app-action-button [text]="'DASHBOARD.PRODUCT.DETAILS.BUTTONS.EDIT' | translate" actionType="editProduct" (click)="openEditDialog()"></app-action-button>
     <app-action-button [text]="'DASHBOARD.PRODUCT.DETAILS.BUTTONS.DELETE' | translate" actionType="deleteProduct" (click)="openDeleteDialog()"></app-action-button>

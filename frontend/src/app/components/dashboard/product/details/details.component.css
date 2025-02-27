@@ -3,3 +3,8 @@
     grid-template-columns: 1fr;
     gap: 16px;
 }
+
+p {
+    font-style: italic;
+    margin: 12px 0;
+}
