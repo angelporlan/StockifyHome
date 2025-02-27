@@ -57,16 +57,44 @@ export class AuthComponent {
   }
 
   register(): void {
+    if (!this.validateInputs()) return;
     this.startLoading();
     this.authService.register(this.email, this.password, this.username).subscribe({
       next: () => {
-        this.matSnackBarService.showSuccess(this.translate.instant('SNACKBARS.SUCCESS.REGISTER'));
-        this.loginActive = true;
-        this.stopLoading();
+      this.matSnackBarService.showSuccess(this.translate.instant('SNACKBARS.SUCCESS.REGISTER'));
+      this.loginActive = true;
+      this.stopLoading();
       },
-      error: (err) => this.handleError(this.translate.instant('SNACKBARS.ERROR.REGISTER'), err),
+      error: (err) => {
+      if (err.error.error === 'Email already in use') {
+        this.handleError(this.translate.instant('SNACKBARS.ERROR.EMAIL_IN_USE'), err);
+      } else {
+        this.handleError(this.translate.instant('SNACKBARS.ERROR.REGISTER'), err);
+      }
+      },
     });
   }
+
+  private validateInputs(): boolean {
+    if (!this.email || !this.password || !this.username) {
+      this.matSnackBarService.showError(this.translate.instant('SNACKBARS.ERROR.EMPTY_FIELDS'));
+      return false;
+    }
+    if (!/^[a-zA-Z0-9]+$/.test(this.username)) {
+      this.matSnackBarService.showError(this.translate.instant('SNACKBARS.ERROR.USERNAME_FORMAT'));
+      return false;
+    }
+    if (this.username.length < 4) {
+      this.matSnackBarService.showError(this.translate.instant('SNACKBARS.ERROR.USERNAME_LENGTH'));
+      return false;
+    }
+    if (this.password.length < 6) {
+      this.matSnackBarService.showError(this.translate.instant('SNACKBARS.ERROR.PASSWORD_LENGTH'));
+      return false;
+    }
+    return true;
+  }
+  
 
   navigateTo(path: string): void {
     this.router.navigate([path]);
