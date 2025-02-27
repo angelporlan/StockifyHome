@@ -1,4 +1,4 @@
-<article>
+<article [ngClass]="{'is_detail_product_article': isDetailProduct}">
     <div class="options" *ngIf="!isProduct">
         <img class="icons" src="../../../../assets/icons/edit.svg" alt="edit" (click)="openEditModal()">
         <img class="icons" src="../../../../assets/icons/trash.svg" alt="delete" (click)="openDeleteModal()">
@@ -9,12 +9,12 @@
     </div>
     <div class="content" (click)="onSelectItem()">
         <div class="left-zone">
-            <p class="name">{{house.name || product.name}}</p>
-            <p *ngIf="isProduct" class="expiration-date">{{ this.getTheDaysToExpire() }}</p>
+            <p *ngIf="!isDetailProduct" class="name">{{house.name || product.name}}</p>
+            <p *ngIf="isProduct" [ngClass]="{'is_detail_product_p': isDetailProduct}" class="expiration-date">{{ this.getTheDaysToExpire() }}</p>
             <p *ngIf="isProduct" class="category">{{getCategoryName()}}</p>
         </div>
         <div class="right-zone">
-            <p *ngIf="isProduct" class="quantity">{{ getAllQuantity() }}</p>
+            <p *ngIf="isProduct && !isDetailProduct" class="quantity">{{ getAllQuantity() }}</p>
         </div>
     </div>
 </article>

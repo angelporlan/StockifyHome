@@ -1,113 +1,102 @@
-import { Component, inject, Input } from '@angular/core';
+import { Component, inject, Input, OnInit } from '@angular/core';
 import { House } from '../../../interfaces/house';
 import { Product } from '../../../interfaces/product';
 import { HouseStore } from '../../../store/house.store';
+import { ProductStore } from '../../../store/product.store';
 import { MatSnackBarService } from '../../../services/matSnackBar/mat-snack-bar.service';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
-import { ConfirmModalComponent } from '../../general/modals/confirm-modal/confirm-modal.component';
 import { HouseService } from '../../../services/house/house.service';
 import { catchError, tap, throwError } from 'rxjs';
 import { InputModalComponent } from '../../general/modals/input-modal/input-modal.component';
+import { ConfirmModalComponent } from '../../general/modals/confirm-modal/confirm-modal.component';
 import { TranslateService } from '@ngx-translate/core';
-import { ProductStore } from '../../../store/product.store';
 
 @Component({
   selector: 'app-item-card',
+  standalone: true,
   imports: [CommonModule],
   templateUrl: './item-card.component.html',
   styleUrl: './item-card.component.css'
 })
-export class ItemCardComponent {
-  @Input() isProduct: boolean = false;
-  @Input() product: Product = {
-    id: 0,
-    name: '',
-    image: '',
-    createdAt: '',
-    updatedAt: '',
-    houseId: 0,
-    categoryId: 0,
-    Category: {
-      id: 0,
-      name: ''
-    },
-    ProductDetails: []
-  }
-    ;
-  @Input() house: House = {
-    id: 0,
-    name: '',
-    createdAt: '',
-    updatedAt: '',
-    UserId: 0
-  }
+export class ItemCardComponent implements OnInit {
+  @Input() isProduct = false;
+  @Input() product: Product = this.initializeProduct();
+  @Input() house: House = this.initializeHouse();
+
   private houseStore = inject(HouseStore);
   private productStore = inject(ProductStore);
-  categories: { id: number; name: string }[] = [];
+  isDetailProduct = false;
+  private categories: { id: number; name: string }[] = [];
 
-  constructor(private matSnackBarService: MatSnackBarService, private router: Router, private dialog: MatDialog, private houseService: HouseService, private translate: TranslateService) { }
+  constructor(
+    private snackBar: MatSnackBarService,
+    private router: Router,
+    private dialog: MatDialog,
+    private houseService: HouseService,
+    private translate: TranslateService
+  ) {}
 
   ngOnInit() {
-    this.translate.get('CATEGORIES').subscribe((translations: any) => {
-      this.categories = Object.keys(translations).map(id => ({
-        id: Number(id),
-        name: translations[id]
-      }));
+    this.loadCategories();
+    this.isDetailProduct = this.router.url.includes('product') && !this.router.url.includes('products');
+  }
+
+  private initializeProduct(): Product {
+    return { id: 0, name: '', image: '', createdAt: '', updatedAt: '', houseId: 0, categoryId: 0, Category: { id: 0, name: '' }, ProductDetails: [] };
+  }
+
+  private initializeHouse(): House {
+    return { id: 0, name: '', createdAt: '', updatedAt: '', UserId: 0 };
+  }
+
+  private loadCategories() {
+    this.translate.get('CATEGORIES').subscribe(translations => {
+      this.categories = Object.entries(translations).map(([id, name]) => ({ id: Number(id), name: name as string }));
     });
   }
 
-  getCategoryName() {
+  getCategoryName(): string | undefined {
     return this.categories.find(category => category.id === this.product.Category.id)?.name;
   }
 
   onSelectItem() {
     if (!this.isProduct) {
-      this.houseStore.setHouseSelected(this.house);
-      this.productStore.resetState();
-      this.router.navigate([`dashboard/products`]);
-      this.matSnackBarService.showSuccess(`${this.translate.instant('DASHBOARD.HOUSES.HOUSE')} ${this.house.name} ${this.translate.instant('DASHBOARD.HOUSES.SELECTED')}`);
+      this.selectHouse();
     } else {
       this.router.navigate([`dashboard/product/${this.product.id}`]);
     }
   }
 
-  getLatestProductDetailDate(): String {
-    if (this.product.ProductDetails.length === 0) {
-      return this.translate.instant('DASHBOARD.PRODUCT.NO_DATES');
-    }
-    let latestDate = new Date(this.product.ProductDetails[0].expiration_date);
-    this.product.ProductDetails.forEach((productDetail) => {
-      const expirationDate = new Date(productDetail.expiration_date);
-      if (expirationDate > latestDate) {
-        latestDate = expirationDate;
-      }
-    });
-    return latestDate.getDate() + '-' + (latestDate.getMonth() + 1) + '-' + latestDate.getFullYear();
+  private selectHouse() {
+    this.houseStore.setHouseSelected(this.house);
+    this.productStore.resetState();
+    this.router.navigate(['dashboard/products']);
+    this.snackBar.showSuccess(`${this.translate.instant('DASHBOARD.HOUSES.HOUSE')} ${this.house.name} ${this.translate.instant('DASHBOARD.HOUSES.SELECTED')}`);
   }
-  
+
+  getLatestProductDetailDate(): string {
+    if (!this.product.ProductDetails.length) return this.translate.instant('DASHBOARD.PRODUCT.NO_DATES');
+
+    const latestDate = new Date(Math.max(...this.product.ProductDetails.map(d => new Date(d.expiration_date).getTime())));
+    return `${latestDate.getDate()}-${latestDate.getMonth() + 1}-${latestDate.getFullYear()}`;
+  }
+
   getTheDaysToExpire(): string {
-    if (this.product.ProductDetails.length === 0) {
-      return this.translate.instant('DASHBOARD.PRODUCT.NO_DATES');
-    }
-    let latestDate = new Date(this.product.ProductDetails[0].expiration_date);
-    let today = new Date();
-    let difference = latestDate.getTime() - today.getTime();
-    let days = Math.ceil(difference / (1000 * 3600 * 24));
-    
-    if (days < 0) {
-      return `${this.translate.instant('DASHBOARD.PRODUCT.EXPIRED')} ${Math.abs(days)} ${this.translate.instant('DASHBOARD.PRODUCT.DAYS_AGO')}`;
-    } else if (days === 0) {
-      return this.translate.instant('DASHBOARD.PRODUCT.EXPIRES_TODAY');
-    } else if (days === 1) {
-      return this.translate.instant('DASHBOARD.PRODUCT.EXPIRES_TOMORROW');
-    }
+    if (!this.product.ProductDetails.length) return this.translate.instant('DASHBOARD.PRODUCT.NO_DATES');
+
+    const latestDate = new Date(Math.max(...this.product.ProductDetails.map(d => new Date(d.expiration_date).getTime())));
+    const days = Math.ceil((latestDate.getTime() - Date.now()) / (1000 * 3600 * 24));
+
+    if (days < 0) return `${this.translate.instant('DASHBOARD.PRODUCT.EXPIRED')} ${Math.abs(days)} ${this.translate.instant('DASHBOARD.PRODUCT.DAYS_AGO')}`;
+    if (days === 0) return this.translate.instant('DASHBOARD.PRODUCT.EXPIRES_TODAY');
+    if (days === 1) return this.translate.instant('DASHBOARD.PRODUCT.EXPIRES_TOMORROW');
     return `${days} ${this.translate.instant('DASHBOARD.PRODUCT.DAYS_TO_EXPIRE')}`;
   }
 
   getAllQuantity(): number {
-    return this.product.ProductDetails.reduce((total, productDetail) => total + productDetail.quantity, 0);
+    return this.product.ProductDetails.reduce((total, d) => total + d.quantity, 0);
   }
 
   openEditModal() {
@@ -133,30 +122,29 @@ export class ItemCardComponent {
     });
   }
 
-  deleteHouse() {
-    return this.houseService.deleteHouse(this.house.id).pipe(
+  private deleteHouse() {
+    this.houseService.deleteHouse(this.house.id).pipe(
       tap(() => {
         this.houseStore.deleteHouse(this.house.id);
-        this.matSnackBarService.showSuccess(this.translate.instant('SNACKBARS.SUCCESS.HOUSE_DELETED'));
+        this.snackBar.showSuccess(this.translate.instant('SNACKBARS.SUCCESS.HOUSE_DELETED'));
       }),
-      catchError((error) => {
-        this.matSnackBarService.showError(this.translate.instant('SNACKBARS.ERROR.HOUSE_DELETE'));
-        return throwError(() => error);
-      }
-    ));
-  }
-
-  updateHouseName(newName: string) {
-    return this.houseService.updateHouse(this.house.id, { name: newName }).pipe(
-      tap(() => {
-        this.houseStore.updateHouse({ ...this.house, name: newName });
-        this.matSnackBarService.showSuccess(this.translate.instant('SNACKBARS.SUCCESS.HOUSE_UPDATED'));
-      }),
-      catchError((error) => {
-        this.matSnackBarService.showError(this.translate.instant('SNACKBARS.ERROR.HOUSE_UPDATE'));
+      catchError(error => {
+        this.snackBar.showError(this.translate.instant('SNACKBARS.ERROR.HOUSE_DELETE'));
         return throwError(() => error);
       })
-    );
+    ).subscribe();
   }
 
+  private updateHouseName(newName: string) {
+    this.houseService.updateHouse(this.house.id, { name: newName }).pipe(
+      tap(() => {
+        this.houseStore.updateHouse({ ...this.house, name: newName });
+        this.snackBar.showSuccess(this.translate.instant('SNACKBARS.SUCCESS.HOUSE_UPDATED'));
+      }),
+      catchError(error => {
+        this.snackBar.showError(this.translate.instant('SNACKBARS.ERROR.HOUSE_UPDATE'));
+        return throwError(() => error);
+      })
+    ).subscribe();
+  }
 }

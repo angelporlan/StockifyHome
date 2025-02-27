@@ -49,3 +49,17 @@ img {
     height: 24px;
     cursor: pointer;
 }
+
+.is_detail_product_p {
+    text-decoration: underline;
+    color: #000;
+    font-weight: 600;
+
+    white-space: normal !important;
+    overflow: visible !important;
+    text-overflow: clip !important; 
+}
+
+.is_detail_product_article {
+    margin-bottom: 0;
+}
