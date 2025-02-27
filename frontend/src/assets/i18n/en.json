@@ -148,6 +148,11 @@
       "PROFILE_UPDATED": "Profile updated successfully"
     },
     "ERROR": {
+      "EMPTY_FIELDS": "All fields are required",
+      "USERNAME_FORMAT": "The username must only contain letters and numbers.",
+      "USERNAME_LENGTH": "The username must be at least 4 characters long",
+      "EMAIL_IN_USE": "Email is already in use",
+      "PASSWORD_LENGTH": "The password must be at least 6 characters long",
       "PRODUCT_ADD": "Error adding product",
       "PRODUCT_DETAILS_ADD": "Error adding product details",
       "PRODUCT_DELETE": "Error deleting product",
@@ -156,7 +161,7 @@
       "HOUSE_ADD": "Error adding house",
       "HOUSE_UPDATE": "Error updating house",
       "HOUSE_DELETE": "Error deleting house",
-      "LOGIN": "Login error",
+      "LOGIN": "Incorrect credentials",
       "REGISTER": "Registration error",
       "PASSWORD_CHANGE": "Error changing password",
       "PROFILE_UPDATE": "Error updating profile"

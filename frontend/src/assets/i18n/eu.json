@@ -148,6 +148,11 @@
         "PROFILE_UPDATED": "Profila behar bezala eguneratu da"
       },
       "ERROR": {
+        "EMPTY_FIELDS": "Eremu guztiak beharrezkoak dira",
+        "USERNAME_FORMAT": "Erabiltzaile izenak letrak eta zenbakiak soilik izan behar ditu.",
+        "USERNAME_LENGTH": "Erabiltzaile-izenak 4 karaktere izan behar ditu gutxienez",
+        "EMAIL_IN_USE": "Posta elektronikoa erabiltzen ari da dagoeneko",
+        "PASSWORD_LENGTH": "Pasahitzak 6 karaktere izan behar ditu gutxienez",
         "PRODUCT_ADD": "Errorea produktua gehitzean",
         "PRODUCT_DETAILS_ADD": "Errorea produktuaren xehetasunak gehitzean",
         "PRODUCT_DELETE": "Errorea produktua ezabatzean",
@@ -156,7 +161,7 @@
         "HOUSE_ADD": "Errorea etxea gehitzean",
         "HOUSE_UPDATE": "Errorea etxea eguneratzean",
         "HOUSE_DELETE": "Errorea ezabatzean",
-        "LOGIN": "Errorea saioa hastean",
+        "LOGIN": "Kredentzial okerrak",
         "REGISTER": "Errorea erregistratzean",
         "PASSWORD_CHANGE": "Errorea pasahitza aldatzean",
         "PROFILE_UPDATE": "Errorea profila eguneratzean"

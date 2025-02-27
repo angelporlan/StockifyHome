@@ -148,6 +148,11 @@
       "PROFILE_UPDATED": "Perfil actualizado correctamente"
     },
     "ERROR": {
+      "EMPTY_FIELDS": "Todos los campos son obligatorios",
+      "USERNAME_FORMAT": "El nombre de usuario solo debe contener letras y números",
+      "USERNAME_LENGTH": "El nombre de usuario debe tener al menos 4 caracteres",
+      "EMAIL_IN_USE": "El correo electrónico ya está en uso",
+      "PASSWORD_LENGTH": "La contraseña debe tener al menos 6 caracteres",
       "PRODUCT_ADD": "Error al añadir el producto",
       "PRODUCT_DETAILS_ADD": "Error al añadir los detalles del producto",
       "PRODUCT_DELETE": "Error al eliminar el producto",
@@ -156,7 +161,7 @@
       "HOUSE_ADD": "Error al añadir la casa",
       "HOUSE_UPDATE": "Error al actualizar la casa",
       "HOUSE_DELETE": "Error al eliminar",
-      "LOGIN": "Error al iniciar sesión",
+      "LOGIN": "Credenciales incorrectas",
       "REGISTER": "Error al registrarse",
       "PASSWORD_CHANGE": "Error al cambiar la contraseña",
       "PROFILE_UPDATE": "Error al actualizar el perfil"

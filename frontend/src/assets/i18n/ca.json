@@ -148,6 +148,11 @@
         "PROFILE_UPDATED": "Perfil actualitzat correctament"
       },
       "ERROR": {
+        "EMPTY_FIELDS": "Tots els camps són obligatoris",
+        "USERNAME_FORMAT": "El nom d'usuari només ha de contenir lletres i números",
+        "USERNAME_LENGTH": "El nom d'usuari ha de tenir com a mínim 4 caràcters",
+        "EMAIL_IN_USE": "El correu electrònic ja està en ús",
+        "PASSWORD_LENGTH": "La contrasenya ha de tenir almenys 6 caràcters",
         "PRODUCT_ADD": "Error en afegir el producte",
         "PRODUCT_DETAILS_ADD": "Error en afegir els detalls del producte",
         "PRODUCT_DELETE": "Error en eliminar el producte",
@@ -156,7 +161,7 @@
         "HOUSE_ADD": "Error en afegir la casa",
         "HOUSE_UPDATE": "Error en actualitzar la casa",
         "HOUSE_DELETE": "Error en eliminar",
-        "LOGIN": "Error en iniciar sessió",
+        "LOGIN": "Credencials incorrectes",
         "REGISTER": "Error en registrar-se",
         "PASSWORD_CHANGE": "Error en canviar la contrasenya",
         "PROFILE_UPDATE": "Error en actualitzar el perfil"
