@@ -3,9 +3,7 @@
         <strong>{{ "PROFILE.USERNAME" | translate }}</strong>
         <p>{{ this.authStore.username() }}</p>
         <strong>{{ "PROFILE.CREATED_AT" | translate }}</strong>
-        <p>{{ this.authStore.createdAt() }}</p>
-        <strong>{{ "PROFILE.UPDATED_AT" | translate }}:</strong>
-        <p>{{ this.authStore.updatedAt() }}</p>
+        <p>{{ formatDate(this.authStore.createdAt()) }}</p>
         <strong>{{ "PROFILE.EMAIL" | translate }}</strong>
         <p>{{ this.authStore.email() }}</p>
     </div>
