@@ -63,3 +63,11 @@ img {
 .is_detail_product_article {
     margin-bottom: 0;
 }
+
+.category_detail {
+    font-style: italic;
+}
+
+.name {
+    font-weight: 600;
+}

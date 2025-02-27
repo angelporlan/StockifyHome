@@ -11,7 +11,7 @@
         <div class="left-zone">
             <p *ngIf="!isDetailProduct" class="name">{{house.name || product.name}}</p>
             <p *ngIf="isProduct" [ngClass]="{'is_detail_product_p': isDetailProduct}" class="expiration-date">{{ this.getTheDaysToExpire() }}</p>
-            <p *ngIf="isProduct" class="category">{{getCategoryName()}}</p>
+            <p *ngIf="isProduct" [ngClass]="{'category_detail': !isDetailProduct}" class="category">{{getCategoryName()}}</p>
         </div>
         <div class="right-zone">
             <p *ngIf="isProduct && !isDetailProduct" class="quantity">{{ getAllQuantity() }}</p>
