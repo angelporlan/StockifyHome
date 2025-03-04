@@ -1,10 +1,10 @@
-const { Op } = require('sequelize'); // Asegúrate de importar Op
+const { Op } = require('sequelize');
 const { House, Category } = require('../models');
 
 const validateProduct = async (req, res, next) => {
     try {
         const { name, house_id, category_id } = req.body;
-        const productId = req.params.id || req.body.id; // Obtener productId si es una actualización
+        const productId = req.params.id || req.body.id;
 
         if (req.method === 'POST') {
             if (!name || !house_id || !category_id) {
