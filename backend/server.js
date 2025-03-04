@@ -16,8 +16,12 @@ const options = {
         openapi: "3.0.0",
         info: {
             title: "StockifyHome API",
-            version: "1.0.0",
+            version: "1.0.1",
             description: "Documentation for StockifyHome API",
+            contact: {
+                name: "StockifyHome API Support",
+                email: "angelporlandev@gmail.com",
+            },
         },
         servers: [
             { url: "http://localhost:3000" }, // localhost
