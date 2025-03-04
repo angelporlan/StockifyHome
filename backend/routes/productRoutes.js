@@ -155,3 +155,52 @@ router.get('/:id', authenticateToken, getProductById);
 router.delete('/:id', authenticateToken, deleteProduct);
 
 module.exports = router;
+
+/**
+ * @swagger
+ * components:
+ *   schemas:
+ *     Product:
+ *       type: object
+ *       properties:
+ *         id:
+ *           type: integer
+ *           example: 1
+ *         name:
+ *           type: string
+ *           example: "Product Name"
+ *         image:
+ *           type: string
+ *           example: "product_image.png"
+ *         house_id:
+ *           type: integer
+ *           example: 1
+ *         category_id:
+ *           type: integer
+ *           example: 1
+ *         product_details:
+ *           type: array
+ *           items:
+ *             type: object
+ *             properties:
+ *               quantity:
+ *                 type: integer
+ *                 example: 10
+ *               expiration_date:
+ *                 type: string
+ *                 format: date
+ *                 example: "2025-12-31"
+ *       required:
+ *         - name
+ *         - house_id
+ *         - category_id
+ */
+
+/**
+ * @swagger
+ * securitySchemes:
+ *   BearerAuth:
+ *     type: http
+ *     scheme: bearer
+ *     bearerFormat: JWT
+ */
