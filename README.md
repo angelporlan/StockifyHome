@@ -1,5 +1,8 @@
 # StockifyHome 🏠📦
 
+### Atención
+⚠️ La aplicación está en desarrollo, por lo que el servidor puede entrar en suspensión por inactividad. La primera solicitud podría tardar hasta 30 segundos en responder.
+
 StockifyHome es una aplicación para gestionar el inventario de productos en casa. Te permite llevar un seguimiento de los productos que tienes, ver cuándo van a caducar y organizarlos en diferentes "casas" para separar productos por ubicaciones.
 
 ## 🚀 Características
