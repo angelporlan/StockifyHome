@@ -10,6 +10,7 @@ const houseRoutes = require('./routes/houseRoutes');
 const productRoutes = require('./routes/productRoutes');
 const productDetailRoutes = require('./routes/productDetailRoutes');
 const categoryRoutes = require('./routes/categoryRoutes');
+const openaiRoutes = require('./routes/openaiRoutes');
 
 const options = {
     definition: {
@@ -42,6 +43,7 @@ app.use('/api/houses', houseRoutes);
 app.use('/api/products', productRoutes);
 app.use('/api/productDetails', productDetailRoutes);
 app.use('/api/categories', categoryRoutes);
+app.use('/api/openai', openaiRoutes);
 
 const PORT = process.env.PORT || 3000;
 
