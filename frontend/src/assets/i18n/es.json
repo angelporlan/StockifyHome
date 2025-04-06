@@ -17,7 +17,8 @@
     "DASHBOARD": "Dashboard",
     "PROFILE": "Perfil",
     "PRODUCTS": "Productos",
-    "HOUSES": "Casas"
+    "HOUSES": "Casas",
+    "RECIPE": "Receta IA"
   },
   "DASHBOARD": {
     "TITLES": {
@@ -25,6 +26,7 @@
       "PRODUCT": "Producto",
       "PROFILE": "Perfil",
       "HOUSES": "Casas",
+      "RECIPE": "Receta IA",
       "GOOD_MORNING": "Buenos días",
       "GOOD_AFTERNOON": "Buenas tardes",
       "GOOD_EVENING": "Buenas noches",
@@ -124,6 +126,18 @@
           }
         }
       }
+    },
+    "RECIPE": {
+      "TITLE": "Crea una receta con los productos que tienes",
+      "BUTTON_TEXT": "Crear receta",
+      "END_PRODUCTS": "¡Se acabaron los productos!",
+      "CREATE_PRODUCTS": "Crea productos para crear la receta.",
+      "ADD_PRODUCTS": "Añade alimentos haciendo click en ellos para crear la receta.",
+      "VIEW": {
+        "INGREDIENTS": "Ingredientes",
+        "INSTRUCTIONS": "Instrucciones",
+        "TIPS": "Consejos"
+      }
     }
   },
   "MODALS": {
@@ -164,7 +178,8 @@
       "LOGIN": "Credenciales incorrectas",
       "REGISTER": "Error al registrarse",
       "PASSWORD_CHANGE": "Error al cambiar la contraseña",
-      "PROFILE_UPDATE": "Error al actualizar el perfil"
+      "PROFILE_UPDATE": "Error al actualizar el perfil",
+      "CREATE_RECIPE": "Necesitas 1 o más alimentos para crear una receta"
     }
   },
   "CATEGORIES": {
