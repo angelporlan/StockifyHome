@@ -32,6 +32,7 @@ export class DashboardComponent {
     products: '/dashboard/products',
     product: '/dashboard/product',
     user: '/dashboard/profile',
+    recipe: '/dashboard/recipe',
   };
 
   constructor(private router: Router, private houseService: HouseService, private productService: ProductService, private translate: TranslateService) {
@@ -82,6 +83,8 @@ export class DashboardComponent {
       return 'DASHBOARD.TITLES.PRODUCTS';
     } else if (url.includes(this.routes.product)) {
       return 'DASHBOARD.TITLES.PRODUCT';
+    } else if (url.includes(this.routes.recipe)) {
+      return 'DASHBOARD.TITLES.RECIPE';
     }
     return 'DASHBOARD.TITLES.PROFILE';
   }
