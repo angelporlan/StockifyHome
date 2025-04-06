@@ -10,6 +10,7 @@ import { HousesComponent } from './views/dashboard/houses/houses.component';
 import { ProductsComponent } from './views/dashboard/products/products.component';
 import { ProductComponent } from './views/dashboard/product/product.component';
 import { ProfileComponent } from './views/dashboard/profile/profile.component';
+import { RecipeComponent } from './views/dashboard/recipe/recipe.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -20,6 +21,7 @@ export const routes: Routes = [
     { path: 'products', component: ProductsComponent },
     { path: 'product/:id', component: ProductComponent },
     { path: 'profile', component: ProfileComponent },    
+    { path: 'recipe', component: RecipeComponent },
   ]
   },
 ]
