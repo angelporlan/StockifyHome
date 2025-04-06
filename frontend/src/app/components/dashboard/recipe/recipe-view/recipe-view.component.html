@@ -1,0 +1,29 @@
+<h2>{{recipe.title}}</h2>
+<p>{{recipe.description}}</p>
+<div class="serving-time">
+    <p>{{recipe.servings}}</p>
+</div>
+
+<p class="ingredients-title">{{'DASHBOARD.RECIPE.VIEW.INGREDIENTS' | translate}}</p>
+
+<div class="ingredients">
+    <ul>
+        <li *ngFor="let ingredient of recipe.ingredients">{{ingredient}}</li>
+    </ul>
+</div>
+
+<p class="instructions-title">{{'DASHBOARD.RECIPE.VIEW.INSTRUCTIONS' | translate}}</p>
+
+<div class="instructions">
+    <ul>
+        <li *ngFor="let instruction of recipe.instructions">{{instruction}}</li>
+    </ul>
+</div>
+
+<p class="tips-title">{{'DASHBOARD.RECIPE.VIEW.TIPS' | translate}}</p>
+
+<div class="tips">
+    <ul>
+        <li *ngFor="let tip of recipe.tips">{{tip}}</li>
+    </ul>
+</div>
