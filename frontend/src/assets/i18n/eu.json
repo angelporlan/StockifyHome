@@ -17,7 +17,8 @@
       "DASHBOARD": "Aginte-panela",
       "PROFILE": "Profila",
       "PRODUCTS": "Produktuak",
-      "HOUSES": "Etxeak"
+      "HOUSES": "Etxeak",
+      "RECIPE": "Errezeta IA"
     },
     "DASHBOARD": {
       "TITLES": {
@@ -25,6 +26,7 @@
         "PRODUCT": "Produktua",
         "PROFILE": "Profila",
         "HOUSES": "Etxeak",
+        "RECIPE": "Errezeta IA",
         "GOOD_MORNING": "Egun on",
         "GOOD_AFTERNOON": "Arratsalde on",
         "GOOD_EVENING": "Gabon",
@@ -124,6 +126,18 @@
             }
           }
         }
+      },
+      "RECIPE": {
+        "TITLE": "Sortu errezeta bat dituzun produktuekin",
+        "BUTTON_TEXT": "Sortu errezeta",
+        "END_PRODUCTS": "Produktuak desagertu dira!",
+        "CREATE_PRODUCTS": "Sortu produktuak errezeta sortzeko.",
+        "ADD_PRODUCTS": "Gehitu elikagaiak haien gainean klik eginez errezeta sortzeko.",
+        "VIEW": {
+          "INGREDIENTS": "Osagaiak",
+          "INSTRUCTIONS": "Argibideak",
+          "TIPS": "Gomendioak"
+        }
       }
     },
     "MODALS": {
@@ -164,7 +178,8 @@
         "LOGIN": "Kredentzial okerrak",
         "REGISTER": "Errorea erregistratzean",
         "PASSWORD_CHANGE": "Errorea pasahitza aldatzean",
-        "PROFILE_UPDATE": "Errorea profila eguneratzean"
+        "PROFILE_UPDATE": "Errorea profila eguneratzean",
+        "CREATE_RECIPE": "Errezeta bat sortzeko elikagai bat edo gehiago behar dituzu"
       }
     },
     "CATEGORIES": {
