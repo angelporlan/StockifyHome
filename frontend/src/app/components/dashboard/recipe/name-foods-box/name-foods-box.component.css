@@ -1,0 +1,84 @@
+.selected-products, .unselected-products {
+    margin: 20px 0;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease;
+    display: flex;
+    flex-wrap: wrap; 
+}
+
+.selected-products {
+    background-color: #e7f7e7;
+    border: 2px solid #66c66a;
+}
+
+.unselected-products {
+    background-color: #f9f9f9;
+    border: 2px solid #ddd;
+}
+
+.selected-products .food, .unselected-products .food {
+    padding: 8px 12px;
+    margin: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s, transform 0.2s ease-in-out;
+    white-space: nowrap; 
+    overflow: hidden;
+    text-overflow: ellipsis; 
+    max-width: 100%; 
+}
+
+.selected-products .food:hover {
+    background-color: #ec9898;
+    transform: scale(1.04);
+}
+
+.unselected-products .food:hover {
+    background-color: #afde84;
+    transform: scale(1.04);
+}
+
+.selected-products .food.selected, .unselected-products .food.selected {
+    background-color: #66c66a; 
+    color: white;
+}
+
+.message {
+    padding: 8px 12px;
+    font-size: 14px;
+    text-align: center;
+    font-weight: 500;
+}
+
+.buttons {
+    width: 100%;
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.loader {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 24px;
+    overflow: hidden;
+}
+
+@media (max-width: 768px) {
+    .selected-products, .unselected-products {
+        padding: 10px;
+    }
+    
+    .selected-products p, .unselected-products p {
+        font-size: 14px;
+        margin: 3px;
+    }
+
+    .buttons {
+        flex-direction: column;
+    }
+}

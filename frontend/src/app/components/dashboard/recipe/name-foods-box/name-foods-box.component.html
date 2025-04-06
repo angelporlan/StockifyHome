@@ -1,0 +1,36 @@
+<article class="selected-products">
+    <ng-container *ngIf="selectedProducts.length > 0; else noSelected">
+      <p class="food" *ngFor="let product of selectedProducts" (click)="toggleProduct(product, true)">
+        {{ product.name }}
+      </p>
+    </ng-container>
+    <ng-template #noSelected>
+      <p class="message" *ngIf="unselectedProducts.length > 0">
+        {{'DASHBOARD.RECIPE.ADD_PRODUCTS' | translate}}
+      </p>
+      <p class="message" *ngIf="unselectedProducts.length === 0">
+        {{'DASHBOARD.RECIPE.CREATE_PRODUCTS' | translate}}
+      </p>
+    </ng-template>
+</article>
+  
+<article class="unselected-products">
+    <ng-container *ngIf="unselectedProducts.length > 0; else noUnselected">
+      <p class="food" *ngFor="let product of unselectedProducts" (click)="toggleProduct(product, false)">
+        {{ product.name }}
+      </p>
+    </ng-container>
+    <ng-template #noUnselected>
+      <p class="message" *ngIf="selectedProducts.length > 0">
+        {{'DASHBOARD.RECIPE.END_PRODUCTS' | translate}}
+      </p>
+    </ng-template>
+</article>
+
+<div class="buttons">
+    <app-action-button [text]="'DASHBOARD.RECIPE.BUTTON_TEXT' | translate" (click)="onCreateRecipe()"></app-action-button>
+</div>  
+
+<div class="loader">
+  <app-loader-modal *ngIf="isLoading" [isBig]="true"></app-loader-modal>
+</div>
