@@ -17,7 +17,8 @@
       "DASHBOARD": "Tauler",
       "PROFILE": "Perfil",
       "PRODUCTS": "Productes",
-      "HOUSES": "Cases"
+      "HOUSES": "Cases",
+      "RECIPE": "Recepta IA"
     },
     "DASHBOARD": {
       "TITLES": {
@@ -25,6 +26,7 @@
         "PRODUCT": "Producte",
         "PROFILE": "Perfil",
         "HOUSES": "Cases",
+        "RECIPE": "Recepta IA",
         "GOOD_MORNING": "Bon dia",
         "GOOD_AFTERNOON": "Bona tarda",
         "GOOD_EVENING": "Bona nit",
@@ -124,6 +126,18 @@
             }
           }
         }
+      },
+      "RECIPE": {
+        "TITLE": "Crea una recepta amb els productes que tens",
+        "BUTTON_TEXT": "Crear recepta",
+        "END_PRODUCTS": "S'han acabat els productes!",
+        "CREATE_PRODUCTS": "Crea productes per crear la recepta.",
+        "ADD_PRODUCTS": "Afegeix aliments fent-hi clic per crear la recepta.",
+        "VIEW": {
+          "INGREDIENTS": "Ingredients",
+          "INSTRUCTIONS": "Instruccions",
+          "TIPS": "Consells"
+        }
       }
     },
     "MODALS": {
@@ -164,7 +178,8 @@
         "LOGIN": "Credencials incorrectes",
         "REGISTER": "Error en registrar-se",
         "PASSWORD_CHANGE": "Error en canviar la contrasenya",
-        "PROFILE_UPDATE": "Error en actualitzar el perfil"
+        "PROFILE_UPDATE": "Error en actualitzar el perfil",
+        "CREATE_RECIPE": "Necessites 1 o més aliments per crear una recepta"
       }
     },
     "CATEGORIES": {
