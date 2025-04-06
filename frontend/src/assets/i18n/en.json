@@ -17,7 +17,8 @@
     "DASHBOARD": "Dashboard",
     "PROFILE": "Profile",
     "PRODUCTS": "Products",
-    "HOUSES": "Houses"
+    "HOUSES": "Houses",
+    "RECIPE": "AI Recipe"
   },
   "DASHBOARD": {
     "TITLES": {
@@ -25,6 +26,7 @@
       "PRODUCT": "Product",
       "PROFILE": "Profile",
       "HOUSES": "Houses",
+      "RECIPE": "AI Recipe",
       "GOOD_MORNING": "Good morning",
       "GOOD_AFTERNOON": "Good afternoon",
       "GOOD_EVENING": "Good evening",
@@ -124,6 +126,18 @@
           }
         }
       }
+    },
+    "RECIPE": {
+      "TITLE": "Create recipe with the products you have",
+      "BUTTON_TEXT": "Create recipe",
+      "END_PRODUCTS": "The products are gone!",
+      "CREATE_PRODUCTS": "Create products to create the recipe.",
+      "ADD_PRODUCTS": "Add foods by clicking on them to create the recipe.",
+      "VIEW": {
+        "INGREDIENTS": "Ingredients",
+        "INSTRUCTIONS": "Instructions",
+        "TIPS": "Tips"
+      }
     }
   },
   "MODALS": {
@@ -164,7 +178,8 @@
       "LOGIN": "Incorrect credentials",
       "REGISTER": "Registration error",
       "PASSWORD_CHANGE": "Error changing password",
-      "PROFILE_UPDATE": "Error updating profile"
+      "PROFILE_UPDATE": "Error updating profile",
+      "CREATE_RECIPE": "You need 1 or more foods to create a recipe"
     }
   },
   "CATEGORIES": {
