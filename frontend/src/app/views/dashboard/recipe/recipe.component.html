@@ -1,0 +1,3 @@
+<app-title [title]="'DASHBOARD.RECIPE.TITLE' | translate"></app-title>
+<app-name-foods-box (recipe)="getRecipe($event)"></app-name-foods-box>
+<app-recipe-view *ngIf="recipeActive" [recipe]="recipe"></app-recipe-view>
