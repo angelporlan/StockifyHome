@@ -16,6 +16,10 @@
             <img src="../../../assets/icons/products.svg" alt="svg">
             <span [ngClass]="{ 'hidden-span': isSidebarHidden }">{{ "SIDEBAR.PRODUCTS" | translate }}</span>
         </li>
+        <li [ngClass]="{ 'active': isActive('recipe') }" (click)="navigateTo('recipe')">
+            <img src="../../../assets/icons/sparkles.svg" alt="svg">
+            <span [ngClass]="{ 'hidden-span': isSidebarHidden }">{{ "SIDEBAR.RECIPE" | translate }}</span>
+        </li>
     </ul>
     <img src="../../../assets/icons/arrow.svg" class="arrow" alt="arrow" [ngClass]="{ 'hidden-img': isSidebarHidden }" (click)="isSidebarHidden = !isSidebarHidden;">
 </div>
